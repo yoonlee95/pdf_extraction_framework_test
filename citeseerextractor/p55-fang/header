@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSXAPIMetadata>
+<algorithm name="SVM HeaderParse" version="0.2">
+<title>UDP: A Programmable Accelerator for Extract-Transform-Load</title>
+<authors>
+<author>
+<name>Yuanwei Fang</name>
+<affiliation>Computer Science Department, University Of Chicago†; Mathematics and Computer Science Division, Argonne National Laboratory‡</affiliation>
+<email>fywkevin@cs.uchicago.edu</email>
+</author>
+<author>
+<name>Chen Zou</name>
+<affiliation>Computer Science Department, University Of Chicago†; Mathematics and Computer Science Division, Argonne National Laboratory‡</affiliation>
+<email>chenzou@cs.uchicago.edu</email>
+</author>
+<author>
+<name>Aaron J. Elmore</name>
+<affiliation>Computer Science Department, University Of Chicago†; Mathematics and Computer Science Division, Argonne National Laboratory‡</affiliation>
+<email>aelmore@cs.uchicago.edu</email>
+</author>
+<author>
+<name>Andrew A. Chien</name>
+<affiliation>Computer Science Department, University Of Chicago†; Mathematics and Computer Science Division, Argonne National Laboratory‡</affiliation>
+<email>achien@cs.uchicago.edu</email>
+</author>
+</authors>
+<keywords>
+<keyword>Parsing</keyword>
+<keyword>Compression</keyword>
+<keyword>Data Analytics</keyword>
+<keyword>Control-ow Accelerator</keyword>
+</keywords>
+<abstract>Big data analytic applications give rise to large-scale extract-transform-load (ETL) as a fundamental step to transform new data into a native representation. ETL workloads pose signicant performance chal-lenges on conventional architectures, so we propose the design of the unstructured data processor (UDP), a software programmable accelerator that includes multi-way dispatch, variable-size symbol support, exible-source dispatch (stream buer and scalar regis-ters), and memory addressing to accelerate ETL kernels both for current and novel future encoding and compression. Specically, UDP excels at branch-intensive and symbol and pattern-oriented workloads, and can ooad them from CPUs. To evaluate UDP, we use a broad set of data processing workloads inspired by ETL, but broad enough to also apply to query execution, stream processing, and intrusion detection/monitoring. A single UDP accelerates these data processing tasks 20-fold (geometric mean, largest increase from 0.4 GB/s to 40 GB/s) and performance per watt by a geomean of 1,900-fold. UDP ASIC implementation in 28nm CMOS shows UDP logic area of 3.82mm2 (8.69mm2 with 1MB local memory), and logic power of 0.149W (0.864W with 1MB local memory); both much smaller than a single core. CCS CONCEPTS • Information systems→Extraction, transformation and load-ing;  • Computer systems organization → Parallel architec-tures;  • Hardware → Application specic processors;  • The-ory of computation → Pattern matching;</abstract>
+<validHeader>1</validHeader>
+</algorithm>
+</CSXAPIMetadata>

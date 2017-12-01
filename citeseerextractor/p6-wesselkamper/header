@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSXAPIMetadata>
+<algorithm name="SVM HeaderParse" version="0.2">
+<title>Some Classical Mathematical Results Related to the Problems of the Firmware/Hardware Interface</title>
+<authors>
+<author>
+<name>T. C. Wesselkamper</name>
+<affiliation>Virginia Polytechnic Institute; and State University</affiliation>
+</author>
+</authors>
+<abstract>The paper reviews the Shannon and Reed-Muller Decomposition Theorems and notes the relationship of the former to machine instruction set. It hypo-thesizes an instruction set based on Galois field operations and applies the divided difference methods of Newton to the automatic generation of a polynomial representation of an arbitrary function. Some numeric results are given for the fields GF(9) and GF(16). An extension of the methods to the representation of functions by rational forms is suggested. I. Background If in 1975 one surveys instruction sets for digital computers of the present and past one finds a great similarity. A typical recent example is the Weisbecker machine [i]. In an excellent paper Joe Weisbecker &amp;quot;describes a simplified microcomputer architecture that offers maximum flexibility at minimum cost. &amp;quot; [I, p. 41] We are t°id:&amp;quot;The ALU is an 8-bit logic network for performing binary subtract, logical 'and','or', and 'exclusive or ' on two 8-bit operands. One operand is the bus byte and the other is contained in the D register. The D register can also be shifted right one bit position. Add, subtract, and shift operations set a one bit overflow register... which can be tested by a branch in-struction. &amp;quot; [i, p. 43] No attempt is made to explain this choice of functions. They provide a typical example of the operations provided by designers. The second recent example is a des-cription of HALL [2], an assembler level language for the HYRMAN hardware simulator [3]. The HALL machine possesses nine arithmetic functions (binary and decimal addition and subtraction, 'and', 'or', 'exclusive or', left shift and right sh~ft) and fourteen status instructions. These are given in Table I, below. (It should be noted that HALL does decimal arith-metic in a fashion analogous to the old IBM 1620 or to the S/360-370 &amp;quot;packed decimal &amp;quot; arithmetic.)</abstract>
+<validHeader>1</validHeader>
+</algorithm>
+</CSXAPIMetadata>

@@ -1,0 +1,1401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 /home/lopez/grobid/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<encodingDesc>
+			<appInfo>
+				<application version="0.4.3-SNAPSHOT" ident="GROBID" when="2017-12-01T14:44+0000">
+					<ref target="https://github.com/kermitt2/grobid">GROBID - A machine learning software for extracting information from scholarly documents</ref>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">UDP</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>ACM Press</publisher>
+				<availability status="unknown"><p>Copyright ACM Press</p>
+				</availability>
+				<date>October 14-18, 2017. 2017. October 14-18, 2017</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yuanwei</forename><surname>Fang</surname></persName>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Chen</forename><surname>Zou</surname></persName>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Aaron</forename><forename type="middle">J</forename><surname>Elmore</surname></persName>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Andrew</forename><forename type="middle">A</forename><surname>Chien</surname></persName>
+						</author>
+						<title level="a" type="main">UDP</title>
+					</analytic>
+					<monogr>
+						<title level="m">Proceedings of the 50th Annual IEEE/ACM International Symposium on Microarchitecture - MICRO-50 &apos;17</title>
+						<meeting>the 50th Annual IEEE/ACM International Symposium on Microarchitecture - MICRO-50 &apos;17 <address><addrLine>Cambridge, MA, USA; Cambridge, MA, USA</addrLine></address>
+						</meeting>
+						<imprint>
+							<publisher>ACM Press</publisher>
+							<biblScope unit="volume">14</biblScope>
+							<date type="published">October 14-18, 2017. 2017. October 14-18, 2017</date>
+						</imprint>
+					</monogr>
+					<idno type="DOI">10.1145/3123939.3123983</idno>
+					<note>(a) Cost Breakdown. (b) Disk IO (note scale).</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>CCS CONCEPTS • Information systems → Extraction, transformation and load-ing</term>
+					<term>• Computer systems organization → Parallel architec-tures</term>
+					<term>• Hardware → Application speciï¿¿c processors</term>
+					<term>• The-ory of computation → Pattern matching</term>
+					<term>KEYWORDS Data Encoding and Transformation, Parsing, Compression, Data Analytics, Control-ï¿¿ow Accelerator</term>
+				</keywords>
+			</textClass>
+			<abstract>
+				<p>Big data analytic applications give rise to large-scale extract-transform-load (ETL) as a fundamental step to transform new data into a native representation. ETL workloads pose signiï¿¿cant performance challenges on conventional architectures, so we propose the design of the unstructured data processor (UDP), a software programmable accelerator that includes multi-way dispatch, variable-size symbol support, ï¿¿exible-source dispatch (stream buï¿¿er and scalar registers), and memory addressing to accelerate ETL kernels both for current and novel future encoding and compression. Speciï¿¿cally, UDP excels at branch-intensive and symbol and pattern-oriented workloads, and can oï¿¿oad them from CPUs. To evaluate UDP, we use a broad set of data processing workloads inspired by ETL, but broad enough to also apply to query execution, stream processing, and intrusion detection/monitoring. A single UDP accelerates these data processing tasks 20-fold (geometric mean, largest increase from 0.4 GB/s to 40 GB/s) and performance per watt by a geomean of 1,900-fold. UDP ASIC implementation in 28nm CMOS shows UDP logic area of 3.82mm 2 (8.69mm 2 with 1MB local memory), and logic power of 0.149W (0.864W with 1MB local memory); both much smaller than a single core.</p>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1">INTRODUCTION</head><p>With the rise of the Internet, mobile applications, data driven sci- ence, and large-scale sensors, data analysis for large, messy, and diverse data (e.g. "Big Data") is an important driver of computing performance. The advent of large memory systems and scale-out aggregation to petabytes has made in-memory data analytics an in- creasingly important focus of computer architecture. In short, data manipulation -transformation -movement, rather than arithmetic speed, is the primary barrier to continued performance scaling.</p><p>We focus on a growing class of big data computations <ref type="bibr">[14,</ref><ref type="bibr" target="#b11">19,</ref><ref type="bibr" target="#b16">27</ref>] that analyze diverse data for business (e-commerce, recommenda- tion systems, targeted marketing), social networking (interest ï¿¿lter- ing, trending topics), medicine (pharmacogenomics), government (public health, event detection), and ï¿¿nance (stock portfolio man- agement, high-speed trading). These applications all exploit diverse data (e.g. sensors, streaming, human-created data) that is often dirty (has errors), and in varied formats (e.g. JSON, CSV, NetCDF, compressed). Thus, ingestion and analysis can require parsing (ï¿¿nd values), cleaning (remove and correct errors, normalize data), and validation (constraints, type checking).</p><p>In many cases, both real-time and batch analytics are required, so systems exploit highly-optimized internal formats such as colum- nar block compression, special encoding, and rich indexing to meet rising performance demands. These formats require costly transfor- mations to get data into a native format <ref type="bibr" target="#b55">[70]</ref> or just-in-time trans- formations to analyze in-situ <ref type="bibr" target="#b22">[37]</ref>. For example, <ref type="figure">Figure 1a</ref> shows single-threaded costs to load all TPC-H <ref type="bibr" target="#b20">[35]</ref> Gzip-compressed CSV ï¿¿les (scale factor from 1 to 30) from SSD into the PostgreSQL rela- tional database <ref type="bibr">[33]</ref> (Intel Core-i7 CPU with 250GB SATA 3.0 SSD). This common set of extract-transform-load (ETL) tasks includes decompression, parsing record delimiters, tokenizing attribute val- ues, and deserialization (decoding speciï¿¿c formats and validation of domains such as dates), and consumes nearly 800 seconds for scale factor 30 (about 30GB uncompressed), dominating time to initial analysis <ref type="bibr" target="#b22">[37]</ref>. <ref type="figure">Figure 1b</ref> shows that &gt;99.5% wall-clock loading time is spent on CPU tasks, rather than disk IO.</p><p>Further, advances in real-time and complex batch analysis has produced diverse innovation in algorithms, data structures, rep- resentations, and frameworks both for applications and scalable data storages and analytics systems <ref type="bibr" target="#b21">[36,</ref><ref type="bibr" target="#b31">46,</ref><ref type="bibr" target="#b35">50,</ref><ref type="bibr" target="#b45">60,</ref><ref type="bibr" target="#b54">69,</ref><ref type="bibr" target="#b59">74]</ref>. These innovations often use novel, even application-speciï¿¿c encodings and compressions that often perform poorly on transformations on traditional CPUs.</p><p>To address these challenges, we propose a ï¿¿exible, programmable engine, the unstructured data processor (UDP), to accelerate current encodings and transformations and enable new algorithms and even application-speciï¿¿c techniques. UDP runs programs that exploit UDP architecture features such as multi-way dispatch and dispatch from stream and scalar sources to eï¿¿ciently implement branch- intensive computation. UDP includes special support for variable- size symbols, supporting very-dense bit-packed representations. 64 lanes scale up UDP performance, exploiting data parallelism avail- able in most data transformations. Flexible addressing enables these lanes (small micro-architectures) to ï¿¿exibly use memory. Together the lane eï¿¿ciency and parallelism enable UDP to achieve both high performance and energy eï¿¿ciency. UDP's programmable approach diï¿¿ers from narrow accelerators that "freeze in silicon" for partic- ular algorithms, representations or data structures <ref type="bibr" target="#b44">[59,</ref><ref type="bibr" target="#b53">68,</ref><ref type="bibr" target="#b67">82]</ref> (as shown in <ref type="table" target="#tab_2">Table 1</ref>).</p><p>Our results using varied data transformation benchmarks reveal that in many cases, the UDP can outperform a CPU at less than 1/100th the power, providing an eï¿¿ective oï¿¿oad, that both elimi- nates much of the cost of data transformation, and frees the CPU for other activities.</p><p>Speciï¿¿c contributions of the paper include:</p><p>• Micro-architecture of the unstructured data processor (UDP), including the description of key features of multi-way dis- patch, variable-size symbols, ï¿¿exible-source dispatch, and an addressing architecture for eï¿¿cient, ï¿¿exible UDP lane-bank coupling. Quantitative comparison for each and document- ing their eï¿¿ectiveness. Collectively, these results show the promise of the UDP for ETL and more general data transformation workloads.</p><p>The UDP is a part of the 10x10 project <ref type="bibr" target="#b28">[43,</ref><ref type="bibr" target="#b32">47,</ref><ref type="bibr" target="#b33">48,</ref><ref type="bibr" target="#b36">51,</ref><ref type="bibr" target="#b61">[76]</ref><ref type="bibr" target="#b62">[77]</ref><ref type="bibr" target="#b63">[78]</ref>, an exploration of heterogeneous architecture that federates cus- tomized micro-engines to achieve energy eï¿¿ciency and general- purpose performance. We found that half of the 10x10 micro-engines focused on data-oriented acceleration <ref type="bibr" target="#b33">[48,</ref><ref type="bibr" target="#b36">51,</ref><ref type="bibr" target="#b61">76]</ref> and converged their capabilities in the Uniï¿¿ed Automata Processor (UAP <ref type="bibr" target="#b39">[54]</ref>) that achieved eï¿¿cient automata processing (including regular expres- sion matching). These workloads are challenging on traditional CPUs because they are indirection-intensive, branch-intensive, and operating on short, variable-size data. The UDP builds on insights from the UAP, but supports general data transformation.</p><p>The remainder of the paper is organized as follows. In Section 2, we describe challenging data transformation workloads, and compare UDP's ï¿¿exible programmability to narrower accelerator designs. Next, we describe our novel architecture of the Unstruc- tured Data Processor (UDP), including its key architectural features (Section 3). For each, we describe and evaluate several options, sub- stantiating UDP's architectural choices. Next, we study the UDP performance on a variety of data transformation benchmarks in Section 5, using cycle-accurate simulation calibrated by a detailed ASIC design described in Section 6. We conclude with a qualita- tive discussion and a quantitative comparison of our results to the research literature (Section 7), and a summary (Section 8).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">DATA TRANSFORMATION WORKLOADS AND ACCELERATORS</head><p>Big data computing workloads are diverse and typiï¿¿ed by challeng- ing behavior that gives poor performance in modern CPUs with high instruction-level parallelism and deep pipelines <ref type="bibr" target="#b7">[11,</ref><ref type="bibr" target="#b64">79]</ref>. We summarize a variety of these workloads below and document their challenges for CPUs in <ref type="table" target="#tab_4">Table 2</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Workloads</head><p>Database ETL (extract, transform, and load) requires tools to integrate disparate data sources into a common data system or format, such as a column oriented database or shared analytic formats for dataï¿¿ow systems. An extract phase can combine data from diï¿¿erent source systems, which may store data in diï¿¿erent formats (XML, JSON, ï¿¿at ï¿¿les, binary ï¿¿les, etc). Transform involves a series of rules or functions that are applied to the extracted data in order to prepare it for loading into the end target. This includes both logical transformations to normalize and clean data, as well as physical transformations to prepare the data for the destination  formats. These tasks are critical for ensuring data consistency and to enable eï¿¿cient data representations that optimize execution engines use. <ref type="figure">Figure 1</ref> shows for compressed CSV ï¿¿les loading, ETL tasks exceed IO cost by 200x. For our experiments, ETL includes CSV parsing, format-speciï¿¿c encoding/decoding (e.g. dictionary- rle), de/compression, Huï¿¿man coding, and pattern matching (see Section 5). Query Execution is critical for columnar analytic and transac- tional in-memory databases which often compress and encode data. Inlining decompression and query functions help to improve perfor- mance and remove the memory bandwidth bottleneck. Columnar databases encode attributes to reduce storage footprint and allow for query predicates to be pushed down directly on encoded data. Query execution often includes in-memory format conversion and value (or range) comparison for predicate based ï¿¿ltering. Addition- ally, to improve query planning (such as join ordering), databases rely on histograms to estimate data distributions. These critical classes of functions involve de/compression, Huï¿¿man decoding, histogram generation, and pattern matching.</p><p>Stream Processing includes streaming databases, streaming monitoring, sentiment analysis, real-time sensors, embedded-systems, and data capture from scientiï¿¿c instruments. With the growing use of real-time stream processing, acceleration for parsing, his- togramming, pattern matching, and signal triggering is essential for eï¿¿cient high-level analysis.</p><p>Network Intrusion Detection/Deep Packet Inspection have growing usage in networking. Current intrusion detection systems search for dangerous (malicious code) or interesting content in net- work packets by matching patterns. Network packets are encrypted and/or compressed to meet growing bandwidth and security goals. Important computations include decompression, parsing, pattern matching, multi-level packet inspection, and signal triggering.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Accelerating Data Transformation with Flexibility</head><p>To document the beneï¿¿ts of UDP's programmability, we compare its applicability to a variety of accelerators across categories and within a category (e.g. compression) in <ref type="table" target="#tab_2">Table 1</ref>. 1) Compression accelera- tors are typically hardwired, supporting only a single algorithm and format. In contrast, the UDP supports a variety at high performance and can be programmed to support new or application-speciï¿¿c algo- rithms. 2) Other encoding accelerators support a single type, while UDP supports RLE, Huï¿¿man, dictionary, and bit-pack eï¿¿ciently; and can be programmed to support more. 3) For parsing, UDP supports formats as diverse as CSV, JSON, and XML with general- purpose primitives, whilst other accelerators focus on a single class of formats. 4) For pattern matching, UDP supports a full diversity of extended ï¿¿nite-automata (FA) models, adopting key features to achieve this from the Uniï¿¿ed Automata Processor <ref type="bibr" target="#b39">[54]</ref>, while other accelerators support one or two. The UDP's ï¿¿exibility enables applications to choose the best FAs for application, achieving both small FA size and high stream rate. 5) For histogram, other accel- erators support a few widely-used models; the UDP supports these, and can be programmed to support new types. key new features of UDP include variable-size symbol, ï¿¿exible-source dispatch, and ï¿¿exible addressing (discussed in Section 3). For all of the algorithms, UDP achieves competitive performance and eï¿¿ciency (see <ref type="table" target="#tab_9">Table  4</ref>), while providing programmability for breadth and extensibility.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">ARCHITECTURE OF THE UDP 3.1 Overview</head><p>We propose an accelerator, the unstructured data processor (UDP) to oï¿¿oad extract-transform-load and data transformation programs from CPUs (see <ref type="figure" target="#fig_0">Figure 2</ref>). 1 Thus, the UDP is designed to deliver equal or higher performance at dramatically lower power, and to be programmable so as to support a wide and expanding variety of encoding and transformation programs. Traditional CPUs are designed for predictable control ï¿¿ow, large chunks of computation, and computing on machine-standard data types. For encoding and transformation tasks, these philosophies are often invalid (see <ref type="table" target="#tab_4">Table 2</ref> and <ref type="figure">Figure 1a</ref>) producing poor per- formance and eï¿¿ciency. The UDP has 64-parallel lanes <ref type="figure" target="#fig_2">(Figure 3a)</ref>, each designed for eï¿¿cient encoding and transcoding. Parallel lanes exploit the data parallelism often found in encoding and trans- formation tasks, and the lane architecture includes support for branch-intensive codes, computation on small and variable-sized application-data encodings, and programmability.</p><p>Key UDP Architecture Design Features include UDP lane architecture support for</p><p>• multi-way dispatch, • variable-size symbols, and • dispatch from varied sources. At the UDP and system level architecture level:</p><p>• ï¿¿exible memory addressing (vary memory/lane), and • multi-bank local memory for high bandwidth, predictable latency, and low power.</p><p>The UDP lane ISA <ref type="bibr" target="#b37">[52]</ref> contains 7 transition types implementing the multi-way dispatch and 50 actions including arithmetic, logical, loop-comparing, conï¿¿guration and memory operations to form general code blocks supporting a broad set of data transformation kernels. Each lane contains 16 general-purpose scalar data registers and a stream buï¿¿er equipped with automatic indexing management and stream prefetching logic. Register 15 stores the stream buï¿¿er index. Each lane has its own UDP program. Each unstructured data processor (UDP) includes 64 such lanes, a shared 64x2048-bit vector register ï¿¿le, and a multi-bank local memory as shown in <ref type="figure" target="#fig_2">Figure 3a</ref>. The local memory provides an aggregate of read/write memory bandwidth of 512GB/s with predictable latency, enabling high-speed data transformation to be overlapped with staging of data to local memory.</p><p>The UDP's novel architecture features aï¿¿ect the micro-architecture as shown in <ref type="figure" target="#fig_2">Figure 3b</ref>. Additional front-end functionality supports multi-way dispatch and ï¿¿exible-source dispatch, requiring connec- tion to the register ï¿¿le and stream buï¿¿er. Additional forwarding functionality supports both a stream buï¿¿er and its management, as well as special architecture features for variable-size symbols. Fi- nally, the memory unit is enhanced to support UDP's window-based addressing. The UDP also employs a multi-bank local memory to provide ample bandwidth and predictable low latency and energy. The software stack used generate UDP programs is discussed in Section 4.3.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">UDP Lane: Fast Symbol and Branch Processing</head><p>The UDP's 64 lanes each accelerate symbol-oriented conditional processing. The four most important UDP lane capabilities include: 1) multi-way dispatch, 2) variable-size symbol support, 3) ï¿¿exible dispatch sources for accelerated stream processing, and 4) ï¿¿exible memory addressing. We consider each in turn, describing the key design alternatives and giving rationale and quantitative evidence for our choices.</p><p>3.2.1 Multi-way Dispatch. Fast multi-way dispatch using input streaming symbols is a long-standing application challenge. Todays fastest CPU implementations either use branch-with-oï¿¿set (BO) in a switch() structure that employs a sequence of compares and BO's <ref type="figure" target="#fig_3">(Figure 4a</ref>), or compute an entry in a dispatch table full of targets, and then branch-indirect (BI) to that target ( <ref type="figure" target="#fig_3">Figure 4b</ref>). In the former approach, the static oï¿¿set in each branch enables decoupled code layout, but the large number of branches and signiï¿¿cant mispredic- tion rates hamper performance, In the latter, the BI operation often suï¿¿ers BTB (branch-target-buï¿¿er) misses, hampering performance as well. To illustrate the problem, we studied several ETL kernels drawn from the larger set described in <ref type="table" target="#tab_4">Table 2</ref>. We measured the fraction of execution cycles consumed by branch misprediction, considering two diï¿¿erent software approaches for these kernels on a traditional CPU -branch-with-oï¿¿set (BO) that use static targets, and branch- indirect (BI) that uses a computed target. The kernels, with either approach, all suï¿¿er from branch misprediction penalties, consum- ing 32% to 86% of execution cycles ( <ref type="figure" target="#fig_4">Figure 5a</ref>). These penalties are typical of many ETL and data transformation workloads, as documented in <ref type="table" target="#tab_4">Table 2</ref>. The UDP's multi-way dispatch (see <ref type="figure" target="#fig_3">Figure 4c</ref>) selects eï¿¿ciently from multiple targets by using the symbol (or any value) as a dy- namic oï¿¿set. Compared to BO, multi-way dispatch can process several branches in a single dispatch operation, and avoids explicit encoding of many oï¿¿sets. Compared to BI, multi-way dispatch avoids an explicit table of branch targets, producing placement coupling challenges discussed below. As a result, multi-way has much smaller code size than both BI and BO. Also, compared to both, multi-way dispatch shuns prediction, depending on a short pipeline for good performance.</p><p>While all compilers must deal with limited range oï¿¿sets, the UDP software stack (see Section 4.3) must deal with a harder problem - precise relative location constraints due to multi-way dispatch. The UDP stack converts UDP assembly to machine code (representation shown in <ref type="figure" target="#fig_5">Figure 6</ref>), and creates an optimized memory layout using the Eï¿¿cient Coupled Linear Packing (Eï¿¿CLiP) algorithm <ref type="bibr" target="#b40">[55]</ref> that resolves the coupled code block placement constraints. A great help in this is UDP's signature mechanism (see below) that eï¿¿ectively allows gaps in the target range of dispatch to be ï¿¿lled with actual targets from other dispatches. Thus, together Eï¿¿CLiP and UDP achieve dense memory utilization and a simple, ï¿¿xed hash function -integer addition. This enables a high clock rate and energy eï¿¿cient execution. In eï¿¿ect, Eï¿¿CLiP achieves a "perfect hash" for a given set of code blocks. The UDP assembler back-propagates transition type information along dispatch arcs, and then generates machine binaries using machine-level transitions and actions.</p><p>UDP machine encodings are summarized in <ref type="figure" target="#fig_5">Figure 6</ref>. For transi- tions, signature is used to determine if a valid transition was found. target speciï¿¿es the next state, and is combined with a symbol to ï¿¿nd the target's address. type speciï¿¿es the type of the outgoing transition and the usage of the attach ï¿¿eld (either an auxiliary value of the target state's property or addressing actions). The use of attach varies by scenario to maximize addressing range. Three action types are used including Imm Action, Imm2 Action, and Reg Action. opcode speciï¿¿es the action type. The actions associated with a transition are chained as a list with the end denoted by last. The three action types diï¿¿er in the number of register operands and immediate ï¿¿elds, balancing performance and generality. Direct comparison between multi-way dispatch and branches is diï¿¿cult; one dispatch does the work of many branches. To account for this, we normalize the cycle counts of all approaches to BO, us- ing a uniform cycle time, as the eï¿¿ective branch rate relative to BO. We compare this eï¿¿ective branch rate for several ETL applications (see <ref type="figure" target="#fig_4">Figure 5b</ref>). Our results show that UDP's multi-way dispatch achieves much higher performance. This is very challenging, as in CSV parsing, dispatch processes an arbitrary regular character or delimiter each cycle. For pattern matching, dispatch avoids all misprediction, explicitly encoding all of the character transitions, and simply selecting the right one each cycle. Overall, multi-way dispatch provides 2x to 12x speedup for these challenging bench- marks.</p><p>UDP's multi-way dispatch includes a signiï¿¿cant improvement over the UAP's. Memory in accelerators is always in high-demand, and in the UDP, code size competes directly with lane parallelism, and thus performance. Both UDP and UAP use attach to address action blocks. To improve code reuse and program density, the UDP replaces UAP's oï¿¿set addressing with two modes, direct and scaled-oï¿¿set. Together, these enable both global sharing as well as private code blocks and in some ETL kernels reduce program size by more than half (see <ref type="figure" target="#fig_4">Figure 5c</ref>).</p><p>Overall, UDP employs seven transitions implementing variants of multi-way dispatch: labeled <ref type="bibr" target="#b39">[54]</ref>, majority <ref type="bibr" target="#b39">[54]</ref>, default <ref type="bibr" target="#b39">[54]</ref>, ep- silon <ref type="bibr" target="#b39">[54]</ref>, common, ï¿¿agged, and reï¿¿ll. They collectively achieve generality and memory eï¿¿ciency. The labeled transition imple- ments a single labeled (speciï¿¿c symbol) transition. To reduce the number of explicitly encoded transitions, majority transition imple- ments a set of outgoing transitions, representing the transitions that share the destination state from a given source state. default transi- tion acts as a fallback enabling "delta" storage for transitions that share the destination states across diï¿¿erent source states. Each state has at most one majority or default transition with runtime over- head if signature check fails during multi-way dispatch. Multi-state activation is supported by epsilon transition. common transition rep- resents 'don't care', which means no matter what symbol received, the transition is always taken. One common transition represents || labeled transitions from a given source state. New transitions in UDP include ï¿¿agged that provides control-ï¿¿ow driven state trans- fer using a UDP data register (Section 3.2.3) and reï¿¿ll that enables eï¿¿cient variable-size symbol execution (Section 3.2.2).</p><p>3.2.2 Variable-size Symbols. Variable-length codings are essen- tial tools for increasing information density (e.g. Huï¿¿man coding). Because these symbols can be very short, achieving high data rates for processing them requires UDP to process several symbols per dispatch (concatenating the symbols). However naive concatena- tion and program folding increases program size exponentially, causing layout failure and reduced parallelism.</p><p>We explore architecture support for variable symbol size that enables both high performance and good code size. We consider four designs, including the ï¿¿nal UDP design (SsRef) that supports variable-size and sub-byte symbols eï¿¿ciently. Consider the Huï¿¿- man decoding tree example in <ref type="figure" target="#fig_6">Figure 7</ref>. (1) Symbol-size Fixed (SsF) hardwired dispatch width. For ex- ample, the UAP has ï¿¿xed 8-bit dispatch with (character sym- bols), achieving best performance and eï¿¿ciency for regular expression matching. Applications requiring variable-size symbols (e.g. Huï¿¿man decoding) must adapt by unrolling, causing major program size explosion. (2) Symbol-size per Transition (SsT) preserves ï¿¿xed dispatch width per transition, but allows each to specify its own (see <ref type="figure" target="#fig_6">Figure 7a</ref>). This enables fast execution for variable-size sym- bols, and the transition "puts back" excess symbol bits. Chal- lenges include: 1) increased encoding bits (symbol size) in each transition, 2) longer hardware critical path (read transi- tion from memory, decide symbol size, consume that number of bits). (3) Symbol-size Register (SsReg) conï¿¿gures symbol size in a register. The UDP stream buï¿¿er prefetch unit (see Section 6) preloads the correct number of bits, taking variable size oï¿¿ the critical path. Avoiding specify dispatch width in each transition reduces memory overhead, but both memory and runtime are incurred by operations to change the symbol- size register (see <ref type="figure" target="#fig_6">Figure 7b</ref>). (4) Symbol-size Register and Reï¿¿ll Transitions (SsRef) com- bines the beneï¿¿ts of SsT and SsReg. Dispatch width is stored explicitly in a symbol-size register, and UDP adds a new tran- sition,reï¿¿ll, that reï¿¿lls bits that should not be consumed (see <ref type="figure" target="#fig_6">Figure 7c</ref>) based on symbol-size register via attach ï¿¿eld. This hybrid approach combines fast execution with low memory overhead. In <ref type="figure" target="#fig_7">Figure 8</ref>, we compare performance for Huï¿¿man decoding (dynamic symbol-size) and Histogram (compile-time static symbol- size) for all four approaches, reporting both rate (single lane) and throughput (64-lane parallel).</p><p>UAP's 8-bit ï¿¿xed symbol-size (SsF) requires unrolling of the Huï¿¿man decoding tree, but delivers high rate <ref type="figure" target="#fig_7">(Figure 8a</ref>). With- out unrolling, SsT, SsReg and SsRef achieve a lower rate for both Huï¿¿man and Histogram. However, their smaller code sizes yield beneï¿¿ts for throughput, as code-size limits parallelism (see <ref type="figure" target="#fig_7">Figure  8b</ref>). For Huï¿¿man Decoding, UAP's code size is 508 KB, SsT has 5.7x smaller code size, but is limited to 4 parallelism. SsReg and SsRef enjoy full parallelism as 64 achieving higher throughput. Similar eï¿¿ects apply for Histogram (compile-time variable-size symbols).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.3">Flexible Dispatch</head><p>Sources. UDP can dispatch on symbols from a stream buï¿¿er or scalar data register, improving on the UAP (stream buï¿¿er only). New support for scalar register dispatch en- ables powerful multi-dispatch to be integrated generally into UDP programs, growing applicability to the broad range of data move- ment and transformation tasks described in Section 5.</p><p>Stream Buï¿¿er constructs streams from vector registers, extend- ing the vector instruction set (e.g. AVX,NEON <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b12">20]</ref>). Eï¿¿cient implementation copies vector register to the UDP stream buï¿¿er, who has hardware prefetching and eï¿¿cient index management sup- port, delivering good single stream performance. Shared or private vector register coupling is supported: each lane can use private or share vector register stream.</p><p>Scalar Register enables multi-way dispatch on data (symbols) computed or drawn from arbitrary machine state, using the ï¿¿agged transition. This small addition expands the application space dra- matically, enabling memory-based data transformation (e.g. com- pression), hash-based algorithms, and de/compression, Huï¿¿man encoding, CSV parsing, and Run-length encoding, than the stream- ing models supported by prior architectures <ref type="bibr" target="#b39">[54]</ref>. For simplicity, the current UDP design restricts the source to Register 0. To demonstrate the incremental performance beneï¿¿t of scalar register dispatch, we present UDP's geometric mean of speedup for stream buï¿¿er only and stream buï¿¿er+scalar (see <ref type="figure" target="#fig_8">Figure 9</ref>). Com- pared to an 8-thread CPU (Section 5) using the rest of the ETL kernels that we have not used in the prior two architecture compar- isons. Adding scalar dispatch enables coverage of a much broader application domain, dramatically improving the geometric mean speedup.</p><p>3.2.4 Flexible Addressing for Data-Parallelism and Memory Uti- lization. Flexible, programmable acceleration faces challenges in how parallelism and addressing relate to the critical resource of local memory (bandwidth, capacity, access energy). The UDP is an MIMD parallel accelerator with each lane generating memory accesses, and the 64-lanes collectively sharing a multi-bank local memory. Ideally, code generation, data-parallelism, and memory capacity are independent, but separation incurs signiï¿¿cant memory system complexity and energy cost. We consider three scenarios, local, global, and restricted addressing (see <ref type="figure" target="#fig_10">Figure 10)</ref>.</p><p>Each UDP lane is a 32-bit execution engine, that generates 12-bit word addresses from the target ï¿¿eld for dispatch targets ( <ref type="figure" target="#fig_5">Figure 6</ref>).  In addition, the UDP programs (actions) can generate 32-bit byte addresses.</p><p>Local Addressing Each lane generates addresses conï¿¿ned to a single memory bank (16KB, 1/64th of the entire UDP memory). Code generation and execution for each of the 64 lanes has no dependence, and no hardware sharing of memory banks is needed. The UAP adopts this simple approach to achieve high performance. The primary drawback of local addressing is application memory ï¿¿exibility, limited memory per program, and no means to vary lane parallelism. For example, if four memory banks (64KB) are needed to match natural application data size, there is no way to run with 16 lanes with 64KB memory for each lane. Snappy compression performance improves with block size, so this can be important <ref type="figure" target="#fig_12">(Figure 11a</ref>). <ref type="figure" target="#fig_12">Figure 11b</ref> shows the combined beneï¿¿t for both performance (rate) and compression ratio, where the net beneï¿¿t can diï¿¿er as much as 50%.</p><p>Global Addressing maximizes software ï¿¿exibility, "ensure there are enough address bits" <ref type="bibr" target="#b27">[42]</ref> by allowing each UDP lane to address the entire UDP memory (18-bit word address for 1MB), increasing the target ï¿¿eld, program size, and data path. This incurs both area and power overhead, but also a software problem. Code genera- tion for each lane in a globally addressed system is complicated by UDP's absolute addressing, requiring customized loading based on lane ID, the number of active lanes, and memory partition. Alterna- tives based on including virtual memory or other translation incur additional energy and performance costs.</p><p>Restricted Addressing is a hybrid scheme. Restricted address- ing adds a base register to each UDP lane. This base allows code generation similar to that with local addressing. To shift the ad- dressable window, the UDP lane changes its base register value under software control. With compiler support, a UDP lane can access full local memory address.</p><p>Once UDP lanes can concurrently address the same memory location (global or ï¿¿exible), memory consistency issues arise. UDP lane programs are all generated by a single compiler (no multipro- gramming) and operate nearly synchronously, so lane interaction can be managed and minimized in software. The UDP memory consistency model is simple; it "detects and stalls" conï¿¿icting ref- erences, ensuring that both complete, but in an unspeciï¿¿ed order. Thus, no complicated shared memory implementations are needed, and simple arbitration is used. Thus, the UDP enjoys fast local memory access and low access energy. <ref type="figure" target="#fig_12">Figure 11c</ref> displays memory reference energy for 1MB memory (64 read ports and 64 write ports) modeled using CACTI 6.5 <ref type="bibr">[6]</ref>. For local and restricted addressing, 1MB memory has 64 independent banks with 1 read and 1 write port for each 16KB bank. Restricted and local addressing requires 4.3 pJ/ref while global addressing requires over double, 8.8 pJ/ref.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.5">Other Key</head><p>Features. To reduce the instruction count, UDP provides customized actions beyond basic arithmetic, logical and memory operations. hash action provides fast hashes of the input symbol. loop-compare action compares two streams, returning the matching length. loop-copy action copies a stream or memory block. These actions accelerate compression and a range of parsing and data transformation. The goto action enables reuse of code blocks, increasing code density.  </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">METHODOLOGY 4.1 Workloads</head><p>We selected a diverse set of kernels drawn from broader ETL and data transformations.  CSV parsing involves ï¿¿nding delimiters, ï¿¿elds, and row and col- umn structure, and copying ï¿¿eld into the system. The CPU code is from libcsv <ref type="bibr">[8]</ref>; these measurements use Crimes (128MB) <ref type="bibr" target="#b10">[16]</ref>, Trip (128MB) <ref type="bibr">[23]</ref> and Food Inspection (16MB) <ref type="bibr">[17]</ref> datasets. In Food Inspection, multiple ï¿¿elds contain escape quotes, including long comments and location coordinates. UDP implements the parsing ï¿¿nite-state machine used in libcsv. Huï¿¿man coding transforms a byte-stream into a dense bit-level coding, with the CPU code as an open-source library libhuï¿¿man <ref type="bibr">[22]</ref>. Measurements use Canterbury Corpus <ref type="bibr">[5]</ref> and Berkeley Big Data Benchmark <ref type="bibr" target="#b14">[24]</ref>. Canterbury ï¿¿les range from 3KB to 1MB with diï¿¿erent entropy and for BDBench we use crawl, rank, user; we evaluate a single HDFS block (64MB, 22MB and 64MB) respectively. For UDP, we duplicate the Canter- bury data to provide 64-lane parallelism. Pattern matching uses regular expression patterns <ref type="bibr" target="#b65">[80]</ref>, with the CPU code as Boost C++ Regex <ref type="bibr" target="#b9">[15]</ref>. Measurements use network-intrusion detection pat- terns. Boost supports only single-pattern matching, so we merge the NIDS patterns into a single combined pattern. The UDP code uses ADFA <ref type="bibr" target="#b51">[66]</ref> and NFA <ref type="bibr" target="#b47">[62]</ref> models. Compression CPU code is the Snappy <ref type="bibr" target="#b18">[29]</ref> library, and uses the Canterbury Corpus and BDBench dataset, with the UDP library being block compatible. Dic- tionary encoding CPU code is Parquet's C++ dictionary encoder <ref type="bibr">[18]</ref>. Dictionary measurements use Arrest, District, and Location Description attributes of Crime <ref type="bibr" target="#b10">[16]</ref>. Dictionary-RLE adds a run- length encoding phase. UDP program performs encoding, using a deï¿¿ned dictionary. Histogram CPU code is the GSL Histogram library <ref type="bibr" target="#b17">[28]</ref>. Measurements use Crimes.Latitude, Crimes.Longitude, and Taxi.Fare with 10, 10, and 4 bins of IEEE FP values <ref type="bibr" target="#b4">[7]</ref>. On UDP, the dividers are compiled into an automata scans of 4 bits a time, with acceptance states updating the appropriate bin. Exper- iments are with 1) uniform-size bins and 2) percentile bins with non-uniform size based on sampling. Signal triggering CPU code uses a lookup table that unrolls waveform transition localization automaton described in <ref type="bibr" target="#b38">[53]</ref>, at 4 symbols per lookup. Trace is pro- prietary from Keysight oscilloscope. UDP implements exactly the same automaton. <ref type="table" target="#tab_4">Table 2</ref> summarizes the workloads, and documents the reason for their poor performance on CPUs. First, Snappy, Huï¿¿man, CSV, and Histogram are all branch and mispredicted branch intensive as shown by ratios to the geometric mean for the PARSEC <ref type="bibr">[13]</ref> benchmarks. Second, dictionary and dictionary-RLE attempt to avoid branches (hash and then load indirect), but suï¿¿er from high hashing cost. Third, pattern matching avoids branches by lookup tables but suï¿¿ers from poor data locality. Finally, triggering is lim- ited by memory indirection followed address calculation, and a conditional. Silicon area in 28nm TSMC CMOS Clock Rate (GHz)</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Metrics</head><p>Clock Speed of UDP implementation Power (milliWatts)</p><p>On-chip UDP power (see <ref type="table" target="#tab_7">Table 3</ref>) TPut/power (MB/s/watt) Power eï¿¿ciency</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">UDP Software Stack</head><p>Figure 12: UDP's software stack supports a wide range of transformations. Traditional CPU and UDP computation can be integrated ï¿¿exibly.</p><p>A number of domain-speciï¿¿c translators and a shared backend (see <ref type="figure" target="#fig_0">Figure 12</ref>) are used to create the UDP programs used for ap- plication kernel evaluations in Section 5. The translators support a high-level abstraction and translate it into a high-level assembly lan- guage. The backend does intra-block and cross-block optimization, but most importantly, it does the layout optimization to achieve high code density with multi-way dispatch. Further, it optimizes action block sharing, another critical capability for small code size. Finally, the system stubs for linking with CPU programs, enabling a ï¿¿exible combination of CPU and UDP computing.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">System Conï¿¿guration and Comparison</head><p>We use a cycle-accurate UDP simulator written in C++ to model performance and energy, using speed (1Ghz) and power (864 milli- watts for UDP system) derived from the UDP implementation that is described Section 6.</p><p>In Section 5, for each kernel we compare achievable rate for one UDP lane to one Xeon E5620 CPU thread <ref type="bibr" target="#b6">[10]</ref>. For throughput per watt, we compare a UDP (64 lanes + infrastructure) to E5620 CPU (TDP 80W, 4-cores, 8-threads). Because parallelized versions were not available for some benchmarks, we estimate performance by multiplying single-thread performance by 8 to create the most optimistic performance scenario for CPU speedup.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5">ARCHITECTURE EVALUATION</head><p>For each application, we compare a CPU implementation to a UDP program running on a single or up to 64 lanes (a full UDP), reporting rates and throughput per watt. <ref type="figure" target="#fig_2">Figure 13</ref>: CSV File Parsing.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">CSV Parsing</head><p>As in <ref type="figure" target="#fig_2">Figure 13</ref>, one UDP lane achieves 195-222 MB/s rate, more than 4x a single CPU thread. The full UDP achieves more than 1000-fold throughput per watt compared to CPU. UDP CSV Parsing exploits multi-way dispatch to enable fast parsing tree traversal and delimiter matching; ï¿¿exible data-parallelism and memory capacity to match the output schema structure; and loop-copy action for eï¿¿cient ï¿¿eld copy. A full 64-lane UDP achieves geomean of 6,000-fold encoding and 18,300-fold decoding throughput per watt, versus the CPU. The crawl dataset has a large Huï¿¿man tree is 90% a 16KB local memory bank. UDP ï¿¿exible addressing enables crawl to run by allocating two memory banks for each active lane, but this reduces lane parallelism to 32-way. Each Huï¿¿man code tree is a UDP program; one per ï¿¿le. We exclude tree generation time in libhuï¿¿man. For Huï¿¿man UDP multi-way dispatch supports symbol detection; UDP variable-size symbol support gives eï¿¿cient management of Huï¿¿man symbol-size variation, both in performance and code size. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Huï¿¿man Encoding and Decoding</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Pattern Matching</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Dictionary and Dictionary-RLE Encoding</head><p>UDP delivers a 6-fold rate beneï¿¿t for both Dictionary and Dictionary- RLE (see <ref type="figure" target="#fig_6">Figure 17)</ref>. Due to space limits, only Dictionary-RLE per- formance data is shown. For the full UDP, the power eï¿¿ciency is more than 4,190x on Dictionary-RLE and 4,440x on Dictionary Encoding versus CPU. The UDP code exploits multi-way dispatch to detect complex patterns and select run length. Flexible dispatch sources are used.     <ref type="figure" target="#fig_7">Figure 18</ref> shows that one UDP achieves over 400 MB/s rate, match- ing one CPU thread. The full UDP is 876-fold more power eï¿¿cient than CPU. The UDP code exploits multi-way dispatch extensively to classify values quickly.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.5">Histogram</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.6">Compression and Decompression</head><p>As shown in <ref type="figure" target="#fig_8">Figure 19</ref>, UDP Snappy compression with a single UDP lane matches a single CPU thread with performance varying    <ref type="figure" target="#fig_0">Figure 20</ref> shows a similar story for decompression, parity between one UDP lane and a single CPU thread (performance 400 MB/s to 1,450 MB/s). The full UDP achieves a geomean 327x better power eï¿¿ciency. The UDP Snappy implementation exploits multi-way dispatch to deal with complex pattern detection and encoding choice; ï¿¿exible data-parallelism and memory addressing to match block sizes, and eï¿¿cient hash, loop-compare, and loop-copy actions.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.7">Signal Triggering</head><p>One UDP lane delivers constant 1,055 MB/s rate for all transition localization FSMs p2-p13 <ref type="bibr" target="#b38">[53]</ref>, 4 times greater than both the CPU (275MB/s) and the FPGA implementation used in Keysight's prod- uct <ref type="bibr" target="#b19">[31]</ref> (256MB/s). UDP can meet the needs of high-speed signal triggering for all but the highest-speed oscilloscopes. UDP code exploits multi-way dispatch for eï¿¿cient FSM traversal; ï¿¿exible memory addressing for large DFA spanning across multiple banks.  The key UDP architecture features: multi-way dispatch, variable symbol size, ï¿¿exible dispatch source, and ï¿¿exible memory sharing accelerate the workload kernels.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.8">Overall Performance</head><p>Comparing a full UDP (64-lane) with 8 CPU threads shows 3 to 197-fold speedup across workloads with geometric mean speedup of 20-fold (see <ref type="figure" target="#fig_0">Figure 21)</ref>. Second, compare throughput/power for UDP and CPU in <ref type="figure" target="#fig_0">Figure 22</ref>, using UDP implementation power of 864 milliWatts from Section 6 and 80 watts for the CPU. UDP's power eï¿¿ciency produces an even greater advantage, ranging from a low of 276-fold to a high of 18,300-fold, with a geometric mean of 1,900-fold. This robust performance beneï¿¿t and performance/power beneï¿¿t documents UDP's broad utility for data transformation tasks.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="6">UDP IMPLEMENTATION</head><p>We describe implementation of the UDP micro-architecture, and summarize speed, power, and area. Each UDP lane contains three key units: 1) Dispatch, 2) Symbol Prefetch, and 3) Action (see <ref type="figure" target="#fig_0">Fig- ure 23)</ref>. The Dispatch unit handles multi-way dispatch (transitions), computing the target dispatch memory address for varied transition types and sources. The Stream Prefetch unit prefetches stream data, and supports variable-size symbols. The Action unit executes the UDP actions, writing results to the UDP data registers or the local memory.</p><p>The UDP is implemented in SystemVerilog RTL and synthesized for 28-nm TSMC process with the Synopsys Design Compiler, pro- ducing timing, area, and power reports. For system modeling, we estimate local memory and vector register power and timing us- ing CACTI 6.5 <ref type="bibr">[6]</ref>. The overall UDP system includes the UDP, a 64x2048-bit vector register ï¿¿le, data-layout transformation engine (DLT) <ref type="bibr" target="#b61">[76]</ref>, and a 1MB, 64-bank local memory. Silicon power and area for the UDP design is shown in <ref type="table" target="#tab_7">Table 3</ref>.   Speed: The synthesized UDP lane design achieves the timing closure with a clock period of 0.97 ns, which includes 0.2 ns to access the 16KB local memory bank <ref type="bibr">[6]</ref>. Thus the UDP design runs with a 1GHz clock.</p><p>Power: The 64-lane UDP system consumes 864 mW, one-tenth the power of a x86 Westmere EP core+L1 in a 28nm process <ref type="bibr" target="#b6">[10]</ref>. Most of the power (82.8%) is consumed by local memory. The 64- lane logic only costs 120.6 mW (14%).</p><p>Area: The entire UDP is 8.69 mm 2 , including 64 UDP lanes (39.5%) and infrastructure that includes 1MB of local memory or- ganized as 64 banks (56.0%), a vector register ï¿¿le (3%), and a DLT engine (1.6%). The 64 UDP lanes require 3.4 mm 2 -less than one- sixth of a Westmere EP core+L1 in a 32nm process <ref type="bibr">(19 mm 2 )</ref>, and approximately 1% of the Xeon E5620 die area. The entire UDP, including local memory, is one-half the Westmere EP Core + L1.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="7">DISCUSSION AND RELATED WORK</head><p>We discuss the extensive research that accelerates data transforma- tion, putting our work on UDP in context.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Accelerator</head><p>Accel  UDP Architecture: UDP's architecture features are a potent and novel combination for eï¿¿cient data transformation. Eï¿¿cient con- ditional control ï¿¿ow is a core challenge, and branch prediction has long been a focus of computer architecture <ref type="bibr" target="#b23">[38,</ref><ref type="bibr" target="#b49">64,</ref><ref type="bibr" target="#b52">67,</ref><ref type="bibr" target="#b68">83,</ref><ref type="bibr" target="#b69">84]</ref>. As we have shown, the symbol and pattern oriented branch-intensive ETL workloads are particularly diï¿¿cult, and our results show that UDP multi-way dispatch (that improves on that in the UAP <ref type="bibr" target="#b39">[54]</ref>) is an eï¿¿cient solution. Many eï¿¿cient encodings use variable-size symbols, and we know of some software techniques <ref type="bibr" target="#b56">[71]</ref>, but lit- tle CPU architecture research on supporting such computations. Hardwired accelerators <ref type="bibr" target="#b24">[39]</ref> often employ a wide lookup table and a bit shifter, but unlike the UDP's symbol-size register and reï¿¿ll transition, they are not a general, software-programmable solution. UDP's ï¿¿exible addressing and ï¿¿exible dispatch sources enable ï¿¿ex- ibility in data access and keep access latency and energy cost far lower than general memory systems and addressing <ref type="bibr">[34]</ref>. <ref type="table" target="#tab_9">Table 4</ref> provides an overall performance comparison to a varied specialized data transformation accelerators, showing UDP's rela- tive performance is at worst nearly 2x slower, and up to 13x faster and relative eï¿¿ciency ranges from 0.32 to 9.8-fold.</p><p>Key acceleration areas for extract-transform-load (ETL) include parsing, (de)compression, tokenizing, serialization, and validation. Software eï¿¿orts <ref type="bibr" target="#b55">[70]</ref> using SIMD on CPU to accelerate CSV loading and vectorize delimiter detection, achieving 0.3 GB/s single thread performance. This is competitive performance to a UDP lane, but requires much higher power. Hardware acceleration in parsing in PowerEN [61] achieves 1.5 GB/s XML parsing. Compression hardware acceleration achieves 1 GB/s in PowerEN, 5.6 GB/s in Xpress <ref type="bibr" target="#b41">[56]</ref>, and 1.4GB/s DEFLATE on Intel 89xx series Chipset <ref type="bibr">[30]</ref>  <ref type="table" target="#tab_9">(Table 4</ref>). With only 21 lanes (memory capacity limited), UDP outperforms the ASIC accelerators by 2.1-13x. The Xpress <ref type="bibr" target="#b41">[56]</ref> comparison is complicated because of its use of large dedicated FPGA. All of these specialized accelerators' implementations lack the ï¿¿exible programmability of UDP. Tokenization alone can be accelerated by pattern matching accelerators <ref type="bibr" target="#b8">[12,</ref><ref type="bibr" target="#b39">54,</ref><ref type="bibr" target="#b42">57,</ref><ref type="bibr" target="#b65">80]</ref>, but lack the programmability to address the costly follow-on processing (e.g. deserialization and validation) which often dominates execution time <ref type="figure">(Figure 1a)</ref>. The UDP handles these tasks and more. Its ï¿¿exible programmability can address varied ETL and transformation tasks and future application-speciï¿¿c encodings or algorithms.</p><p>Hardware support for query execution, notably relational opera- tors, has demonstrated signiï¿¿cant speedups for analytic workloads (Q100 <ref type="bibr" target="#b67">[82]</ref>); these systems don't do the broad range of data trans- formation that is the focus of UDP. Oï¿¿oad systems in storage systems (e.g. Ibex <ref type="bibr" target="#b66">[81]</ref>, Netezza <ref type="bibr" target="#b1">[2]</ref>, Exadata <ref type="bibr" target="#b3">[4]</ref>) gain performance by exploiting internal storage bandwidth. UDP's low power and programmability make it a candidate for such storage embedding. FPGA-based eï¿¿orts that accelerate histogramming <ref type="bibr" target="#b48">[63]</ref> highlight opportunities to use UDP for rich statistics at low cost to enable better query optimization.</p><p>Both PowerEN and Sparc M7 integrate accelerators for com- pression, transpose, scan, and crypto. On Sparc M7, a 4-core DAX unit achieves 15 GB/s scan on compressed data <ref type="bibr" target="#b53">[68]</ref>, but lacks the ability to support new formats or algorithms. In contrast, UDP's programmability supports varied tasks and application-speciï¿¿c formats or algorithms, while providing comparable performance <ref type="table" target="#tab_9">(Table 4)</ref>.</p><p>Acceleration of stream processing <ref type="bibr" target="#b34">[49,</ref><ref type="bibr" target="#b50">65]</ref> and network proces- sors <ref type="bibr" target="#b8">[12]</ref> can achieve high data processing rates with support for pattern-matching and network interfaces (see also NIC and "bump- in-the-wire" approaches <ref type="bibr" target="#b30">[45]</ref>). The UDP complements these sys- tems, providing programmable rich data transformation in both stream and networking contexts eï¿¿ciently. UDP's performance suggests incorporation is a promising research direction.</p><p>Acceleration of Network Intrusion Detection and Deep Packet In- spection (NID/DPI) includes exploiting SIMD <ref type="bibr" target="#b29">[44,</ref><ref type="bibr" target="#b58">73]</ref> and aggressive preï¿¿ltering <ref type="bibr" target="#b15">[25]</ref> to achieve 0.75-1.6 GB/s using a powerful Xeon out-of-order core. Software speculative approaches can increase stream rate, but at signiï¿¿cant overhead <ref type="bibr" target="#b57">[72,</ref><ref type="bibr" target="#b60">75,</ref><ref type="bibr" target="#b71">86]</ref>. GPU imple- mentations <ref type="bibr" target="#b70">[85]</ref> report throughputs 0.03 GB/s (large pattern sets) increasing to 1.6GB/s <ref type="bibr" target="#b72">[87]</ref> (small sets). Several network processors <ref type="bibr" target="#b8">[12,</ref><ref type="bibr" target="#b46">61]</ref> employ hardwired regular expression acceleration to reach 6.25GB/s throughput. Uniï¿¿ed Automata Processor achieves up to 5x better performance <ref type="bibr" target="#b39">[54]</ref> by exploiting programmability to employ the best ï¿¿nite-automata models. The UDP improves on the UAP achieving much greater generality, but at a cost in performance and energy eï¿¿ciency <ref type="table" target="#tab_9">(Table 4)</ref>  The UDP builds on the architecture insights of the Uniï¿¿ed Automata Processor (UAP), a programmable architecture that enables applications to use any extended ï¿¿nite automata model (both deterministic and non-deterministic), and delivers high performance and low power <ref type="bibr" target="#b39">[54]</ref>. UDP adopts and extends UAP's multi-way dispatch mechanism with varied sources, variable-size symbols, ï¿¿exible memory addressing, and a few basic instructions to dramatically broaden its scope. As a result, the UDP can accelerate parsing, compression, tokenizing, deserialization and histogramming workloads in addition to regular expression matching. These workloads share core features of control-ï¿¿ow in- tensity and prediction diï¿¿culty. The poor branch prediction makes these workloads also beneï¿¿t from UDP's short execution pipeline. We highlight UDP key new features compared to in <ref type="table" target="#tab_11">Table 5</ref>. These features enable performance across the broad range of data trans- formation documented in this paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="8">SUMMARY AND FUTURE WORK</head><p>We present the Unstructured Data Processor (UDP), an architecture designed for general-purpose, high performance data transforma- tion and processing. Our evaluation shows the UDP's signiï¿¿cant performance beneï¿¿ts for a diverse range of tasks that lie at the heart of ETL, query execution, stream data processing, and intrusion de- tection/monitoring. The UDP delivers comparable performance of more narrowly specialized accelerators, but its real strength is its ï¿¿exible programmability across them. An implementation study shows that the Si area and power costs for the UDP are low, making it suitable for CPU oï¿¿oad by incorporation into the CPU chip, memory/ï¿¿ash controller, or the storage system.</p><p>The UDP's ï¿¿exible programmability and performance opens many opportunities for future research. Interesting directions in- clude: exploration of additional new application spaces that may beneï¿¿t from UDP data transformation (e.g. bioinformatics), new domain-speciï¿¿c languages and compilers that provide high-level programming support (e.g. <ref type="bibr" target="#b25">[40,</ref><ref type="bibr" target="#b43">58]</ref>), and speciï¿¿c design studies that incorporate UDP's (one or several) at various locations in data center systems or database appliances. Finally, data centers have recently begun to deploy FPGA's <ref type="bibr" target="#b26">[41,</ref><ref type="bibr" target="#b30">45]</ref>, we plan to use these to enable studies with large-scale applications, exploring achievable system-level performance with the UDP. For example, one oppor- tunity is to compare a programmable-UDP enhanced system with accelerated database appliance systems (hardwired customization).</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 2 :</head><label>2</label><figDesc>Figure 2: UDP integrated as an oï¿¿load engine.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head></head><label></label><figDesc>UDP lane adds three elements (green) to a tradi- tional CPU micro-architecture.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :</head><label>3</label><figDesc>Figure 3: UDP and UDP Lane Micro-architecture.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 :</head><label>4</label><figDesc>Figure 4: Branch Execution on Symbol: Branch Oï¿¿set (BO), Branch Indirect (BI), Multi-way Dispatch (MWD).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 5 :</head><label>5</label><figDesc>Figure 5: Evaluating Branch-oï¿¿set (BO), Branch-indirect (BI), and Multi-way Dispatch (UAP/UDP) on ETL Kernels.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 6 :</head><label>6</label><figDesc>Figure 6: UDP Transition and Action Formats: Imm Action, Imm2 Action, Reg Action. All are 32-bits.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 7 :</head><label>7</label><figDesc>Figure 7: Huï¿¿man Decoding Tree: 00,01,10,110,111. Solid box is symbol-size register. Other actions not shown.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 8 :</head><label>8</label><figDesc>Figure 8: Variable-size Symbol Approaches on kernels requiring dynamic and static variability.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>Figure 9 :</head><label>9</label><figDesc>Figure 9: Performance Beneï¿¿t for adding stream buï¿¿er and scalar register as UDP dispatch source.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>Figure 10 :</head><label>10</label><figDesc>Figure 10: Addressing Models. Local: each lane has private address space; Global: each lane shares entire address space; Restricted: each lane ï¿¿exibly chooses a window.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_12"><head>Figure 11 :</head><label>11</label><figDesc>Figure 11: Comparing Three Addressing Modes: Local, Global, Restricted.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_13"><head>Figures</head><label></label><figDesc>Figures 14 and 15 show single-lane UDP Huï¿¿man encoding at 112 MB/s, 11x speedup and decoding at 366 MB/s, 24x speedup versus a single CPU thread. A full 64-lane UDP achieves geomean of 6,000-fold encoding and 18,300-fold decoding throughput per watt, versus the CPU. The crawl dataset has a large Huï¿¿man tree is 90% a 16KB local memory bank. UDP ï¿¿exible addressing enables crawl to run by allocating two memory banks for each active lane, but this reduces lane parallelism to 32-way. Each Huï¿¿man code tree is a UDP program; one per ï¿¿le. We exclude tree generation time in libhuï¿¿man. For Huï¿¿man UDP multi-way dispatch supports symbol detection; UDP variable-size symbol support gives eï¿¿cient management of Huï¿¿man symbol-size variation, both in performance and code size.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_14"><head>Figure 16</head><label>16</label><figDesc>Figure 16 shows that a single UDP lane surpasses a single CPU thread by 7-fold on average, achieving 300-350MB/s across the workloads. The single lane UDP achieves 333-363 MB/s throughput on string matching dataset (simple) and 325-355 MB/s on complex regular expressions (complex). A UDP outperforms CPU by 1,780fold on average throughput per watt. The collection of patterns are partitioned across UDP lanes, maintaining data parallelism. The UDP code exploits multi-way dispatch for complex pattern detection.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_15"><head>Figure 14 :</head><label>14</label><figDesc>Figure 14: Huï¿¿man Encoding.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_16"><head>Figure 15 :</head><label>15</label><figDesc>Figure 15: Huï¿¿man Decoding.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_17"><head>Figure 16 :</head><label>16</label><figDesc>Figure 16: Pattern Matching.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_18"><head>Figure 17 :</head><label>17</label><figDesc>Figure 17: Dictionary-RLE.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_19"><head>Figure 18 :</head><label>18</label><figDesc>Figure 18: Histogram.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_20"><head>Figure 19 :</head><label>19</label><figDesc>Figure 19: Snappy Compression.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_21"><head>Figure 20 :</head><label>20</label><figDesc>Figure 20: Snappy Decompression. from 70 MB/s to 400 MB/s (entropy). The full UDP delivers 276x better power eï¿¿ciency than CPU 3. Figure 20 shows a similar story for decompression, parity between one UDP lane and a single CPU thread (performance 400 MB/s to 1,450 MB/s). The full UDP achieves a geomean 327x better power eï¿¿ciency. The UDP Snappy implementation exploits multi-way dispatch to deal with complex pattern detection and encoding choice; ï¿¿exible data-parallelism and memory addressing to match block sizes, and eï¿¿cient hash, loop-compare, and loop-copy actions.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_22"><head>Figure 21 :</head><label>21</label><figDesc>Figure 21: Overall UDP Speedup vs. 8 CPU threads.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_23"><head>Figure 22 :</head><label>22</label><figDesc>Figure 22: Overall UDP Performance/Watt vs. CPU. The key UDP architecture features: multi-way dispatch, variable symbol size, ï¿¿exible dispatch source, and ï¿¿exible memory sharing accelerate the workload kernels. Comparing a full UDP (64-lane) with 8 CPU threads shows 3 to 197-fold speedup across workloads with geometric mean speedup of 20-fold (see Figure 21). Second, compare throughput/power for UDP and CPU in Figure 22, using UDP implementation power of 864 milliWatts from Section 6 and 80 watts for the CPU. UDP's power eï¿¿ciency produces an even greater advantage, ranging from a low of 276-fold to a high of 18,300-fold, with a geometric mean of 1,900-fold. This robust performance beneï¿¿t and performance/power beneï¿¿t documents UDP's broad utility for data transformation tasks.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_24"><head>Figure 23 :</head><label>23</label><figDesc>Figure 23: UDP Lane Micro-architecture.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2" validated="false"><head>Table 1 : Coverage of Transformation/Encoding Algorithms: Accelerators and UDP.</head><label>1</label><figDesc></figDesc><table></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_4" validated="false"><head>Table 2 : Data Transformation Workloads</head><label>2</label><figDesc></figDesc><table></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_7" validated="false"><head>Table 3 : UDP Power and Area Breakdown.</head><label>3</label><figDesc></figDesc><table></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_9" validated="false"><head>Table 4 : Comparing Performance and Power Eï¿¿ciency of Transformation/Encoding Algorithms.</head><label>4</label><figDesc></figDesc><table></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_10" validated="false"><head>.</head><label></label><figDesc></figDesc><table>Recent work [57] achieves remarkable 
+stream rate (32 GB/s) at high power consumption (120W). 
+
+UAP Feature 
+UDP Feature 
+Transitions 
+stream only 
+control and stream-driven 
+Symbol 
+8-bit ï¿¿xed 
+symbol size register (1-8,32 bits) 
+Dispatch 
+Source 
+stream buï¿¿er only 
+stream buï¿¿er and data register 
+
+Addressing 
+single bank, ï¿¿xed 
+memory per lane 
+multi-bank addressing; match 
+data parallelism to memory needs 
+Action 
+logic and bit-ï¿¿eld 
+ops 
+rich, ï¿¿exible arithmetic and mem-
+ory ops 
+
+</table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_11" validated="false"><head>Table 5 : UAP and UDP Highlighted Diï¿¿erences</head><label>5</label><figDesc></figDesc><table>UDP Relationship to the UAP: </table></figure>
+
+			<note place="foot" n="1"> UDP&apos;s low power (see Section 6) also enables diï¿¿erent models of incorporation (as a core addition or in a ï¿¿ash or DRAM controller), but we focus on just one scenario here.</note>
+
+			<note place="foot" n="2"> For Histogram, results add variable-width symbols to UAP to make its code small enough to make comparison possible.</note>
+
+			<note place="foot" n="3"> The CPU outperforms on rank by guessing data is not compressible and skipping input. We did not implement this heuristic for UDP; it processes the entire input.</note>
+
+			<note place="foot" n="4"> We estimate compression power by 20W TDP[21] and exclude clock grid, IO/bus, and crypto. using relative ratio [9]. 5 Altera Stratix V FPGA. 6 Scale to 28nm TSMC and estimate based on chip die size [26, 32]. 7 IBM 45nm SOI [9].</note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="9">ACKNOWLEDGEMENTS</head></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<monogr>
+		<title/>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Cadence Tensilica Xtensa</surname></persName>
+		</author>
+		<ptr target="https://ip.cadence.com/uploads/902/TIP_What_Why_How_Cust_Processors_WP_V3_FINAL-pdf." />
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+				<ptr target="http://www-01.ibm.com/software/data/netezza/." />
+		<title level="m">IBM Netezza Data Warehouse Appliances</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+				<ptr target="https://www.arm.com/products/processors/technologies/neon.php." />
+		<title level="m">NEON-ARM</title>
+		<imprint/>
+	</monogr>
+	<note>n. d.. n. d.</note>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title/>
+		<ptr target="http://www.oracle.com/technetwork/index.html." />
+	</analytic>
+	<monogr>
+		<title level="j">Oracle Exadata Storage Server</title>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<title level="m" type="main">IEEE 754 ï¿¿oating-point format</title>
+		<ptr target="http://grouper.ieee.org/groups/754/" />
+		<imprint>
+			<date type="published" when="2008" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title level="m" type="main">The IBM Power Edge of Network Processor</title>
+		<ptr target="http://www.cercs.gatech.edu/iucrc10/material/franke.pdf" />
+		<imprint>
+			<date type="published" when="2010" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">Intel Xeon Processor E5620 Speciï¿¿cation</title>
+		<ptr target="https://ark.intel.com/products/47925" />
+		<imprint>
+			<date type="published" when="2010" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">The ARMv8 Architecture</title>
+		<ptr target="https://www.arm.com/ï¿¿les/downloads/ARMv8_white_paper_v5.pdf" />
+		<imprint>
+			<date type="published" when="2011" />
+		</imprint>
+	</monogr>
+	<note>white paper.</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+				<idno>13] 2011. PARSEC 3.0.</idno>
+		<ptr target="https://www.whitehouse.gov/sites/default/ï¿¿les/microsites/ostp/big_data_press_release_ï¿¿nal_2.pdf." />
+		<title level="m">Cavium NITROX DPI L7 Content Processor Family</title>
+		<imprint>
+			<date type="published" when="2011" />
+		</imprint>
+	</monogr>
+	<note>princeton.edu/ [14] 2012. Big Data Research and Development Initiative</note>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title/>
+		<ptr target="http://www.boost.org" />
+	</analytic>
+	<monogr>
+		<title level="j">Boost C++ library</title>
+		<imprint>
+			<date type="published" when="2012" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Chicago City Restaurant Inspection</title>
+		<ptr target="https://github.com/apache/parquet-cpp." />
+	</analytic>
+	<monogr>
+		<title level="j">Apache Parquet C++ library</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<date type="published" when="2012" />
+		</imprint>
+	</monogr>
+<note type="report_type">Chicago City Crime Report</note>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<monogr>
+		<title level="m" type="main">Frontiers in Massive Data Analysis</title>
+		<idno type="doi">978-0-309-28778-4,DOI:10.17226/18374</idno>
+		<imprint>
+			<date type="published" when="2013" />
+			<publisher>National Research Council Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">Intel Advanced Vector Extensions</title>
+		<ptr target="https://software.intel.com/en-us/isa-extensions/intel-avx" />
+		<imprint>
+			<date type="published" when="2013" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Intel communications chipset 8955</title>
+		<ptr target="http://ark.intel.com/products/80372/Intel-DH8955-PCH" />
+		<imprint>
+			<date type="published" when="2013" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<monogr>
+		<title level="m" type="main">Berkeley Big Data Benchmark</title>
+		<ptr target="https://amplab.cs.berkeley.edu/benchmark/" />
+		<imprint>
+			<date type="published" when="2014" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<monogr>
+				<ptr target="https://en.wikipedia.org/wiki/SPARC." />
+		<title level="m">Sparc M7 Die Size (wikipedia</title>
+		<editor>2015. Intel Hyperscan.</editor>
+		<imprint>
+			<date type="published" when="2015" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<monogr>
+		<title level="m" type="main">Federal Big Data Research and Development Strategic Plan</title>
+		<ptr target="http://www.whitehouse.gov" />
+		<imprint>
+			<date type="published" when="2016-05" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title/>
+		<ptr target="https://www.gnu.org/software/gsl/." />
+	</analytic>
+	<monogr>
+		<title level="j">GNU Scientiï¿¿c Library</title>
+		<imprint>
+			<date type="published" when="2016" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<monogr>
+		<title level="m" type="main">Google Snappy compression library</title>
+		<ptr target="https://github.com/google/snappy." />
+		<imprint>
+			<date type="published" when="2016" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<monogr>
+		<title/>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Keysight Cx3300 Appliance</surname></persName>
+		</author>
+		<idno>current-waveform-analyzers?cc=US&amp;lc=eng [32] 2016. M7: Next Generation SPARC.</idno>
+		<ptr target="http://www.oracle" />
+		<imprint>
+			<date type="published" when="2016" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<monogr>
+		<title/>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">. Tpc-H</forename><surname>Benchmark</surname></persName>
+		</author>
+		<ptr target="http://www.tpc.org/tpch" />
+		<imprint>
+			<date type="published" when="2017" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Succinct: Enabling queries on compressed data</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Rachit</forename><surname>Agarwal</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Anurag</forename><surname>Khandelwal</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Ion</forename><surname>Stoica</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of NSDI&apos;15</title>
+		<meeting>of NSDI&apos;15</meeting>
+		<imprint>
+			<date type="published" when="2015" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<analytic>
+		<title level="a" type="main">NoDB: eï¿¿cient query execution on raw data ï¿¿les</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Ioannis Alagiannis</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of SIGMOD&apos;12</title>
+		<meeting>of SIGMOD&apos;12</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2012" />
+			<biblScope unit="page" from="241" to="252" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Wormhole: Wisely predicting multidimensional branches</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Jorge</forename><surname>Albericio</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 47th Annual IEEE/ACM International Symposium on Microarchitecture</title>
+		<meeting>the 47th Annual IEEE/ACM International Symposium on Microarchitecture</meeting>
+		<imprint>
+			<publisher>IEEE Computer Society</publisher>
+			<date type="published" when="2014" />
+			<biblScope unit="page" from="509" to="520" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Huï¿¿man decoder architecture for high speed operation and reduced memory</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">James</forename><surname>Allen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">US Patent</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page">92</biblScope>
+			<date type="published" when="1994" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">RAPID Programming of Pattern-Recognition Processors</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Kevin</forename><surname>Angstadt</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Westley</forename><surname>Weimer</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Kevin</forename><surname>Skadron</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of ASPLOS&apos;16</title>
+		<meeting>of ASPLOS&apos;16</meeting>
+		<imprint>
+			<date type="published" when="2016" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<monogr>
+		<title level="m" type="main">Developer Preview âĂŞ EC2 Instances (F1) with Programmable Hardware</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Jeï¿¿</forename><surname>Barr</surname></persName>
+		</author>
+		<ptr target="https://aws.amazon.com/blogs/aws/developer-preview-ec2-instances-f1-with-programmable-hardware/." />
+		<imprint>
+			<date type="published" when="2016-11" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<monogr>
+		<title level="m" type="main">What Have We Learned from the PDP-11?</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">C</forename></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Gordon</forename><surname>Bell</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1977" />
+			<publisher>Springer Netherlands</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">The Future of Microprocessors</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Shekhar</forename><surname>Borkar</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Andrew</forename><forename type="middle">A</forename><surname>Chien</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Commun. ACM</title>
+		<imprint>
+			<biblScope unit="volume">54</biblScope>
+			<biblScope unit="page" from="67" to="77" />
+			<date type="published" when="2011-05" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Bitwise Data Parallelism in Regular Expression Matching</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Robert</forename><forename type="middle">D</forename><surname>Cameron</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of PACT &apos;14</title>
+		<meeting>of PACT &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">A Cloud-Scale Acceleration Architecture</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Adrian</forename><surname>Caulï¿¿eld</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of MICRO&apos;16</title>
+		<meeting>of MICRO&apos;16</meeting>
+		<imprint>
+			<publisher>ACM/IEEE</publisher>
+			<date type="published" when="2016" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Bigtable: A distributed storage system for structured data</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Fay</forename><surname>Chang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Transactions on Computer Systems (TOCS)</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<date type="published" when="2008" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">10x10: A Generalpurpose Architectural Approach to Heterogeneity and Energy Eï¿¿ciency</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Andrew</forename><forename type="middle">A</forename><surname>Chien</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Allan</forename><surname>Snavely</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Mark</forename><surname>Gahagan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">The Third Workshop on Emerging Parallel Architctures at the International Conference on Computational Science</title>
+		<imprint>
+			<date type="published" when="2011" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Yuanwei Fang, and Amirali Shambayati. 2015. 10x10: A Case Study in Highly-Programmable and Energy-Eï¿¿cient Heterogeneous Federated Architecture</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Andrew</forename><forename type="middle">A</forename><surname>Chien</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Tung</forename><surname>Thanh-Hoang</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Dilip</forename><surname>Vasudevan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM SIGARCH Computer Architecture News</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="page" from="2" to="9" />
+			<date type="published" when="2015" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title/>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>William</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Dally</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Stream Processors: Programmability and Eï¿¿ciency. Queue</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page">1</biblScope>
+			<date type="published" when="2004-03" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Compressed linear algebra for large-scale machine learning</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Ahmed</forename><surname>Elgohary</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the VLDB</title>
+		<meeting>the VLDB</meeting>
+		<imprint>
+			<date type="published" when="2016" />
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="960" to="971" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Generalized Pattern Matching Micro-Engine</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yuanwei</forename><surname>Fang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">4th Workshop on Architectures and Systems for Big Data (ASBD) held with ISCA&apos;14</title>
+		<imprint>
+			<date type="published" when="2014" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<monogr>
+		<title level="m" type="main">UDP System Interface and Lane ISA Deï¿¿nition</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yuanwei</forename><surname>Fang</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Andrew</forename><forename type="middle">A</forename><surname>Chien</surname></persName>
+		</author>
+		<ptr target="https://newtraell.cs.uchicago.edu/research/publications/techreports/TR-2017-05" />
+		<imprint>
+			<date type="published" when="2017" />
+		</imprint>
+	</monogr>
+<note type="report_type">Technical Report</note>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Performance of parallel preï¿¿x circuit transition localization of pulsed waveforms</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yuanwei</forename><surname>Fang</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">A</forename><surname>Andrew</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Andrew</forename><surname>Chien</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Lee</forename><surname>Lehane</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Barford</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2016 IEEE International Instrumentation and Measurement Technology Conference Proceedings</title>
+		<imprint>
+			<date type="published" when="2016" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Fast Support for Unstructured Data Processing: The Uniï¿¿ed Automata Processor</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yuanwei</forename><surname>Fang</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">T</forename><surname>Tung</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Michela</forename><surname>Hoang</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Andrew</forename><forename type="middle">A</forename><surname>Becchi</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Chien</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 48th International Symposium on Microarchitecture (MICRO-48)</title>
+		<meeting>the 48th International Symposium on Microarchitecture (MICRO-48)</meeting>
+		<imprint>
+			<date type="published" when="2015" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<monogr>
+		<title level="m" type="main">Eï¿¿CLiP: Eï¿¿cient Coupled-Linear Packing for Finite Automata</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yuanwei</forename><surname>Fang</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Andrew</forename><surname>Lehane</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Andrew</forename><forename type="middle">A</forename><surname>Chien</surname></persName>
+		</author>
+		<idno>TR-2015-05</idno>
+		<imprint>
+			<date type="published" when="2015-05" />
+		</imprint>
+		<respStmt>
+			<orgName>University of Chicago</orgName>
+		</respStmt>
+	</monogr>
+<note type="report_type">Technical Report</note>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">A Scalable High-Bandwidth Architecture for Lossless Compression on FPGAs</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Jeremy</forename><surname>Fowers</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of FCCM &apos;15</title>
+		<meeting>of FCCM &apos;15</meeting>
+		<imprint>
+			<date type="published" when="2015" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">HARE: Hardware Accelerator for Regular Expressions</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Vaibhav Gogte</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">49th Annual IEEE/ACM International Symposium on Microarchitecture</title>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2016" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Kleenex: Compiling Nondeterministic Transducers to Deterministic Streaming Transducers</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Fritz</forename><surname>Bjørn Bugge Grathwohl</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Henglein</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Kristoï¿¿er</forename><forename type="middle">Aalund</forename><surname>Ulrik Terp Rasmussen</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Sebastian</forename><forename type="middle">Paaske</forename><surname>Søholm</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Tørholm</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 43rd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages (POPL &apos;16)</title>
+		<meeting>the 43rd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages (POPL &apos;16)</meeting>
+		<imprint>
+			<date type="published" when="2016" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<monogr>
+		<title level="m" type="main">Intel Advanced Encryption Standard (AES) New Instructions Set</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Shay Gueron</surname></persName>
+		</author>
+		<ptr target="https://software.intel.com/en-us/articles/intel-advanced-encryption-standard-aes-instructions-set." />
+		<imprint>
+			<date type="published" when="2012-09" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">CBS Genome Atlas Database: a dynamic storage for bioinformatic results and sequence data</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">F</forename><surname>Peter</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">David</forename><forename type="middle">W</forename><surname>Hallin</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Ussery</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">In Bioinformatics</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<date type="published" when="2004" />
+			<publisher>Oxford Univ Press</publisher>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Architecture and Performance of the Hardware Accelerators in IBM PowerEN Processor</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Timothy</forename><surname>Heil</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ACM Trans. Parallel Comput</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page">1</biblScope>
+			<date type="published" when="2014-05" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<monogr>
+		<title level="m" type="main">Formal Languages and Their Relation to Automata</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">John</forename><forename type="middle">E</forename><surname>Hopcroft</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Jeï¿¿rey</forename><forename type="middle">D</forename><surname>Ullman</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1969" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Histograms As a Side Eï¿¿ect of Data Movement for Big Data</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Zsolt</forename><surname>Istvan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of SIGMOD &apos;14</title>
+		<meeting>of SIGMOD &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Piecewise linear branch prediction</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Daniel A Jiménez</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. Of ISCA&apos;05</title>
+		<meeting>Of ISCA&apos;05</meeting>
+		<imprint>
+			<publisher>IEEE Computer Society</publisher>
+			<date type="published" when="2005" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Imagine: Media Processing with Streams</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Brucek</forename><surname>Khailany</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Micro</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<date type="published" when="2001-03" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Algorithms to Accelerate Multiple Regular Expressions Matching for Deep Packet Inspection</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Sailesh</forename><surname>Kumar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of SIGCOMM&apos;06</title>
+		<meeting>of SIGCOMM&apos;06</meeting>
+		<imprint>
+			<date type="published" when="2006-08" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">The bi-mode branch predictor</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Chih-Chieh</forename><surname>Lee</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">I-Cheng K</forename><surname>Chen</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Trevor</forename><forename type="middle">N</forename><surname>Mudge</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 30th annual ACM/IEEE international symposium on Microarchitecture</title>
+		<meeting>the 30th annual ACM/IEEE international symposium on Microarchitecture</meeting>
+		<imprint>
+			<publisher>IEEE Computer Society</publisher>
+			<date type="published" when="1997" />
+			<biblScope unit="page" from="4" to="13" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">A 20nm 32-Core 64MB L3 cache SPARC M7 processor</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Penny</forename><surname>Li</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Solid-State Circuits Conference-(ISSCC)</title>
+		<imprint>
+			<date type="published" when="2015" />
+			<biblScope unit="page" from="1" to="3" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Dremel: Interactive Analysis of Web-scale Datasets</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Sergey</forename><surname>Melnik</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">PVLDB&apos;10</title>
+		<imprint>
+			<date type="published" when="2010" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Instant Loading for Main Memory Databases</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Tobias</forename><surname>Mühlbauer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the VLDB Endowment</title>
+		<meeting>the VLDB Endowment</meeting>
+		<imprint>
+			<date type="published" when="2013-09" />
+			<biblScope unit="volume">6</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Data-parallel Finite-state Machines</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Todd</forename><surname>Mytkowicz</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Madanlal</forename><surname>Musuvathi</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Wolfram</forename><surname>Schulte</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of ASPLOS &apos;14</title>
+		<meeting>of ASPLOS &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Data-parallel Finite-state Machines</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Todd</forename><surname>Mytkowicz</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Madanlal</forename><surname>Musuvathi</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Wolfram</forename><surname>Schulte</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of ASPLOS&apos;14</title>
+		<meeting>of ASPLOS&apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Accelerating Business Analytics Applications</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Valentina</forename><surname>Salapura</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of HPCA &apos;12</title>
+		<meeting>of HPCA &apos;12</meeting>
+		<imprint>
+			<date type="published" when="2012" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">C-store: a column-oriented DBMS</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Mike</forename><surname>Stonebraker</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of VLDB&apos;05. VLDB Endowment</title>
+		<meeting>of VLDB&apos;05. VLDB Endowment</meeting>
+		<imprint>
+			<date type="published" when="2005" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Parallel Automata Processor</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Arun</forename><surname>Subramaniyan</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Reetuparna</forename><surname>Das</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 44th Annual International Symposium on Computer Architecture. ACM</title>
+		<meeting>the 44th Annual International Symposium on Computer Architecture. ACM</meeting>
+		<imprint>
+			<date type="published" when="2017" />
+			<biblScope unit="page" from="600" to="612" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<analytic>
+		<title level="a" type="main">A Data Layout Transformation (DLT) accelerator: Architectural support for data movement optimization in accelerated-centric heterogeneous systems</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Tung</forename><surname>Thanh-Hoang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of DATE&apos;16</title>
+		<meeting>of DATE&apos;16</meeting>
+		<imprint>
+			<publisher>IEEE</publisher>
+			<date type="published" when="2016" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Performance and energy limits of a processor-integrated FFT accelerator</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">T</forename><surname>Thanh-Hoang</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">A</forename><surname>Shambayati</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">C</forename><surname>Deutschbein</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">H</forename><surname>Hoï¿¿mann</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">A</forename><forename type="middle">A</forename><surname>Chien</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2014 IEEE High Performance Extreme Computing Conference (HPEC</title>
+		<imprint>
+			<date type="published" when="2014" />
+			<biblScope unit="page" from="1" to="6" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">Does arithmetic logic dominate data movement? a systematic comparison of energyeï¿¿ciency for FFT accelerators</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">T</forename><surname>Thanh-Hoang</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">A</forename><surname>Shambayati</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">H</forename><surname>Hoï¿¿mann</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">A</forename><forename type="middle">A</forename><surname>Chien</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">2015 IEEE 26th International Conference on Application-speciï¿¿c Systems, Architectures and Processors</title>
+		<imprint>
+			<publisher>ASAP</publisher>
+			<date type="published" when="2015" />
+			<biblScope unit="page" from="66" to="67" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<monogr>
+		<title level="m" type="main">Introduction to Intel Architecture</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Jim</forename><surname>Turley</surname></persName>
+		</author>
+		<ptr target="https://www.intel.com/content/dam/www/public/us/en/documents/white-papers/ia-introduction-basics-paper.pdf" />
+		<imprint>
+			<date type="published" when="2014" />
+		</imprint>
+	</monogr>
+	<note>white paper.</note>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Designing a Programmable Wire-Speed RegularExpression Matching Accelerator</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Jan</forename><surname>Van Lunteren</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">MICRO&apos;12</title>
+		<imprint>
+			<date type="published" when="2012" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Ibex: An Intelligent Storage Engine with Support for Advanced SQL Oï¿¿oading</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Louis</forename><surname>Woods</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Zsolt</forename><surname>István</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Gustavo</forename><surname>Alonso</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. VLDB Endow</title>
+		<meeting>VLDB Endow</meeting>
+		<imprint>
+			<date type="published" when="2014-07" />
+			<biblScope unit="volume">7</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Q100: The Architecture and Design of a Database Processing Unit</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Lisa</forename><surname>Wu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of ASPLOS &apos;14</title>
+		<meeting>of ASPLOS &apos;14</meeting>
+		<imprint>
+			<date type="published" when="2014" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Two-level adaptive training branch prediction</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yu</forename><surname>Tse</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yale</forename><forename type="middle">N</forename><surname>Yeh</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Patt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 24th annual international symposium on Microarchitecture</title>
+		<meeting>the 24th annual international symposium on Microarchitecture</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="1991" />
+			<biblScope unit="page" from="51" to="61" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Alternative implementations of two-level adaptive branch prediction</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yu</forename><surname>Tse</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yale</forename><forename type="middle">N</forename><surname>Yeh</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Patt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of ISCA&apos;92</title>
+		<meeting>of ISCA&apos;92</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="1992" />
+			<biblScope unit="page" from="124" to="134" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Xiaodong</forename><surname>Yu</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Michela</forename><surname>Becchi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of CF &apos;13</title>
+		<meeting>of CF &apos;13</meeting>
+		<imprint>
+			<date type="published" when="2013" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">On-the-ï¿¿y principled speculation for FSM parallelization</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Zhijia</forename><surname>Zhao</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Xipeng</forename><surname>Shen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. of ASPLOS&apos;15</title>
+		<meeting>of ASPLOS&apos;15</meeting>
+		<imprint>
+			<publisher>ACM</publisher>
+			<date type="published" when="2015" />
+			<biblScope unit="page" from="619" to="630" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">GPU-based NFA Implementation for Memory Eï¿¿cient High Speed Regular Expression Matching</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yuan</forename><surname>Zu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proceedings of the 17th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming</title>
+		<meeting>the 17th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming</meeting>
+		<imprint>
+			<date type="published" when="2012" />
+		</imprint>
+	</monogr>
+	<note>PPoPP &apos;12</note>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

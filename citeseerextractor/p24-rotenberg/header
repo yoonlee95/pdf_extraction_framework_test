@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSXAPIMetadata>
+<algorithm name="SVM HeaderParse" version="0.2">
+<title>Trace Cache: a Low Latency Approach to High Bandwidth Instruction Fetching</title>
+<authors>
+<author>
+<name>Eric Rotenberg</name>
+<affiliation>Computer Science Dept.; Univ. of Wisconsin- Madison</affiliation>
+<email>ericro@cs.wisc.edu</email>
+</author>
+<author>
+<name>Steve Bennett</name>
+<affiliation>Univ. of Wisconsin- Madison</affiliation>
+<email>sbennett@ichips.intel.com</email>
+</author>
+<author>
+<name>James E. Smith</name>
+<affiliation>Univ. of Wisconsin- Madison</affiliation>
+<email>jes@ece.wisc.edu</email>
+</author>
+</authors>
+<abstract>As the issue width of superscalarprocessors is increased, instructionfetch bandwidth requirements will also increase. It will become necessary to fetch multiple basic blocks per cycle. Conventional instruction caches hinder this effort be-cause long instruction sequences are not always in contigu-ous cache locations. We propose supplementing the conventional instruction cache with a trace cache, This structure caches traces of the dynamic instruction stream, so instructions that are other-wise noncontiguous appear contiguous. For the Instruction Benchmark Suite (IBS) and SPEC92 integer benchmarks, a 4 kilobyte trace cache improves performance on average by 28 % over conventional sequential fetching. Further; it is shown that the trace cache’s efficient, low latency ap-proach enables it to outperform more complex mechanisms that work solely out of the instruction cache. 1.</abstract>
+<validHeader>1</validHeader>
+</algorithm>
+</CSXAPIMetadata>

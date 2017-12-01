@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 /home/lopez/grobid/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<encodingDesc>
+			<appInfo>
+				<application version="0.4.3-SNAPSHOT" ident="GROBID" when="2017-12-01T14:39+0000">
+					<ref target="https://github.com/kermitt2/grobid">GROBID - A machine learning software for extracting information from scholarly documents</ref>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Yield Factors Yield-Aware Cache Architectures *</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Serkan</forename><surname>Ozdemir</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">EECS Department</orgName>
+								<orgName type="institution">Northwestern University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Debjit</forename><surname>Sinha</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">EECS Department</orgName>
+								<orgName type="institution">Northwestern University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Gokhan</forename><surname>Memik</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">EECS Department</orgName>
+								<orgName type="institution">Northwestern University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Jonathan</forename><surname>Adams</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">EECS Department</orgName>
+								<orgName type="institution">Northwestern University</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Hai</forename><surname>Zhou</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">EECS Department</orgName>
+								<orgName type="institution">Northwestern University</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Yield Factors Yield-Aware Cache Architectures *</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<profileDesc>
+			<abstract>
+				<p>Parametric Lithography-based Defect Density 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% 0.35 micron 0.25 micron 0.18 micron 0.13 micron 0.09 micron Process Technology Nominal Yields Defect Density Lithography-based Parametric Yield Abstract One of the major issues faced by the semiconductor industry today is that of reducing chip yields. As the process technologies have scaled to smaller feature sizes, chip yields have dropped to around 50% or less. This figure is expected to decrease even further in future technologies. To attack this growing problem, we develop four yield-aware microarchitecture schemes for data caches. The first one is called Yield-Aware Power-Down (YAPD). YAPD turns off cache ways that cause delay violation and/or have excessive leakage. We also modify this approach to achieve better yields. This new method is called Horizontal YAPD (H-YAPD), which turns off horizontal regions of the cache instead of ways. A third approach targets delay violation in data caches. Particularly, we develop a VAriable-latency Cache Architecture (VACA). VACA allows different load accesses to be completed with varying latencies. This is enabled by augmenting the functional units with special buffers that allow the dependants of a load operation to stall for a cycle if the load operation is delayed. As a result, if some accesses take longer than the predefined number of cycles, the execution can still be performed correctly, albeit with some performance degradation. A fourth scheme we devise is called the Hybrid mechanism, which combines the YAPD and the VACA. As a result of these schemes, chips that may be tossed away due to parametric yield loss can be saved. Experimental results demonstrate that the yield losses can be reduced by 68.1% and 72.4% with YAPD and H-YAPD schemes and by 33.3% and 81.1% with VACA and Hybrid mechanisms, respectively, improving the overall yield to as much as 97.0%.</p>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+	</text>
+</TEI>

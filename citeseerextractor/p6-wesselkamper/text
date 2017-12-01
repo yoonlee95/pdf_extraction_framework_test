@@ -1,0 +1,573 @@
+Some Classical Mathematical Results 
+Related to the Problems of the 
+Firmware/Hardware Interface 
+T. C. Wesselkamper 
+Virginia Polytechnic Institute 
+and State University 
+Abstract 
+The paper reviews the Shannon and Reed-Muller 
+Decomposition Theorems and notes the relationship 
+of the former to machine instruction set. It hypo- 
+thesizes an instruction set based on Galois field 
+operations and applies the divided difference 
+methods of Newton to the automatic generation of a 
+polynomial representation of an arbitrary function. 
+Some numeric results are given for the fields 
+GF(9) and GF(16). An extension of the methods to 
+the representation of functions by rational forms 
+is suggested. 
+I. Background 
+If in 1975 one surveys instruction sets for 
+digital computers of the present and past one finds 
+a great similarity. A typical recent example is 
+the Weisbecker machine [i]. In an excellent 
+paper Joe Weisbecker "describes a simplified 
+microcomputer architecture that offers maximum 
+flexibility at minimum cost." [I, p. 41] We are 
+t°id:"The ALU is an 8-bit logic network for 
+performing binary subtract, logical 
+'and','or', and 'exclusive or' on two 
+8-bit operands. One operand is the 
+bus byte and the other is contained 
+in the D register. The D register can 
+also be shifted right one bit position. 
+Add, subtract, and shift operations 
+set a one bit overflow register... 
+which can be tested by a branch in- 
+struction." [i, p. 43] 
+No attempt is made to explain this choice of 
+functions. They provide a typical example of 
+the operations provided by designers. 
+The second recent example is a des- 
+cription of HALL [2], an assembler level 
+language for the HYRMAN hardware simulator [3]. 
+The HALL machine possesses nine arithmetic 
+functions (binary and decimal addition and 
+subtraction, 'and', 'or', 'exclusive or', 
+left shift and right sh~ft) and fourteen status 
+instructions. These are given in Table I, below. 
+(It should be noted that HALL does decimal arith- 
+metic in a fashion analogous to the old IBM 1620 
+or to the S/360-370 "packed decimal" arithmetic.) 
+The work reported herein was supported in part by 
+National Science Foundation Grant No. DCR74- 
+18108. 
+That these designs have not varied signifi- 
+cantly in thirty years may be seen by comparing 
+them to the instructions proposed by John von 
+Neumann for the EDVAC machine in 1945 [4]. See 
+Table II, below. This in spite of the dual facts 
+that electronics can support much more varied 
+design and that the class of problems to which 
+computers have come to be applied is far wider 
+than was envisioned when the first computers were 
+designed for numeric work. 
+Certain characteristics may be noted as 
+common to the instruction sets of all current 
+machines: 
+i.) all provide arithmetic functions (addi- 
+tion, subtraction, multiplication) 
+modulo 2 or 2 -i, where L is the word 
+size in bits of the machine; 
+2.) all provide bit-wise logic operations 
+(conjunction, disjunction, non-equiva- 
+lence). 
+The first of these characteristics, modulo 
+arithmetic, is related to the fact that digital 
+computers are traditionally regarded by designers 
+as machines upon which to perform numeric calcu- 
+lations. The second is probably related to the 
+relationship between machine instruction sets 
+and the discipline of circuit design. 
+The seminal paper in the field of circuit 
+design was written by Claude Shannon as a graduate 
+student at MIT in 1938 [5]. Therein he shows that 
+if E(2) denotes the space {0, i} and if, for some 
+natural number n, f is a function f: En(2)÷E(2), 
+then f may be represented in the form: 
+f(x i, x 2, ..., x n) = Z aix*!x*2...x* n (i) 
+.where for all J (! < J < n) x*j i s  either xj • 
+or x., the generalized s--urmnation sign represents 
+disjunction, and the implied multipl ication is 
+conjunction. 
+The joys and sorrows Of worklng with the 
+disjunctive normal representation of a function 
+are well known, as is the fact that a representa- 
+tion in the form (i) is not unique. 
+The above result follows immediately from the 
+theorem which has come to be called the Shannon 
+Decomposition Theorem, namely, if f is defined as 
+above then there are two functions g: En-i(2)+E(2) 
+and h: En-i(2)÷E(2) such that: 
+f(x I . . . .  , x n) = Xng(Xl, ..., Xn_ I) + 
+Xnh(X I . . . . .  Xn_l) • 
+These results have dominated the area of circuit 
+design for its whole history. 
+Another decomposition theorem was published 
+in 1954 by Reed [6] and Muller [7], which has come 
+to be called the Reed-Muller Decomposition Theorem. 
+Reed proves that if f is again defined as above and 
+if ~ denotes non-equivalence (exclusive-or), then 
+there exist functions g: En-i(2)÷E(2) and h: 
+En-i(2)÷E(2), such that: 
+f(xl, .... x n) = g(x I . . . . .  Xn_ I) Q 
+Xnh(X I . . . . .  Xn_l) • 
+Seldom noted is the fact that Reed explicitly 
+refers to deriving the formula using classic 
+difference methods, that the method depends upon 
+the fact that E(2) under the operations of non- 
+equivalence and conjunction forms a field with 
+two elements. Reed notes that the method may be 
+generalized to any finite field. 
+There are two striking differences between 
+the Shannon theorem and the Reed-Muller theorem: 
+i.) Shannon Decomposition uses the logical 
+operations; Reed-Muller Decomposition 
+uses two field operations; 
+2.) Shannon Decomposition may be generalized 
+to a space of arbitrarily many elements, 
+but the number of operators required 
+increases linearly with the size of the 
+space; Reed-Muller Decomposition may 
+be generalized to a space of k=p q 
+elements, where p is a prime and q is 
+a natural number, and the number of 
+operators required remains two. 
+It is with a generalization of Reed's and 
+Muller's work to instruction sets that we are con- 
+cerned in this paper. 
+II. An Environment 
+We assume a hypothetical machine M of fixed 
+word size W, not necessarily binary-based but 
+at least p--based where p is a prime. We assume 
+that the instruction set of M includes addition 
+and multiplication over the field GF(pW), the 
+field of k = pW elements. Let E(k) = {0,1,..,k-l}. 
+We assume that the Machine M is to be used to 
+evaluate functions of the form f: En(k)÷E(k) for 
+natural numbers n. 
+The question which concerns us is: given 
+this machine M, how would you program for it? 
+(A first answer probably should be: slowly and 
+with much pain.) By "program" we mean the pro- 
+cess of firmware/hardware interface to provide a 
+user with an instruction set *hich is useable, 
+familiar, somehow pleasant. 
+The main point of this paper is that'if the 
+hardware is as assumed above, the process of 
+firmware/hardware interface can itself be auto- 
+mated. 
+Something needs to be said, before we pro- 
+ceed, about the reasonableness of the above 
+hypothetical environment. Except for certain 
+experimental machines, digital computers have been 
+binary. Ternary machines have been discussed at 
+length; ternary circuits have been designed, but 
+have always been prohibitively expensive to imple- 
+ment. Recently Mouftah and Jordan at Laval [8] 
+and Etiemble and Israel at Paris VI [9] have built 
+ternary logic devices using off-the-shelf chips. 
+In the light of this it does not now appear that 
+ternary ( and even quinary) machines can be as 
+easily dismissed as unrealistic. Further, circuits 
+for Galois addition and multipl ication have been 
+designed and implemented for many years [10,11,12]. 
+Most unrealistic is our l imitation of the problem 
+domain of concern to problems of function evalua- 
+tion. This stems from the problems of incarnating 
+primitives for, say, string processing and list 
+processing into hardware. 
+III. Mathematical Results 
+Throughout this section and the section 
+which follows we use + and implied multipl ication 
+to denote addition and multiplication over a field 
+GF(pW). We denote addition and multiplication of 
+integers modulo k by x+y(mod k) and x*y(mod k) 
+respectively. Subtraction and division are over 
+GF(pW). 
+The first two results concern the representa- 
+tion of a function as a polynomial over a finite 
+field. 
+If f: E(k) ÷ E(k) is a one-place function, 
+then there is a polynomial in one indeterminate 
+which defines f, specifically: 
+k-i 
+i 
+f(x) = Z a.x . (2) 
+i=0 I 
+This representation is unique. 
+If g: E ~ + E(k) is a two-place function, then 
+there is a polynomial in two indeterminates which 
+defines g~ specifically: 
+k-i 
+g(x,y) = Z a..xly ]. (3) 
+i,j=0 13 
+This representation is unique. 
+These results in~nediately generalize to 
+n-place functions. The uniqueness of the repre- 
+sentation is a radical departure from the situation 
+in the case of the representation of a function in 
+disjunctive form. However the uniqueness gained 
+is useless unless there is an effective computa- 
+tional means to calculate the coefficients a. and 
+1 
+a. . .  
+13 
+The computational means is provided by the 
+divided difference methods of Newton [13]. In 
+the usual works on finite difference methods [14,15] 
+the methods are developed for the real or rational 
+fields, but the modification of the techniques to 
+finite fields is direct. 
+Firstly, we give the formulae for the repre- 
+sentation of one-place functions. Let Xo,Xl,...Xk_ 1 
+be any permutation of the elements of E(k). Define 
+a difference operator as follows: 
+D~f(xj) = f(xj) - f(xj+ I) 
+xj-xj +I (4) 
+DP~(x) = D$-lf(xj) - D~-lf(xi+ I) 
+x 3 xj -Xj+p 
+This difference operator is easily implemented as 
+a recursive procedure. Newton's Theorem is: 
+k-I 
+f(x) = f(x o) + Z D~f(Xo)(X-Xo) ...(x-xi_l). (5) 
+i=l 
+The polynomial must be expanded to obtain the 
+form of (2) above. 
+If f(x,y) is a two-place function and if 
+Xo, x I . . . .  , Xk_ 1 and Yo' Yi' .... Yk-i are two 
+(possibly distinct) permutations of E(k), then 
+define: 
+Dxlf (xj,yj,) = 
+DPxf (xj,yj,) = 
+D~f(xj,yj,) = 
+DyPf(xj ,y j,) = 
+f(xj,yj,) - f(xj+l,yj,) (6) 
+xj - xj+ 1 
+DPx-lf (xj,yj,) - DPx-lf (Xj+l, yj ,) 
+xj - Xj+p 
+f(xj,yj,) - f(xj,yj,+l ) 
+Y j* - Yj*+i 
+D~-if (x~ ,yj,) - D~-lf (xj ,yj,+l ) 
+yj, - Yj,+p 
+In this case, Newton's Theorem is: 
+k-i . 
+f(x,y) = f(x o,yo) + i~iDxlf(x O,yo)(x-xo)...(x-xi_l) 
+k-i 
++ iZ=l 
+k-i 
++ 
+i,j=l 
+D i f(Xo,Yo)(y-yo)...(y-yi_l) Y 
+DiDJf(x ,y ) (Y-Yo) x y o o (X-Xo)'''(x~xi-l) 
+• ..(y-yj_l ) . (7) 
+Provided that the recursive procedures for 
+evaluating D and D are provided with a remem- 
+brance of th~ values already calculated, the method 
+above is simple and computationally effective• In 
+the forms (5) and (7) the representation of the 
+function depends upon the particular permutation 
+of the elements x. and y. chosen• When the po ly -  
+• . i  l . nomlals are multlplied out to obtaln the forms 
+(2) and (3), the resulting polynomial is unique. 
+IV. Implementation 
+A Galois field GF(p q) is a vector space of 
+dimension q over the field GF(p), which coincides 
+exactly with the ring of integers modulo p. Add- 
+ition of the elements of GF(p ~) is component-wise. 
+In order to define multiplication it is necessary 
+to choose a polynomial P(x) of degree q which is 
+irreducible over GF(p). Two elements of GF(pq) 
+are multiplied as if the coordinates were coeffi- 
+cients of polynomials, the result being reduced 
+modulo P(x). 
+In general there is a wide variety of choice 
+for the polynomial P(x). The professional alge- 
+braist assures us that all of the fields result- 
+inn from different choices of P(x) are isomorphic. 
+Isomorphism appears to be totally unrelated to 
+simplicity of implementation. Different choices 
+of the polynomial P(x) can have a great effect on 
+the complexity of the implementing circuitry. 
+Complete tables of pelynomials irreducible over 
+GF(2) for orders to 16 are in [16]. Complete 
+tables of polynomials irreducible over GF(3) for 
+orders to i0 are in [17]. The most complete tables 
+for GF(5) and GF(7) (to orders 5 and 4, respect- 
+ively) are in [18]. 
+The table below contains some information 
+about the results of the application of the methods 
+outlined herein to two situations• The polynomials 
+corresponding to six functions were evaluated for 
+the field GF(16) and for the field GF(9). The 
+table below presents the results. The column 
+"UN" refers to the unnormalized form of the poly- 
+nomial generated ((5) or (7) above); the column 
+"N" refers to the normalized polynomial ((2) or 
+(3) above). The integer shown is the number of 
+non-zero coefficients in the corresponding poly- 
+nomial. The last two functions are defined 
+respectively as: 
+• i, if 0<xj(k-l)/2; 
+Signum(x) = ~0,  if x=0; 
+l 
+~k-l ,  if (k-l)/2<x!k-l. 
+(That is, the usual association of the high integers 
+with the negative integers.) 
+' l ,  i f  x<y;  
+Order(x,y) = 0, if x=y; 
+-i, if y<x. 
+(Here the high integers are again taken to represent 
+negative integers and, in particular, k-i to 
+represent ~i,) 
+GF(16) GF(9) 
+NP N NP N 
+x+y(mod k) 124 124 17 18 
+x*y(mod k) 129 174 17 21 
+x+y(mod k-l) 134 233 42 69 
+x*y(mod k-l) 161 206 50 48 
+Signum(x) 15 5 8 4 
+Order(x,y) 184 163 57 55 
+Specifically, in GF(16) we have: 
+15 Signum(x) = 14x + 14x 2 + 14x 4 + 14x 8 + x , 
+and in GF(9) we have: 
+8 Signum(x) = 5x 2 + 5x  4 + 5x 6 + x . 
+These values are, at best, depressing for the 
+future of a direct simple implementation of the 
+method to words of 8 or 16 bits. 
+V. A Future Direction 
+In the above work we have limited ourselves 
+by using a polynomial representation of functions• 
+Since in a field of characteristic 2 addition and 
+Subtraction coincide and since in a field of 
+characteristic 3, x+x = -x, there would be no 
+point in providing subtraction as a fundamental 
+operation for our hypothetical machine. It may be 
+profitable to add division to our set of primitive 
+operations. 
+This may be more precisely formulated in 
+the following way. Given f(x,y), how can one find 
+polynomials P(x,y) and Q(x,y) such that the fol- 
+lowing conditions all hold: 
+i. the degree of P(x,y) is strictly less 
+than the degree of Q(x,y); 
+2. the degree of Q(x,y) is strictly less 
+than k; 
+3. Q(x,y) is either irreducible or a 
+product of irreducible factors (and 
+hence never 0); 
+4. f(x,y) = P(x,y)/Q(x,y). 
+It may be that this modification will render 
+the Galois field primitives a viable instruction 
+set for incorporation into hardware. 
+In addition to this, the work reported at 
+Micro-7 by Louise Jones [19] concerning sets of 
+control primitives needs to be extended so that 
+suitable control primitives can be linked to the 
+state modifying primitives discussed in this 
+paper. 
+VI. Summary 
+This paper is concerned with a possible 
+alternative to the usual choices of primitive 
+machine instructions. We began the paper by 
+noting the similarity between current machine- 
+level instruction sets and the mechanism of the 
+Shannon Decomposition Theorem. We showed that 
+if one notes that Reed-Muller Decomposition is 
+generalized by work of Newton, one may produce 
+another sort of instruction set: one which uses 
+Galois field addition and multiplication to 
+evaluate each function. There are three theore- 
+tical advantages to this: 
+i.) each function is evaluated by a unique 
+polynomial; 
+2.) given a function, the evaluating 
+polynomial may be generated auto- 
+matically; 
+3.) a polynomial in n indeterminates 
+may be efficiently evaluated by an 
+n stack architecture. 
+Empirical evaluation of some functions revealed 
+two disadvantages: 
+i.) the time-space requirements for the 
+program which produces the polynomials 
+are large; 
+2.) the polynomials which correspond 
+to some familiar machine operations 
+(ones-complement addition and multi- 
+plication, twos-complement addition 
+and multiplication, ordering) have a 
+large number of non-zero terms (which 
+implies that execution would be slow). 
+The first defect is less serious. It is possible 
+that the second defect can be overcome in the 
+Galois field framework by including division as a 
+primitive operation. A mathematical theory of the 
+representation of functions as rational forms 
+over a Galois field has not been developed and if 
+the theory is developed it may not support the 
+automatic generation of the evaluating rational 
+form. 
+It appears that the practical disadvantages 
+outweigh the theoretical advantages, at least 
+in the context of present technology. Were this 
+to change, it would not be a unique event in the 
+history of computer development. 
+Bibliography 
+i. Joe Weisbecker, "A Simplified Microcomputer 
+Architecture", IEEETC (March, 1974) pp. 41-7. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+R. H. Evans, L. H. Moffett, R. E. Merwin, 
+"Design of Assembly Level Language for 
+Horizontal Encoded Microprogrammed Control 
+Unit", Micro-7 Preprints (September, 1974) 
+pp. 217-224. 
+lO. 
+A. J. Nichols, III, "A Microprogramming 
+Framework for Experimental Machine Design", 
+SIGMICRO Newsletter, (July, 1971) pp. 17-21. 
+ii. 
+Donald E. Knuth, "Von Neumann's First Computer 
+Program", Computing Surveys, (December, 1970), 
+pp. 247-60. 
+12. 
+Claude E. Shannon, "A Symbolic Analysis of 
+Relay and Switching Circuits", Trans. Am. 
+Inst. Elec. Eng. 57 (1938), pp. 713-23. 
+Irving S. Reed, "A Class of Multiple-error- 
+correcting codes and the Decoding Scheme", 
+Trans. IRE - Info. Theory PGIT-4 (September, 
+1954), pp. 38-49. 
+D. E. Muller, "Application of Boolean Algebra 
+to Switching Circuit Design and to Error 
+Correction", IRE Trans. - Elec. Comp. EC-3, 
+No. 3 (September, 1954), pp. 6-12. 
+H. T. Mouftah and I. B. Jordan, "A Design 
+Technique for an Integrable Ternary Arithmetic 
+Unit", Proc. 1975 Int. Symp. on Multiple- 
+valued Logic, (Bloomington, Indiana, May, 1975), 
+pp. 359-372. 
+D. Etiemble and M. Israel, "Implementation of 
+a Complete Ternary Algebra - Application to 
+Ternary Flip-Flop", Proc. 1975 Int. Symp. on 
+Multiple-valued Logic, (Bloomington, Indiana, 
+May, 1975), pp. 316-329. 
+James T. Ellison, Universal Function Theory and 
+Galois Logic Studies (ARCRL-72-0109) (Bedford, 
+Mass.: Air Force Cambridge Research Labora- 
+tories, 1972). 
+B. A. Christensen, J. T. Ellison, R. A. Eggan, 
+Galois Polynomial Generation (PX-7703) 
+(St. Paul: Sperry Rand-Univac, 1972). 
+B, A. Christensen, Notes on Galois Logic 
+Design (PX-i0452) (St. Paul: Sperry Rand- 
+Univac, 1973). 
+13. 
+14. 
+15. 
+16. 
+17. 
+18. 
+19. 
+Isaac Newton, "Approaches to a General Theory 
+of Finite Differences" [1675-6] in D. T, 
+Whiteside (editor), The Mathematical Papers ~ 
+of Isaac Newton, vol. 4, (Cambridge, The 
+University Press, 1971), pp. 14-73. 
+Charles Jordan, Calculus of Finite Differences, 
+(New York, Chelsea Publishing Company, 1947). 
+L. M. Milne-Thomson, The Calculus of Finite 
+Differences, (London, Macmillan and Co., 
+1933). 
+W. W. Peterson, Error-Correction Codes, 
+(New York, John Wiley and Sons, 1961), 
+pp. 472-492. 
+David P. Wolff, Irreducible Polynomials 
+over GF(3), unpublished M.S. project, 
+Virginia Polytechnic Institute and State 
+University, (June, 1975) pp. 25-57. 
+Randolph Church, "Tables of Irreducible 
+Polynomials for the First Four Prime Moduli", 
+Annals of Math. 36, no. 1 (January, 1935), 
+pp. 198-209. 
+Louise H. Jones, "Microinstruction Sequencing 
+for Structured Programming", Micro-7 Pre- 
+prints (September, 1974), pp. 277-89. 
+10 
+Mnemonic 
+Arithmetic Unit 
+Table I -- Operations for HALL 
+Operation Code (hex) 
+NO No operation 0 
++B Binary addition X + Y i 
+-B Binary subtraction X - Y 2 
++D Decimal addition X + Y 3 
+-D Decimal subtraction X - Y 4 
+AN And X Y 5 
+OR Or X Y 6 
+EX Exclusive or X Y 7 
+SL Shift X left one bit 8 
+SR Shift X right one bit 9 
+Status Unit 
+BITO Set bit to 0 0 
+BITI Set bit to i i 
+IBIT Invert bit 2 
+DIGO Set digit to 0 3 
+DIGI Set digit to i 4 
+IDIG Invert digit 5 
+NOOP No action 7 
+BZHO Set bit Z = O* 8 
+BZLO Set bit A = 0 9 
+DZIO Set digit Z = 0 A 
+IBZO Invert bit Z = 0 B 
+BZHD Set bit 0 < Z < 9** C 
+BZLD Set bit 0 < A < 9 D 
+DZID Set digit 0 < Z < 9 E 
+* Set bit to i if Z = 0 
+** Set bit to i if Z is a digit, i.e., is a number between 0 and 9. 
+[2, p. 224] 
+11 
+Table II -- The Instruction Set Proposed for the EDVAC 
+Instructions consist of <arithmetic instruction> <variation> . 
+They operated on registers I, J, and A. 
+Arithmetic Instructions 
+AD 
+SB 
+ML 
+DV 
+SQ 
+II 
+JJ 
+SL 
+DB 
+BD 
+Set A ÷ I + J. 
+Set A ÷ I - J. 
+Set A ÷ A + I x J (rounded) 
+Set A ÷ I/J (rounded) 
+Set A ÷ /~ (rounded) 
+Set A ÷ I 
+Set A ÷ J 
+If A ~ 0, set A ÷ I; if A < 0, set A ÷ J. 
+Set A ÷ binary equivalent of decimal number I. 
+Set A ÷ decimal equivalent of binary number I. 
+Variations 
+Do the operation as described above, holding the result in A. 
+Do the operation as described above, then set J ÷ I, I + A, A + 0. 
+Do the operation as described above, then store the result A 
+into memory location yx and set A + 0. 
+Do the operation as described above, then store the result 
+into the word immediately following this instruction, set 
+A ÷ 0, and perform the altered instruction. 
+Do the operation as described above, then store the result 
+into the word immediately following this instruction, set 
+A + 0, and skip the altered instruction. 
+[4, pp. 250-1] 
+12 

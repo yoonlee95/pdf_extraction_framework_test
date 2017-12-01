@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSXAPIMetadata>
+<citationList>
+<citation valid="true">
+<authors>
+<author>Sridharan Allen</author>
+<author>S</author>
+<author>G S Sohi</author>
+</authors>
+<title>Serialization sets: a dynamic dependence-based parallel execution model</title>
+<journal>PPOPP</journal>
+<volume>2009</volume>
+<pages>85--96</pages>
+<contexts>
+<context>ecks while Jade and Yada perform run time checks to ensuresaccess types are not violated. We provide a runtime library for asstandard language that ensures dataflow execution. SerializationsSets (SS) =-=[1]-=- is a sequential program-based, determinate modelsthat dynamically maps dependent (independent) computationssinto a common (different) “serializer”. Computations within asserializer are serialized whi</context>
+</contexts>
+<marker>[1]</marker>
+<rawString>Allen, M.D., Sridharan, S., and Sohi, G.S. Serialization sets:  a dynamic dependence-based parallel execution model.  PPOPP, (2009), 85–96. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Allen</author>
+</authors>
+<title>Data-driven Decomposition of Sequential Programs for Determinate Parallel Execution. Doctoral Thesis</title>
+<date>2010</date>
+<institution>Computer Sciences Department, University of Wisconsin-Madison</institution>
+<contexts>
+<context>s, and much less than reasoningsabout correctness of and debugging non-deterministic staticallyparallel programs.s3.2 Runtime MechanicssOur runtime, based on the Prometheus runtime described by Allens=-=[2]-=-, employs multithreading to implement the mechanics ofsparallel execution using the Pthreads API. However, the threadsmanagement is abstracted away from the user. In fact, the user issentirely oblivio</context>
+<context>ime achieves the dataflow execution outlined in our model.sScheduling and Balancing LoadsTo achieve optimal performance we employ dynamic taskscheduling similar to the one outlined in Cilk-5 [12] and =-=[2]-=-. Thesruntime uses the work-first principle and lazy task creation tosdelegate functions to threads, and a randomized task-stealingspolicy to balance the load. Threads first execute functions fromsthe</context>
+<context>ait list (Figure 4b, steps leading from 1 to 4). It allocates asdata structure to hold the requester information and invokes racefree functions to log the request in the wait list, a concurrentsqueue =-=[2]-=-. Hence enqueue incurs a higher overhead of 1100scycles (row 3).sTo study the token passing overheads we created a set ofsfunctions that consumed (read) data produced (written) by aspreceding function</context>
+</contexts>
+<marker>[2]</marker>
+<rawString>Allen, M.D. Data-driven Decomposition of Sequential  Programs for Determinate Parallel Execution. Doctoral  Thesis. Computer Sciences Department, University of  Wisconsin-Madison, (2010). </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>K Arvind</author>
+<author>R S Nikhil</author>
+</authors>
+<title>Executing a Program on the MIT Tagged-Token Dataflow Architecture</title>
+<date>1990</date>
+<journal>IEEE Transactions on Computers</journal>
+<volume>39</volume>
+<pages>300--318</pages>
+<contexts>
+<context>nally, we compare our work with othersrelated work (§ 5) before concluding (§ 6).s2. DATAFLOW EXECUTION OFsSEQUENTIAL IMPERATIVE PROGRAMSsThe dataflow model performs data-driven execution of programss=-=[3]-=-. Instead of executing instructions sequentially as per thescontrol flow, it executes them as soon as their input operands aresavailable, execution resources permitting. Dependent instructionssare aut</context>
+</contexts>
+<marker>[3]</marker>
+<rawString>Arvind, K. and Nikhil, R.S. Executing a Program on the MIT  Tagged-Token Dataflow Architecture. IEEE Transactions on  Computers 39, (1990), 300–318. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>S Balakrishnan</author>
+<author>G S Sohi</author>
+</authors>
+<title>Program demultiplexing: Data-flow based speculative parallelization of methods in sequential programs</title>
+<journal>ISCA</journal>
+<volume>2006</volume>
+<pages>302--313</pages>
+<contexts>
+<context> in loopssand performs non-deterministic speculative execution of programssin contrast to our dataflow approach.sProposals such as Multiscalar [23], Stanford Hydra CMP [14] andsProgram Demultiplexing =-=[4]-=- exploit speculative TLP fromssequential programs on multicore architectures. These designssdivide a program into tasks. Regardless of dependences, theysspeculatively execute tasks on different hardwa</context>
+</contexts>
+<marker>[4]</marker>
+<rawString>Balakrishnan, S. and Sohi, G.S. Program demultiplexing:  Data-flow based speculative parallelization of methods in  sequential programs. ISCA, (2006), 302-313. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>R L Bocchino</author>
+<author>V S Adve</author>
+<author>D Dig</author>
+</authors>
+<title>A type and effect system for deterministic parallel Java</title>
+<journal>OOPSLA</journal>
+<volume>09</volume>
+<pages>97--116</pages>
+<contexts>
+<context> sharing, need for data privatization, etc., necessitating asrethinking of the optimum hardware-software division. It is likelysto be the subject of future research.sDeterministic Parallel Java (DPJ) =-=[5]-=-, Jade [22] and Yada [12]sprovide language-specific extensions to help users writesdeterministic parallel programs by specifying accessscharacteristics of shared data. DPJ performs compile-time typesc</context>
+</contexts>
+<marker>[5]</marker>
+<rawString>Bocchino, R.L., Adve, V.S., Dig, D., et al. A type and effect  system for deterministic parallel Java. OOPSLA  ’09, (2009),  97-116. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>G Booch</author>
+<author>R Maksimchuk</author>
+<author>M Engle</author>
+<author>B Young</author>
+<author>J Conallen</author>
+<author>K Houston</author>
+</authors>
+<title>Object-oriented analysis and design with applications, third edition. Addison-Wesley Profession</title>
+<date>2007</date>
+<contexts>
+<context>+.sDevelopers today follow modern programming principles andspractices, which encompass modularity, object oriented designs,sdata encapsulation, information hiding, and well defined modulesinterfaces =-=[6]-=-. In our model we exploit such common-casesempirical behaviors while provisioning for the rare worst-casesscenarios. Further, we favor the well understood notion of asstatically-sequential program ove</context>
+</contexts>
+<marker>[6]</marker>
+<rawString>Booch, G., Maksimchuk, R., Engle, M., Young, B.,  Conallen, J., and Houston, K. Object-oriented analysis and  design with applications, third edition. Addison-Wesley  Profession, (2007). </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>M J Bridges</author>
+<author>N Vachharajani</author>
+<author>Y Zhang</author>
+<author>T Jablin</author>
+<author>D August</author>
+</authors>
+<title>Revisiting the Sequential Programming Model for Multi-Core</title>
+<journal>MICRO</journal>
+<volume>2007</volume>
+<pages>69--84</pages>
+<contexts>
+<context>about their correctness.sIf ordered execution is needed,ssuch as for file I/O, user intervention becomes essential. Nondeterminism is perhaps the biggest challenge in such models.sIn another approach =-=[7]-=- a programming framework assisted bystools is proposed to extract parallelism from sequential code.sHowever, it assumes a three-phase dependence pattern in loopssand performs non-deterministic specula</context>
+</contexts>
+<marker>[7]</marker>
+<rawString>Bridges, M.J., Vachharajani, N., Zhang, Y., Jablin, T., and  August, D. Revisiting the Sequential Programming Model  for Multi-Core. MICRO, (2007), 69-84. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>D E Culler</author>
+<author>Arvind</author>
+</authors>
+<title>Resource requirements of dataflow programs</title>
+<date>1988</date>
+<journal>ISCA</journal>
+<contexts>
+<context>ementsDataflow machines can easily scout an entire program forsparallelism even when only a fraction of the program has actuallysexecuted. In the process they can exhaust resources, causingsdeadlocks =-=[8]-=-. We prevent such deadlocks by unraveling thes(sequential) program only as much as the resources permit and atsthe same time guarantee forward progress since functions alreadysprocessed are always ind</context>
+</contexts>
+<marker>[8]</marker>
+<rawString>Culler, D.E. and Arvind. Resource requirements of dataflow  programs. ISCA, (1988), 141–150. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>P J Denning</author>
+<author>J B Dennis</author>
+</authors>
+<title>The resurgence of parallelism</title>
+<journal>Communications of the ACM</journal>
+<volume>53</volume>
+<pages>30--32</pages>
+<contexts>
+<context>re hard or inefficient to use for manyspractical applications, as well as the need to start from scratchswith all (software and hardware) components of computing.sAsrecent paper by Denning and Dennis =-=[9]-=- brings forth many of thesissues related to the canonical parallel processing model andsdataflow computing.sAs we search for a practical execution model for future parallelscomputers, it is instructiv</context>
+</contexts>
+<marker>[9]</marker>
+<rawString>Denning, P.J. and Dennis, J.B. The resurgence of parallelism.  Communications of the ACM 53, 6 (2010), 30-32. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Y Etsion</author>
+<author>F Cabarcas</author>
+<author>A Rico</author>
+</authors>
+<title>et al. Task Superscalar: An Out-of-Order Task Pipeline</title>
+<journal>MICRO</journal>
+<volume>2010</volume>
+<pages>89--100</pages>
+<contexts>
+<context>aster thread to farmsout work to other threads whereas we employ a decentralizedsscheduler. Since no characterization data is provided we aresunable to compare performance artifacts. Task Superscalar =-=[10]-=-, asmore recent proposal is the hardware version of SMPSs. Itsemulates a superscalar processor by treating cores as executionsunits and adding additional eDRAM-based centralized structuressanalogous t</context>
+</contexts>
+<marker>[10]</marker>
+<rawString>Etsion, Y., Cabarcas, F., Rico, A., et al. Task Superscalar:  An Out-of-Order Task Pipeline. MICRO, (2010), 89–100. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>M Frigo</author>
+<author>C E Leiserson</author>
+<author>K H Randall</author>
+</authors>
+<title>The implementation of the Cilk-5 multithreaded language</title>
+<date>1998</date>
+<tech>PLDI</tech>
+<pages>212--223</pages>
+<contexts>
+<context>, statically-parallel or statically-sequential.sA wide range of statically-parallel programming models havesbeen proposed to exploit task/thread-level (TLP) parallelism.sMPI, Pthreads, OpenMP, Cilk-5 =-=[11]-=-, and TBB [16] are some ofsthe more common interfaces. They use imperative languages toscreate parallel programs. The models can be deployed on a varietysof CMPs or multithreaded processor platforms. </context>
+</contexts>
+<marker>[11]</marker>
+<rawString>Frigo, M., Leiserson, C.E., and Randall, K.H. The  implementation of the Cilk-5 multithreaded language. PLDI,  (1998), 212–223. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>D Gay</author>
+<author>J Galenson</author>
+<author>M Nail</author>
+<author>K Yelick</author>
+</authors>
+<title>Yada: Straightforward parallel programming</title>
+<journal>Parallel Computing</journal>
+<volume>37</volume>
+<pages>499--652</pages>
+<contexts>
+<context> thesruntime achieves the dataflow execution outlined in our model.sScheduling and Balancing LoadsTo achieve optimal performance we employ dynamic taskscheduling similar to the one outlined in Cilk-5 =-=[12]-=- and [2]. Thesruntime uses the work-first principle and lazy task creation tosdelegate functions to threads, and a randomized task-stealingspolicy to balance the load. Threads first execute functions </context>
+<context> E}, {F})sT4 ({B}, {D})sT5 ({B}, {D})sT6 ({G}, {H})s1s1s2s2s2s1 1 2 3s3s4s5sT3 T4sT5s4s6sT1sT2sT6s3 5s6sT4sT5s4 5sCPU0sCPU1sCPU2s3 1s65 By contrast, the Pthreads bzip2 is complex, as is also noted ins=-=[12]-=-, and too large to show here. It uses task-specific threads, oneseach for file read and write, and the rest to compress data.sAspipeline of computations, based on the master/worker mechanism,sis creat</context>
+<context>privatization, etc., necessitating asrethinking of the optimum hardware-software division. It is likelysto be the subject of future research.sDeterministic Parallel Java (DPJ) [5], Jade [22] and Yada =-=[12]-=-sprovide language-specific extensions to help users writesdeterministic parallel programs by specifying accessscharacteristics of shared data. DPJ performs compile-time typeschecks while Jade and Yada</context>
+</contexts>
+<marker>[12]</marker>
+<rawString>Gay, D., Galenson, J., Nail, M., and Yelick, K. Yada:  Straightforward parallel programming. Parallel Computing  37, 9 (2011), 499-652. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>J Gilchrist</author>
+</authors>
+<title>Parallel Data compression with Bzip2. http://compression.ca/pbzip2</title>
+<contexts>
+<context>we selected from different benchmark suites and thesinput data sizes used for the evaluation. Baseline parallelsimplementations for all of them were in Pthreads (bzip2 is thespbzip2 implementation in =-=[13]-=-). We studied and characterized thesprototype on three stock multicore machines. Table 2 lists theirsconfigurations. The first uses a single-socket, 4 core, 2-wayshyperthreaded, Intel iCore-965 (Nehal</context>
+</contexts>
+<marker>[13]</marker>
+<rawString>Gilchrist, J. Parallel Data compression with Bzip2.  http://compression.ca/pbzip2/. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>L Hammond</author>
+<author>B A Hubbert</author>
+<author>M Siu</author>
+<author>M K Prabhu</author>
+<author>M Chen</author>
+<author>K Olukotun</author>
+</authors>
+<title>The Stanford Hydra CMP</title>
+<journal>MICRO</journal>
+<volume>2000</volume>
+<pages>71--84</pages>
+<contexts>
+<context>a three-phase dependence pattern in loopssand performs non-deterministic speculative execution of programssin contrast to our dataflow approach.sProposals such as Multiscalar [23], Stanford Hydra CMP =-=[14]-=- andsProgram Demultiplexing [4] exploit speculative TLP fromssequential programs on multicore architectures. These designssdivide a program into tasks. Regardless of dependences, theysspeculatively ex</context>
+</contexts>
+<marker>[14]</marker>
+<rawString>Hammond, L., Hubbert, B.A., Siu, M., Prabhu, M.K., Chen,  M., and Olukotun, K. The Stanford Hydra CMP. MICRO,  (2000), 71–84. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>T Harris</author>
+<author>J Larus</author>
+<author>R Rajwar</author>
+</authors>
+<title>Transactional Memory, 2nd edition</title>
+<date>2010</date>
+<booktitle>Synthesis Lectures on Computer Architecture, M</booktitle>
+<publisher>Hill, Ed., Morgan Claypool Publishers</publisher>
+<contexts>
+<context>me ofsthe more common interfaces. They use imperative languages toscreate parallel programs. The models can be deployed on a varietysof CMPs or multithreaded processor platforms. TransactionalsMemory =-=[15]-=- has also been proposed to help ease programmingsby not requiring explicit synchronization. It ensures atomicsexecution of designated regions of code, which are executedsspeculatively. TM resorts to r</context>
+</contexts>
+<marker>[15]</marker>
+<rawString>Harris, T., Larus, J., and Rajwar, R. Transactional Memory,  2nd edition. Synthesis Lectures on Computer Architecture,  M. Hill, Ed., Morgan Claypool Publishers, (2010). </rawString>
+</citation>
+<citation valid="true">
+<title>Intel Thread Building Blocks: Reference Manual. Intel</title>
+<date>2011</date>
+<contexts>
+<context>llelize (row 13). Theirssize needs to grow by about 2000 instructions for every objectsadded in the data set (row 14), to be profitable. The granularitysresults are similar to other task-based models =-=[16]-=-.sFinally we analyzed the benchmark-specific characteristics of thesruntime, using large-sized inputs. Resource management to limitsprogram unfolding was not applied in these experiments. Wespresent t</context>
+<context>arallel or statically-sequential.sA wide range of statically-parallel programming models havesbeen proposed to exploit task/thread-level (TLP) parallelism.sMPI, Pthreads, OpenMP, Cilk-5 [11], and TBB =-=[16]-=- are some ofsthe more common interfaces. They use imperative languages toscreate parallel programs. The models can be deployed on a varietysof CMPs or multithreaded processor platforms. Transactionals</context>
+</contexts>
+<marker>[16]</marker>
+<rawString>Intel Thread Building Blocks: Reference Manual. Intel,  (2011).  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>R M Karp</author>
+<author>R E Miller</author>
+</authors>
+<title>Properties of a Model for Parallel Computations: Determinancy, Termination, Queueing</title>
+<date>1966</date>
+<journal>SIAM Journal on Applied Mathematics</journal>
+<volume>14</volume>
+<pages>1390--1411</pages>
+<contexts>
+<context>cit order for computations, the benefits of adopting which weshighlight here. First, since the computation schedule is based onsthe program order the model achieves sequentially determinatesexecution =-=[17]-=-. Sequential determinacy ensures that in anysexecution of a program with the same inputs, an object is assignedsthe same sequence of values. This makes programs easy to reasonsabout, and their executi</context>
+</contexts>
+<marker>[17]</marker>
+<rawString>Karp, R.M. and Miller, R.E. Properties of a Model for  Parallel Computations: Determinancy, Termination,  Queueing. SIAM Journal on Applied Mathematics 14, 6  (1966), 1390-1411. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>E A Lee</author>
+</authors>
+<title>The Problem with Threads</title>
+<journal>Computer</journal>
+<volume>39</volume>
+<pages>33--42</pages>
+<contexts>
+<context>tsresults in a parallel execution of the program‟s operations.sDuring dynamic execution of the statically-parallel program, asmultitude of complexities may arise that make programsdevelopment onerous =-=[18]-=-. For example, avoiding data races tosensure correct execution may expose users to the intricacies of thesunderlying architecture, such as memory consistency; unknown orsimproper locking protocols can</context>
+</contexts>
+<marker>[18]</marker>
+<rawString>Lee, E.A. The Problem with Threads. Computer 39, (2006),  33-42. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>T G Mattson</author>
+<author>B G Sanders</author>
+<author>B L Massingill</author>
+</authors>
+<date>2005</date>
+<booktitle>Patterns for Parallel Programming</booktitle>
+<publisher>Addison-Wesley</publisher>
+<contexts>
+<context>primitives were used to facilitate concurrent execution. Nosexplicit work distribution or recreation of the original executionssequence was required. Further, no pattern-specific algorithmsstructures =-=[19]-=- were needed to exploit parallelism. We elaboratesbelow using bzip2 as an example.sThe main loop of bzip2 in our model is shown in Figure 7a. Notesthe lack of synchronization constructs, and its simil</context>
+</contexts>
+<marker>[19]</marker>
+<rawString>Mattson, T.G., Sanders, B.G., and Massingill, B.L. Patterns  for Parallel Programming, Addison-Wesley, (2005). </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>A Moshovos</author>
+<author>G S Sohi</author>
+</authors>
+<title>Microarchitectural innovations: boosting microprocessor performance beyond semiconductor technology scaling</title>
+<booktitle>Proceedings of the IEEE 89</booktitle>
+<volume>11</volume>
+<pages>1560--1575</pages>
+<contexts>
+<context>l for future parallelscomputers, it is instructive to study the history of instruction-levelsparallel (ILP) processors.sHere there were two major proposals:sVLIW and dynamically-scheduled superscalar =-=[20]-=-. The formersrequired a statically-created ILP program, whereas the lattersachieved ILP by dynamically carrying out an instruction-levelsdataflow execution of a sequential program. The two approachess</context>
+</contexts>
+<marker>[20]</marker>
+<rawString>Moshovos, A. and Sohi, G.S. Microarchitectural innovations:  boosting microprocessor performance beyond semiconductor  technology scaling. Proceedings of the IEEE 89, 11 (2001),  1560-1575. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>J M Perez</author>
+<author>R M Badia</author>
+<author>J Labarta</author>
+</authors>
+<title>A dependencyaware task-based programming environment for multi-core architectures</title>
+<date>2008</date>
+<booktitle>2008 IEEE Intl. Conf. on Cluster Computing</booktitle>
+<pages>142--151</pages>
+<contexts>
+<context>ntialsprogram into functions, it determines the data dependencessbetween the functions and schedules them in a dataflow fashion,sprecluding the need for speculation and the concomitant support.sSMPSs =-=[21]-=- is a recent sequential program-based framework thatsachieves function-level dataflow execution. It requires the user tosidentify function parameters on which dependences may occur,susing pragma direc</context>
+</contexts>
+<marker>[21]</marker>
+<rawString>Perez, J.M., Badia, R.M., and Labarta, J. A dependencyaware task-based programming environment for multi-core  architectures. 2008 IEEE Intl. Conf. on Cluster Computing,  (2008), 142-151. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>M C Rinard</author>
+<author>D J Scales</author>
+<author>M S Lam</author>
+</authors>
+<title>Jade: a high-level, machine-independent language for parallel programming</title>
+<date>1993</date>
+<journal>Computer</journal>
+<volume>26</volume>
+<pages>28--38</pages>
+<contexts>
+<context>need for data privatization, etc., necessitating asrethinking of the optimum hardware-software division. It is likelysto be the subject of future research.sDeterministic Parallel Java (DPJ) [5], Jade =-=[22]-=- and Yada [12]sprovide language-specific extensions to help users writesdeterministic parallel programs by specifying accessscharacteristics of shared data. DPJ performs compile-time typeschecks while</context>
+</contexts>
+<marker>[22]</marker>
+<rawString>Rinard, M.C., Scales, D.J., and Lam, M.S. Jade: a high-level,  machine-independent language for parallel programming.  Computer 26, 6 (1993), 28-38. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>G S Sohi</author>
+<author>S E Breach</author>
+<author>T N Vijaykumar</author>
+</authors>
+<title>Multiscalar processors</title>
+<date>1995</date>
+<journal>ISCA</journal>
+<pages>414--425</pages>
+<contexts>
+<context>ode.sHowever, it assumes a three-phase dependence pattern in loopssand performs non-deterministic speculative execution of programssin contrast to our dataflow approach.sProposals such as Multiscalar =-=[23]-=-, Stanford Hydra CMP [14] andsProgram Demultiplexing [4] exploit speculative TLP fromssequential programs on multicore architectures. These designssdivide a program into tasks. Regardless of dependenc</context>
+</contexts>
+<marker>[23]</marker>
+<rawString>Sohi, G.S., Breach, S.E., and Vijaykumar, T.N. Multiscalar  processors. ISCA, (1995), 414–425. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>H Sutter</author>
+<author>J Larus</author>
+</authors>
+<title>Software and the Concurrency Revolution</title>
+<journal>ACM Queue</journal>
+<volume>3</volume>
+<pages>54--62</pages>
+<contexts>
+<context>iginal sequencesfor operations such as I/O.sConcurrent program analysis to helpsalleviate some of these issues is provably undecidable, ultimatelysburdening the user to reason about their correctness =-=[24]-=-. Yet,ssuch a canonical model is at the core of almost all (if not all) ofsthe parallel programming/execution models that have beensproposed and practically deployed. Despite significant researchseffo</context>
+</contexts>
+<marker>[24]</marker>
+<rawString>Sutter, H. and Larus, J. Software and the Concurrency  Revolution. ACM Queue 3, 6, (2005), 54–62. </rawString>
+</citation>
+</citationList>
+</CSXAPIMetadata>

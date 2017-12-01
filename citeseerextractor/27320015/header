@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSXAPIMetadata>
+<algorithm name="SVM HeaderParse" version="0.2">
+<title>Yield Factors Parametric Lithography- based Defect Density</title>
+<authors>
+<author>
+<name>Serkan Ozdemir</name>
+<affiliation>EECS Department, Northwestern University</affiliation>
+<email>soz463 @ece.northwestern.edu</email>
+</author>
+<author>
+<name>Debjit Sinha</name>
+<affiliation>EECS Department, Northwestern University</affiliation>
+<email>debjit @ece.northwestern.edu</email>
+</author>
+<author>
+<name>Gokhan Memik</name>
+<affiliation>EECS Department, Northwestern University</affiliation>
+<email>memik @ece.northwestern.edu</email>
+</author>
+<author>
+<name>Jonathan Adams</name>
+<affiliation>EECS Department, Northwestern University</affiliation>
+<email>jra760 @ece.northwestern.edu</email>
+</author>
+<author>
+<name>Hai Zhou</name>
+<affiliation>EECS Department, Northwestern University</affiliation>
+<email>haizhou@ece.northwestern.edu</email>
+</author>
+</authors>
+<abstract>micron</abstract>
+<validHeader>1</validHeader>
+</algorithm>
+</CSXAPIMetadata>

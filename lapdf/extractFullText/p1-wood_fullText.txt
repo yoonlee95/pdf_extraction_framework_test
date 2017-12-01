@@ -1,0 +1,42 @@
+Abstract
+By taking due regard of the disciplines of structured programming, we extend the scope of optimization of microprograms from blocks of micro-operations delimited by labels and branches straight line segments to complete microprograms.
+Introduction
+Heretofore, with the exception of Dasgupta s heuristic attempts to recognize symmetric pairs [I], the search for potential concurrency between micro-operations for the purpose of microprogram optimization has been confined to these micro-operations which occupy the same straight line segment of a sequentially expressed microprogram [2-6], ie. between micro-operations not separated by a branch or a merge in the notional flow of control of the microprogram. The reasons for this restriction are obvious enough two micro-operations may be executed concurrently in an implementation only if the specified behaviour for the microprogram indicates that the execution of one is a necessary and sufficient condition for the execution of the other, a condition which may not easily be verified when the two are separated by a label or a branch operation -a critica~ Point -in the microprogram.
+But membership of the same straight line segment is not a necessary condition for two micro-operations to be potentially concurrent. Consider the flow of control represented in figur~ I. If micro-operation D is data independent of all of the operations on both branches of the path between B and C, and D is data independent of A, then A and D may be executed concurrently.
+This is precisely the pattern of control flow which is associated with ~ control constructs, the fundamental primitives of structured programming. If we can carry through into the implementation phase the modular structure _~_ which microDro~rams should ]~g designed, then we shall be able to exploit that structure in enhanced potential for concurrency between the micro-operations. The rest of this paper describes a system which endeavours to do just that.
+Background
+We introduce MDL, Microprogram Design Language, whose statements are either register transfer expressions or control directives. The control constructs supported in the language are -
+A microprogram is expressed in MDL as a sequential list of statements hereafter referred to as micro-operations . Detection of potential concurrency between the micro-operations for the purpose of generating an optimized implementation
+normally is performed automatically, although the language does permit the designer to specify synchronization explicitly. Since ~DL is an implementation independent language, we are concerned here solely with the detection of logical potential concurrency between micro-operations. That is, we do not take into account at this stage the physical resources required to realize the micro-operations, although the method w o u l d not be altered significantly in doing so.
+The issues involved in the determination of potential concurrency between micro-operations in the same straight line segment are well-known and amply described in the literature [2-6]. We content ourself here with summarizing the three situations where micro-operation B should be marked as being data dependent on micro-operation A, where A precedes B in the straight line segment, these are
+DDI A and B both write to the same register. DD2 B reads from a register which A writes to. DD3 B writes to a register which A reads from.
+We note in passing that condition D D 3 in some implementations is a weak dependency relationship in which A and B may be activated from the same microinstruction word, but we shall not pursue that issue here.
+The Problem
+What we are concerned about in generating a maximally parallel representation of a microprogram expressed in MDL is how to preserve the behaviour of the microprogram as defined, while not constraining to straight line segments our search for potential concurrency. That is, how do we preserve the indivisibilitv and inviolability of conditional block structures while optimizing over their boundaries? We wish to allow micro-operations to migrate over a conditional block, but we do not wish to let them land inside the block, nor do we wish to allow any micro-operation to migrate beyond the confines of its own block.
+In describing how this is accomplished, we shall ignore for the present the problems created by critical points, concentrating initially only on the well structured control operations, to return later to explicit labels and branches.
+The Solution
+We take it for granted that it is a straightforward task to analyse an MDL description to detect data dependency between micro-operations according to rules DDI to DD3 above and we do not dwell on this aspect, save to point out that our implementation performs this task in time linearly proportional to the n~nber of statements in the microprogram.
+The problem lies in determining the control deoendencv which will ensure a correct
+The observation that a micro-operation must be data independent of ~ll component micro-operations of a conditional block before it is allowed t o migrate over that block leads us to develop the concept of a hierarchy of levels of micro-operations within the microprogram. We now say that a micro-operation may be of two basic types a primitive micro-operation which is an atomic entity, or a block-tvne micro-operation which may be expanded at one level lower to a set of comoonent micro-operations. These component micro-operations may, in turn, be either primitive or block type.
+We associate with each if .... then .... else block and loop wait until COND is simply a degenerate loop in the microprogram a block-type micro-operation with the constituent micro-operations of the control structure as the components of the block and we then insist that d ~ dependency must b_e defined between micro-ooerations a ~ the same i~¥~i. For example, if a primitive micro-operation, B, outside a loop is found to be data dependent on a primitive micro-operation, A, inside the loop, then we mark B as being dependent on the block-type micro-operation representing the loop itself, thus preventing B from migrating into the loop. But this is not enough, as we see if we consider above as itself being inside a loop. Then A and B are at the same level, but we still must prevent • the whole loon containing B to be implemented until after the whole loon containing A has been.
+In order to ensure complete inviolability and indivisibility of control blocks we demand adherence to the following rule
+This rule guarantees that no block-type micro-operation will be packed into microinstruction words until all of its components parents have already been packed and that no block-type micro-operation will be packed before the previous one at the same level has been completely packed unless the two are independent .
+The loop construct is a single entity, but the if...then...else control structure is more complex. It consists of a single conditional micro-operation followed by two mutually independent sub-blocks. We model this by representing the whole conditional block as a single block-type micro-operation with three components a primitive micro-operation, which is the condition at the head of the block, and two block-type micro-operations representing the if block and else block respectively. The Ifblock and Elseblock are each marked as dependent on the primitive conditional micro-operation. This serves to preserve the indivisibility of the total
+figure 2a
+complete microprogram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 0
+. . . . . . . . . . . . . . . . . .
+..... ~ --]~]Lo~c~~ ]e_~_~ff~ 3 if block
+..... [__J [ ..... ,
+ZZZ~ZZZIZ~ZZZ]iii~
+.... C i____ _i
+exit ~iI~ I
+-7~y ~ -7~y ~ [ .... J [ J . . . .
+. . . . . . . . . . . L . . . . . . . . . . . . . . . ~ _ m ~
+NYi ~_bli_-. ~
+[I ..... ~_~ l] I[-L___ N
+L__KXiXKX___
+Z i ] i Z X X i i 3 i Z i i i X i } } } ~
+................ i£ii i i .................
+. . . . . . . . . 1 I i ] . . . . . . . . . . . . Z I Z ] . . . . . . . [_~_m_] [_~_~_k]
+Summary
+R e f e r e n c e s

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSXAPIMetadata>
+<algorithm name="SVM HeaderParse" version="0.2">
+<title>Global Optimization of MicroDro~rams Through Modular Control Constructs</title>
+<authors>
+<author>
+<name>Graham Wood</name>
+<affiliation>DeDt of Computer Science; University o ~ Edinburgh; Scotland</affiliation>
+</author>
+</authors>
+<abstract>By taking due regard of the disciplines of structured programming, we extend the scope of optimization of microprograms from blocks of micro-operations delimited by labels and branches (straight line segments) to complete microprograms.</abstract>
+<validHeader>1</validHeader>
+</algorithm>
+</CSXAPIMetadata>

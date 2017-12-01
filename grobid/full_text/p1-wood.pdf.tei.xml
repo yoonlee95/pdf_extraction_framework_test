@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 /home/lopez/grobid/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<encodingDesc>
+			<appInfo>
+				<application version="0.4.3-SNAPSHOT" ident="GROBID" when="2017-12-01T14:46+0000">
+					<ref target="https://github.com/kermitt2/grobid">GROBID - A machine learning software for extracting information from scholarly documents</ref>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Global Optimization of MicroDro~rams Through Modular Control Constructs</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Graham</forename><surname>Wood</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">DeDt of Computer Science</orgName>
+								<orgName type="institution">University o~ Edinburgh</orgName>
+								<address>
+									<country key="GB">Scotland</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Global Optimization of MicroDro~rams Through Modular Control Constructs</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<profileDesc>
+			<abstract>
+				<p>By taking due regard of the disciplines of structured programming, we extend the scope of optimization of microprograms from blocks of micro-operations delimited by labels and branches (straight line segments) to complete microprograms.</p>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Background</head><p>DDI: A and B both write to the same register. DD2: B reads from a register which A writes to. DD3: B writes to a register which A reads from.</p><p>We note in passing that condition DD3 in some implementations is a weak dependency relationship in which A and B may be activated from the same microinstruction word, but we shall not pursue that issue here.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>The Problem</head><p>What we are concerned about in generating a maximally parallel representation of a microprogram expressed in MDL is how to preserve the behaviour of the microprogram as defined, while not constraining to straight line segments our search for potential concurrency.</p><p>That is, how do we preserve the indivisibilitv and inviolability of conditional block structures while optimizing over their boundaries?</p><p>We wish to allow micro-operations to 'migrate' over a conditional block, but we do not wish to let them 'land' inside the block, nor do we wish to allow any micro-operation to migrate beyond the confines of its own block.</p><p>In describing how this is accomplished, we shall ignore for the present the problems created by critical points, concentrating initially only on the well structured control operations, to return later to explicit labels and branches. /</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>The Solution</head><p>We take it for granted that it is a straightforward task to analyse an MDL description to detect data dependency between micro-operations according to rules DDI to DD3 above and we do not dwell on this aspect, save to point out that our implementation performs this task in time linearly proportional to the n~nber of statements in the microprogram.</p><p>The problem lies in determining the control deoendencv which will ensure a correct implementation.</p><p>The observation that a micro-operation must be data independent of ~ll component micro-operations of a conditional block before it is allowed to migrate over that block leads us to develop the concept of a hierarchy of levels of micro-operations within the microprogram.</p><p>We now say that a micro-operation may be of two basic types: a primitive micro-operation which is an atomic entity, or a block-tvne micro-operation which may be expanded at one level lower to a set of comoonent micro-operations. For example, if a primitive micro-operation, B, outside a loop is found to be data dependent on a primitive micro-operation, A, inside the loop, then we mark B as being dependent on the block-type micro-operation representing the loop itself, thus preventing B from migrating into the loop. But this is not enough, as we see if we consider above as itself being inside a loop.</p><p>Then A and B are at the same level, but we still must prevent • the whole loon containing B to be implemented until after the whole loon containing A has been.</p><p>In  Critical Points</p><p>We now turn our attention to the consideration of critical points: explicit branch operations and labels.</p><p>Critical points disrupt the well-structured flow of control in an F~L description.</p><p>Their merit or otherwise have been debated hotly in the context of structured programming, but we include such constructs in the language, without advocating their usage, in the belief that for the sake of generating as efficient microcode as desired any "microprogramming language should be capable of expressing any operation which may be performed at the microprogram level (thereby depriving microprogrammers of any excuse for not using the language).</p><p>Unless we are prepared to trace the actual pattern of control flow associated with explicit labels and branches, critical points present absolute barriers to the migration of micro-operations.</p><p>Dasgupta <ref type="bibr">[I]</ref> has demonstrated that it is not practicable in any general way to attempt to optimize by exploiting the tracing of control flow like this, even where no modular control constructs are available and all control has to be effected via branches and labels. ~he provision of modular control constructs in MDL implies that any use of explicit labels and branches in a microprogram will almost certainly be to effect unstructured control flow, where indeed the critical points do present absolute barriers to code migration.</p><p>We therefore take the view that the complexity of tracing and exploiting the pattern of control flow associated with explicit labels and branches in MDL far outweighs the negligible gains to be had from so doing. Thus critical points effectively partition an MDL microprogram into disjoint segments: not straight line segments, since the critical points may occur inside modular control blocks. It would be feasible simply to carve up the microprogram into these segments and to treat each one separately, but we seek a more elegant solution consistent with our handling of the other dependency relationships.</p><p>To that end, we associate with each critical point a block-type micro-operation whose components are all these micro-operations following the critical point, up to the first subsequent block terminating statement (ie. 'else', 'finish', or 'repeat') which serves to terminate the critical point block as well as the enclosing conditional block. (It is necessary to limit the range of critical point blocks in this fashion in order to maintain consistency of level between these micro-operations before and after the enclosing conditional block -a necessity when dealing with 'Exit' statements, as will bediscussed below.)</p><p>The critical point micro-operation is marked as dependent on all preceding, otherwise childless, micro-operations at the same level as itself, thereby preventing the downward migration of these past the critical point.</p><p>Those micro-operations which are components of the critical point block automatically are prevented from upward migration, but we must still build in safeguards against the upwards migration of succeeding micro-operations which are not themselves components of the critical point block, being outside the enclosing conditional block.</p><p>We do this whenever dependency is being determined according to the Multi-level Dependency Rule described above by checking whether a critical point intervenes between the child and the parent of the relationship.</p><p>If so, we substitute the critical point block for the parent and proceed with evaluating dependency according to the rule, thus maintaining consistency of approach for all types of dependency.</p><p>'Exit' micro-operations (jumps out of loops) act as critical points in a limited vicinity: that vicinity being between the 'exit' statement itself and the tail of the loop ultimately being exited from.</p><p>These points delimit the scope of all micro-operations contained within that range and present an inviolable block to micro-operations without, but do not prevent the migration of micro- operations over the loop enclosing them, as a critical point would do.</p><p>Figures 3a, 3b and 3c below illustrate the effect of an 'exit' statement in three situations. <ref type="figure">Figure  4</ref> presents the dependency graph generated after the alteration of <ref type="figure">figure 2a</ref> through the addition of an 'explicit label to statement (6) and the changing of statement <ref type="formula">(10)</ref> to an exit out of two levels of loop. There are many other subtle points of detail to be taken into account in generating a maximally parallel representation of an MDL description, but all operate within the context of the broad rules described above and none violate the elegance of the solution.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Summary</head><p>We have described what we believe to be an elegant solution to the problem of global optimization of microprograms by taking advantage of the well-defined structure associated with modular control constructs.</p><p>We have conceived the notion of a hierarchy of levels associated with the control blocks in a microprogram and have devised a rule for guaranteeing consistency between the levels.</p><p>It is to be hoped that this increased scope for optimization will encourage the use of structured languages for microprogram design.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>,</head><label></label><figDesc>figure 2a</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>................ i£ii!i!i ...............</head><label></label><figDesc>figure 3a</figDesc></figure>
+		</body>
+		<back>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Parallelism in Loop-free Microprograms</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><surname>Dasgupta</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. IFIP Congress Information Processing</title>
+		<editor>B. Gilchrist</editor>
+		<meeting>IFIP Congress Information essing<address><addrLine>North-Holland, Amsterdam</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="1977" />
+			<biblScope unit="page" from="745" to="750" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<monogr>
+		<title/>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><forename type="middle">S C</forename><surname>Yau; A</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><surname>Schowe</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">On Storage Optimization of Horizontal Microprograms</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><surname>Tsuchiya</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 7th Annual Workshop on Microprogramming</title>
+		<meeting>7th Annual Workshop on Microprogramming<address><addrLine>Palo Alto, Ca</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="1974-10" />
+			<biblScope unit="page" from="98" to="106" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<monogr>
+		<title/>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><surname>Tsuchiya</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">An Approach to the Optimization of Horizontal Microprograms</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><forename type="middle">J</forename><surname>Gonzales</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 7th Annual Workshop on Microprogramming</title>
+		<meeting>7th Annual Workshop on Microprogramming<address><addrLine>Palo Alto, Ca</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="1974-10" />
+			<biblScope unit="page" from="85" to="90" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<title/>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><surname>Dasgupta</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<monogr>
+		<title level="m" type="main">Automatic Identification of Maximal Parallelism in Straight Line Microprograms</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Tartar</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1976-10" />
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="page" from="986" to="991" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<monogr>
+		<title level="m" type="main">Methods of Compacting Microprograms</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">P</forename><surname>Mallett</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1978-12" />
+			<pubPlace>La</pubPlace>
+		</imprint>
+		<respStmt>
+			<orgName>Dept of Computer Science University of Southwestern Louisiana Lafayette</orgName>
+		</respStmt>
+	</monogr>
+<note type="report_type">Ph.D. Thesis</note>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">On the Packing of Micro-operations into Microinstruction Words</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">G</forename><surname>Wood</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Proc. 11th Annual Workshop on Microprogramming</title>
+		<meeting>11th Annual Workshop on Microprogramming<address><addrLine>Pacific Grove, Ca</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="1978-11" />
+			<biblScope unit="page" from="51" to="55" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

@@ -1,0 +1,42 @@
+ABSTRACT
+Categories and Subject Descriptors
+General Terms Performance, Design. Keywords Dataflow, multicore, programming, determinacy.
+1. INTRODUCTION
+As parallel computers are becoming commonplace, the computing community has been aggressively seeking execution models that
+Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and or a fee. MICRO‟11, December 3–7, 2011, Porto Alegre, Brazil. Copyright 2011 ACM 978-1-4503-1053-6 11 12…$10.00.
+2. DATAFLOW EXECUTION OF SEQUENTIAL IMPERATIVE PROGRAMS
+1 We do not address this further in this paper.
+T1 T2 T5 T6
+P1 T1 T3
+P2 T2 T2 T4 T5 T‟
+P3 T6 T6
+and thus can be executed, possibly even in parallel on core P3 with T1 and T2.
+3. PROTOTYPE IMPLEMENTATION
+hardware and uses the same system memory as the application. We next describe program development using the library, and the runtime mechanics.
+3.1 Static Sequential Program
+them, by dereferencing pointers if need be, at run time. This interface allows the model to handle data referenced using pointers, as well as pointer arithmetic.
+3.2 Runtime Mechanics
+4. EVALUATION
+1 2 1 1
+of the system after processing the six invocations of function
+gcc-4.3.2 –O3 –march core2 for iCore7.
+9 10
+Table 1. Benchmark applications used for evaluation. Benchmark Inputs Small Medium Large 1,000, 25 10,000, 50 100,000, 75 barneshut bodies, steps
+dedup 31MB 185MB 673MB file size
+b Figure 7. a bzip2 kernel implemented using the proposed model b sequential bzip2 kernel.
+Benchmarks Figure 8. Speedups achieved by the proposed execution model DF H_MEAN harmonic mean.
+and Pthreads PT on the three machines. LG large grain
+Table 3. Results from microbenchmark evaluation i Runtime overheads, in clock cycles per unit. ii Function granularity in instructions for profitable parallelization. # Overhead Intel AMD AMD cycles per unit Core Opteron Opteron i7-965 8350 8356 1 Token Acquire 225 225 200 Figure 4b 1 -3 2 Token Release Figure 4c 1 200 225 200 3 Token Enqueue 975 1100 2200 Figure 4b 1 -4 4 Token Pass 1 object 1000 1100 2000 5 Figure 4c 1 object 150 250 250 1, 2 6 Prelude Base 1100 1650 4000 7 Figure 3 1 Token Acquire 500 550 1000 8 Token Enq. 1150 1250 2950 9 Postlude Base 500 500 750 10 Figure 3 3 Token Release 550 500 1000 11 Token pass 1 1350 1400 2700 12 Token pass 1 150 250 250 13 Granularity Base 4000 12000 18000 14 instr. Object 2000 2000 4000
+5. RELATED WORK
+6. CONCLUSION
+7. ACKNOWLEDGMENTS
+Authors thank Matthew Allen and Srinath Sridharan for discussions related to this work.
+8. REFERENCES
+[1] Allen, M.D., Sridharan, S., and Sohi, G.S. Serialization sets a dynamic dependence-based parallel execution model.
+PPOPP, 2009 , 85–96.
+Figure 1. a Example pseudocode that invokes functions T and T’. T {write set} {read set} modifies reads objects in its write set read set . Data set of T’ is unknown. b Dynamic invocations of the functions T and T’, in the program order, and the data set of each invocation. c Dataflow graph of the dynamic function stream. d Dataflow execution schedule of the function stream.
+Figure 1d shows the execution of the code as per our model. The execution first encounters invocation T1. Attempts to acquire a read token for object A, and write tokens for B and C are successful. Hence T1 is submitted for execution on an available core P1 . The execution proceeds on a processor not shown and processes T2 while T1 is executing. Attempts to acquire a write token for D and a read token for A are successful, and thus T2 is scheduled to execute on core P2 . The execution advances to T3, which is shelved because a write token for object A can‟t be acquired since T1 and T2, which are still being executed, hold read tokens for A. However, before being shelved, T3 acquires a read token for F and a write token for E. Next, functions T4, T5, and T6 are processed in turn. T4 and T5 are shelved because they require a write token to B, which is being held by T1. On the other hand, T6 is able to acquire its requisite tokens for G and H
+Figure 2. Example program in the proposed model.
+Figure 3. Logical view of runtime operations to process a dataflow function.
+Figure 5. Example execution. a Initial state of the system. b State T, denoted as T {write set} {read set}.
+Figure 9. Performance scaling with respect to input size, for the 16-core Opteron

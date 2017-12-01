@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSXAPIMetadata>
+<citationList>
+<citation valid="true">
+<authors>
+<author>i Joe Weisbecker</author>
+</authors>
+<title>A Simplified Microcomputer Architecture&amp;quot;, IEEETC</title>
+<date>1974</date>
+<volume>2</volume>
+<pages>9</pages>
+<marker>Weisbecker, 1974</marker>
+<rawString>i. Joe Weisbecker, &amp;quot;A Simplified Microcomputer Architecture&amp;quot;, IEEETC (March, 1974) pp. 41-7. 2. 3. 4. 5. 6. 7. 8. 9.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>R H Evans</author>
+<author>L H Moffett</author>
+<author>R E Merwin</author>
+</authors>
+<title>Design of Assembly Level Language for Horizontal Encoded Microprogrammed Control Unit</title>
+<date>1974</date>
+<booktitle>Micro-7 Preprints</booktitle>
+<pages>217--224</pages>
+<marker>Evans, Moffett, Merwin, 1974</marker>
+<rawString>R. H. Evans, L. H. Moffett, R. E. Merwin, &amp;quot;Design of Assembly Level Language for Horizontal Encoded Microprogrammed Control Unit&amp;quot;, Micro-7 Preprints (September, 1974) pp. 217-224. lO.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>A J Nichols</author>
+</authors>
+<title>A Microprogramming Framework for Experimental Machine Design</title>
+<date>1971</date>
+<journal>SIGMICRO Newsletter</journal>
+<pages>17--21</pages>
+<location>ii</location>
+<marker>Nichols, 1971</marker>
+<rawString>A. J. Nichols, III, &amp;quot;A Microprogramming Framework for Experimental Machine Design&amp;quot;, SIGMICRO Newsletter, (July, 1971) pp. 17-21. ii.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Donald E Knuth</author>
+</authors>
+<title>Von Neumann's First Computer Program&amp;quot;, Computing Surveys</title>
+<date>1970</date>
+<publisher>Am</publisher>
+<marker>Knuth, 1970</marker>
+<rawString>Donald E. Knuth, &amp;quot;Von Neumann's First Computer Program&amp;quot;, Computing Surveys, (December, 1970), pp. 247-60. 12. Claude E. Shannon, &amp;quot;A Symbolic Analysis of Relay and Switching Circuits&amp;quot;, Trans. Am.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Elec Eng</author>
+</authors>
+<date>1938</date>
+<volume>57</volume>
+<marker>Eng, 1938</marker>
+<rawString>Inst. Elec. Eng. 57 (1938), pp. 713-23.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Irving S Reed</author>
+</authors>
+<title>A Class of Multiple-errorcorrecting codes and the Decoding Scheme&amp;quot;, Trans</title>
+<date>1954</date>
+<booktitle>IRE - Info. Theory PGIT-4</booktitle>
+<pages>38--49</pages>
+<marker>Reed, 1954</marker>
+<rawString>Irving S. Reed, &amp;quot;A Class of Multiple-errorcorrecting codes and the Decoding Scheme&amp;quot;, Trans. IRE - Info. Theory PGIT-4 (September, 1954), pp. 38-49.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>D E Muller</author>
+</authors>
+<title>Application of Boolean Algebra to Switching Circuit Design and to Error Correction</title>
+<date>1954</date>
+<journal>IRE Trans. - Elec. Comp. EC-3</journal>
+<volume>3</volume>
+<pages>6--12</pages>
+<marker>Muller, 1954</marker>
+<rawString>D. E. Muller, &amp;quot;Application of Boolean Algebra to Switching Circuit Design and to Error Correction&amp;quot;, IRE Trans. - Elec. Comp. EC-3, No. 3 (September, 1954), pp. 6-12.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>H T Mouftah</author>
+<author>I B Jordan</author>
+</authors>
+<title>A Design Technique for an Integrable Ternary Arithmetic Unit</title>
+<date>1975</date>
+<booktitle>Proc. 1975 Int. Symp. on Multiplevalued Logic</booktitle>
+<pages>359--372</pages>
+<location>Bloomington, Indiana</location>
+<marker>Mouftah, Jordan, 1975</marker>
+<rawString>H. T. Mouftah and I. B. Jordan, &amp;quot;A Design Technique for an Integrable Ternary Arithmetic Unit&amp;quot;, Proc. 1975 Int. Symp. on Multiplevalued Logic, (Bloomington, Indiana, May, 1975), pp. 359-372.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>D Etiemble</author>
+<author>M Israel</author>
+</authors>
+<title>Implementation of a Complete Ternary Algebra - Application to Ternary Flip-Flop</title>
+<date>1975</date>
+<booktitle>Proc. 1975 Int. Symp. on Multiple-valued Logic</booktitle>
+<pages>316--329</pages>
+<location>Bloomington, Indiana</location>
+<marker>Etiemble, Israel, 1975</marker>
+<rawString>D. Etiemble and M. Israel, &amp;quot;Implementation of a Complete Ternary Algebra - Application to Ternary Flip-Flop&amp;quot;, Proc. 1975 Int. Symp. on Multiple-valued Logic, (Bloomington, Indiana, May, 1975), pp. 316-329.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>James T Ellison</author>
+</authors>
+<title>Universal Function Theory and Galois Logic Studies (ARCRL-72-0109</title>
+<date>1972</date>
+<institution>Air Force Cambridge Research Laboratories</institution>
+<location>Bedford, Mass</location>
+<marker>Ellison, 1972</marker>
+<rawString>James T. Ellison, Universal Function Theory and Galois Logic Studies (ARCRL-72-0109) (Bedford, Mass.: Air Force Cambridge Research Laboratories, 1972).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>B A Christensen</author>
+<author>J T Ellison</author>
+<author>R A</author>
+</authors>
+<date>1972</date>
+<booktitle>Eggan, Galois Polynomial Generation (PX-7703) (St. Paul: Sperry Rand-Univac</booktitle>
+<marker>Christensen, Ellison, A, 1972</marker>
+<rawString>B. A. Christensen, J. T. Ellison, R. A. Eggan, Galois Polynomial Generation (PX-7703) (St. Paul: Sperry Rand-Univac, 1972).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>A Christensen B</author>
+</authors>
+<title>Notes on Galois Logic Design (PX-i0452) (St. Paul: Sperry RandUnivac</title>
+<date>1973</date>
+<volume>13</volume>
+<marker>B, 1973</marker>
+<rawString>B, A. Christensen, Notes on Galois Logic Design (PX-i0452) (St. Paul: Sperry RandUnivac, 1973). 13. 14. 15. 16. 17. 18. 19.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Isaac Newton</author>
+</authors>
+<title>Approaches to a General Theory of Finite Differences&amp;quot; [1675-6</title>
+<date>1971</date>
+<booktitle>The Mathematical Papers ~ of Isaac</booktitle>
+<volume>4</volume>
+<pages>14--73</pages>
+<editor>in D. T, Whiteside (editor</editor>
+<publisher>The University Press</publisher>
+<location>Newton</location>
+<marker>Newton, 1971</marker>
+<rawString>Isaac Newton, &amp;quot;Approaches to a General Theory of Finite Differences&amp;quot; [1675-6] in D. T, Whiteside (editor), The Mathematical Papers ~ of Isaac Newton, vol. 4, (Cambridge, The University Press, 1971), pp. 14-73.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Charles Jordan</author>
+</authors>
+<title>Calculus of Finite Differences</title>
+<date>1947</date>
+<publisher>Publishing Company</publisher>
+<location>New York, Chelsea</location>
+<marker>Jordan, 1947</marker>
+<rawString>Charles Jordan, Calculus of Finite Differences, (New York, Chelsea Publishing Company, 1947).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>L M Milne-Thomson</author>
+</authors>
+<title>The Calculus of Finite Differences</title>
+<date>1933</date>
+<publisher>Macmillan and Co</publisher>
+<location>London</location>
+<marker>Milne-Thomson, 1933</marker>
+<rawString>L. M. Milne-Thomson, The Calculus of Finite Differences, (London, Macmillan and Co., 1933).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>W W Peterson</author>
+</authors>
+<title>Error-Correction Codes</title>
+<date>1961</date>
+<pages>472--492</pages>
+<publisher>Wiley and Sons</publisher>
+<location>New York, John</location>
+<marker>Peterson, 1961</marker>
+<rawString>W. W. Peterson, Error-Correction Codes, (New York, John Wiley and Sons, 1961), pp. 472-492.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>David P Wolff</author>
+</authors>
+<title>Irreducible Polynomials over GF(3), unpublished M.S</title>
+<date>1975</date>
+<tech>project</tech>
+<pages>25--57</pages>
+<institution>Virginia Polytechnic Institute and State University</institution>
+<marker>Wolff, 1975</marker>
+<rawString>David P. Wolff, Irreducible Polynomials over GF(3), unpublished M.S. project, Virginia Polytechnic Institute and State University, (June, 1975) pp. 25-57.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Randolph Church</author>
+</authors>
+<title>Tables of Irreducible Polynomials for the First Four Prime Moduli</title>
+<date>1935</date>
+<journal>Annals of Math</journal>
+<volume>36</volume>
+<pages>198--209</pages>
+<marker>Church, 1935</marker>
+<rawString>Randolph Church, &amp;quot;Tables of Irreducible Polynomials for the First Four Prime Moduli&amp;quot;, Annals of Math. 36, no. 1 (January, 1935), pp. 198-209.</rawString>
+</citation>
+</citationList>
+</CSXAPIMetadata>

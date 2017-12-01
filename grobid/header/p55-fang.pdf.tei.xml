@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 /home/lopez/grobid/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<encodingDesc>
+			<appInfo>
+				<application version="0.4.3-SNAPSHOT" ident="GROBID" when="2017-12-01T14:39+0000">
+					<ref target="https://github.com/kermitt2/grobid">GROBID - A machine learning software for extracting information from scholarly documents</ref>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">UDP</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>ACM Press</publisher>
+				<availability status="unknown"><p>Copyright ACM Press</p>
+				</availability>
+				<date>October 14-18, 2017. 2017. October 14-18, 2017</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Yuanwei</forename><surname>Fang</surname></persName>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Chen</forename><surname>Zou</surname></persName>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Aaron</forename><forename type="middle">J</forename><surname>Elmore</surname></persName>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Andrew</forename><forename type="middle">A</forename><surname>Chien</surname></persName>
+						</author>
+						<title level="a" type="main">UDP</title>
+					</analytic>
+					<monogr>
+						<title level="m">Proceedings of the 50th Annual IEEE/ACM International Symposium on Microarchitecture - MICRO-50 &apos;17</title>
+						<meeting>the 50th Annual IEEE/ACM International Symposium on Microarchitecture - MICRO-50 &apos;17 <address><addrLine>Cambridge, MA, USA; Cambridge, MA, USA</addrLine></address>
+						</meeting>
+						<imprint>
+							<publisher>ACM Press</publisher>
+							<biblScope unit="volume">14</biblScope>
+							<date type="published">October 14-18, 2017. 2017. October 14-18, 2017</date>
+						</imprint>
+					</monogr>
+					<idno type="DOI">10.1145/3123939.3123983</idno>
+					<note>(a) Cost Breakdown. (b) Disk IO (note scale).</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>CCS CONCEPTS • Information systems → Extraction, transformation and load-ing</term>
+					<term>• Computer systems organization → Parallel architec-tures</term>
+					<term>• Hardware → Application speciï¿¿c processors</term>
+					<term>• The-ory of computation → Pattern matching</term>
+					<term>KEYWORDS Data Encoding and Transformation, Parsing, Compression, Data Analytics, Control-ï¿¿ow Accelerator</term>
+				</keywords>
+			</textClass>
+			<abstract>
+				<p>Big data analytic applications give rise to large-scale extract-transform-load (ETL) as a fundamental step to transform new data into a native representation. ETL workloads pose signiï¿¿cant performance challenges on conventional architectures, so we propose the design of the unstructured data processor (UDP), a software programmable accelerator that includes multi-way dispatch, variable-size symbol support, ï¿¿exible-source dispatch (stream buï¿¿er and scalar registers), and memory addressing to accelerate ETL kernels both for current and novel future encoding and compression. Speciï¿¿cally, UDP excels at branch-intensive and symbol and pattern-oriented workloads, and can oï¿¿oad them from CPUs. To evaluate UDP, we use a broad set of data processing workloads inspired by ETL, but broad enough to also apply to query execution, stream processing, and intrusion detection/monitoring. A single UDP accelerates these data processing tasks 20-fold (geometric mean, largest increase from 0.4 GB/s to 40 GB/s) and performance per watt by a geomean of 1,900-fold. UDP ASIC implementation in 28nm CMOS shows UDP logic area of 3.82mm 2 (8.69mm 2 with 1MB local memory), and logic power of 0.149W (0.864W with 1MB local memory); both much smaller than a single core.</p>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+	</text>
+</TEI>

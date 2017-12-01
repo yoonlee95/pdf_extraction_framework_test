@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSXAPIMetadata>
+<citationList>
+<citation valid="true">
+<title>EDA Tools Aim at Improving Yield,&amp;quot; http://www.eurosemi.eu.com/front-end/features-full.php?id=6762</title>
+<contexts>
+<context>chnology scaling. However, parametricslosses are the largest inhibitor to chip yields [18] andscontribute significantly to overall yield losses starting fromsthe 0.18 micrometer technology generation =-=[1, 10, 16, 24,s25]-=-. For sub-180nm technologies, it becomes harder toscontrol variations in device parameters such as channelslength, gate width, oxide thickness, and device thresholdsvoltage. Even in a mature technolog</context>
+</contexts>
+<marker>[1]</marker>
+<rawString>&amp;quot;EDA Tools Aim at Improving Yield,&amp;quot;  http://www.eurosemi.eu.com/front-end/features-full.php?id=6762 </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>A Agarwal</author>
+<author>D Blaauw</author>
+<author>V Zolotov</author>
+</authors>
+<title>Statistical Timing Analysis for Intra-die Process Variations with Spatial Correlations</title>
+<booktitle>in Proc. Intl. Conf. on Computer-Aided Design. 2003</booktitle>
+<location>San Jose, CA</location>
+<contexts>
+<context>onclude the paper in Section 7 with a summary.s2. Process Variations and Their Effects onsParametric Yield LosssProcess variations can be classified into inter-diesvariations and intra-die variations =-=[2, 8]-=-. Inter-die variationssdenote the variations that occur from one die to the next,sfrom wafer to wafer, and from wafer lot to another. Inter-diesvariations affect all devices on the same chip similarly</context>
+</contexts>
+<marker>[2]</marker>
+<rawString>Agarwal, A., D. Blaauw, and V. Zolotov. &amp;quot;Statistical Timing  Analysis for Intra-die Process Variations with Spatial Correlations,&amp;quot; in  Proc. Intl. Conf. on Computer-Aided Design. 2003. San Jose, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>A Agarwal</author>
+</authors>
+<title>A Process-Tolerant Cache Architecture for Improved Yield in Nanoscale Technologies</title>
+<journal>IEEE Trans. Very Large Scale Integrated Systems</journal>
+<volume>2005</volume>
+<pages>27--38</pages>
+<contexts>
+<context>process technologies scaling from 350 nanometerssto 90 nanometers, chip yields have dropped from over 90%sto just above 50% [18]. A recent study on 45 nanometerstechnologies reports yields around 30% =-=[3]-=-. This trend issdepicted in Figure 1, which shows the expected yield forsdifferent manufacturing technologies and the factors onswhich the yield loss is attributed to.sFactors limiting chip yields can</context>
+<context>thms targeted for an SoC and thesperformance, power, and yield of SRAMs used insimplementing them. These studies attack the yield losssproblem at a lower level compared to our methods. Agarwalset al. =-=[3]-=-, on the other hand, propose a new cache designswhere individual cache lines can be turned off if they aresfound to be faulty. This approach resembles our yield-awarespower-down schemes. However, thei</context>
+</contexts>
+<marker>[3]</marker>
+<rawString>Agarwal, A., et al., &amp;quot;A Process-Tolerant Cache Architecture for  Improved Yield in Nanoscale Technologies,&amp;quot; IEEE Trans. Very Large  Scale Integrated Systems, 2005. 13(1): p. 27-38. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>D Albonesi</author>
+</authors>
+<title>Selective Cache Ways: On-demand Cache Resource Allocation</title>
+<date>1999</date>
+<booktitle>in Intl. Symposium on Microarchitecture</booktitle>
+<location>Haifa, Israel</location>
+<contexts>
+<context>velopsthe Yield-Aware Power-Down (YAPD) technique.sAlthough the notion of YAPD can be applied to differentspower reduction techniques, in this paper we use a schemesthat combines Selective Cache Ways =-=[4]-=- and Gated-Vdds[30] as the example of a yield-unaware power reductionstechnique. Specifically, we modify this yield-unawaresscheme with YAPD to investigate how the yield is affectedsby our optimizatio</context>
+<context>d scheme thatsemploys both techniques to boost the yield even further.s4.1. Yield-Aware Power-Down (YAPD)sThe Yield-Aware Power-Down (YAPD) technique issbased on the Selective Cache Ways (SCW) method =-=[4]-=-scombined with the Gated-Vdd technique [30]. AlthoughsSCW is implemented for reducing power, we use a similarsmethod for improving yield. Particularly, the YAPDstechnique disables cache ways based on </context>
+</contexts>
+<marker>[4]</marker>
+<rawString>Albonesi, D. &amp;quot;Selective Cache Ways: On-demand Cache Resource  Allocation,&amp;quot; in Intl. Symposium on Microarchitecture. Nov. 1999.  Haifa, Israel.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>B S Amrutur</author>
+<author>M A Horowitz</author>
+</authors>
+<title>Speed and Power Scaling of SRAM's</title>
+<journal>IEEE Trans. on Solid-State Circuits, Feb</journal>
+<volume>2000</volume>
+<pages>175185</pages>
+<contexts>
+<context>fects of our architecturalsoptimizations on yield, we need to model a cachesarchitecture. To achieve this, we build a HSPICE model forsa 16 KB cache that is based on the model by Amrutur andsHorowitz =-=[5]-=-. This design is applicable to future generationsprocessors where smaller manufacturing technologies will besused. We use 45 nm PTM technology models [7].sIn our model, we implement a 16 KB 4-way sets</context>
+</contexts>
+<marker>[5]</marker>
+<rawString>Amrutur, B.S. and M.A. Horowitz, &amp;quot;Speed and Power Scaling of  SRAM's,&amp;quot; IEEE Trans. on Solid-State Circuits, Feb. 2000. 35: p. 175185. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>S Borkar</author>
+</authors>
+<title>Parameter Variations and Impact on Circuits and Microarchitectures</title>
+<booktitle>in Proc. of the Design Automation Conference. 2003</booktitle>
+<location>Anaheim, CA</location>
+<contexts>
+<context>ectronics, USAsThe 39th Annual IEEE/ACM International Symposium on Microarchitecture (MICRO'06) 0-7695-2732-9/06 $20.00s© 2006 can be even higher: 20X increases in leakage have beensreported for 90nm =-=[6]-=-. As a result of this variation insperformance and power, an increasingly larger fraction ofsthe manufactured chips do not meet their design constraintssand may have to be tossed away, even if they do</context>
+<context> Lgate. While low Vt devices are commonly used in circuitssto reduce latency, these devices are most vulnerable to highsleakage power consumption, leading to large yield loss inshigh performance bins =-=[6]-=-.sStatistical approaches, where the sources of variations aresmodeled as random variables with known distributions, aresconsidered more suitable for process variation modeling.sAnalytical approaches t</context>
+<context>ly 1970s.sRecently, yield losses have become a major concern due tosaggressive technology scaling. A number of circuit levelstechniques have been proposed to counter the effects ofsprocess variations =-=[6, 9, 10, 31, 33, 36]-=-. Most of thesestechniques focus on analyzing the design, either statisticallysor by using static timing analysis, and then modifying thesparts that are more susceptible to variation, e.g., sizing the</context>
+<context>maller technologies, the number ofscandidate elements for sizing increases, complicating thesapplication of such enhancements.sPerformance binning is another long-standing approachsto increase yields =-=[6, 10, 33]-=-. Circuits are placed in separatesbins depending on their performance and powersconsumption levels and marketed with different prices forseach bin. As a result, lower performing bins can be sold at as</context>
+</contexts>
+<marker>[6]</marker>
+<rawString>Borkar, S., et al. &amp;quot;Parameter Variations and Impact on Circuits and  Microarchitectures,&amp;quot; in Proc. of the Design Automation Conference.  2003. Anaheim, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Y Cao</author>
+</authors>
+<title>New Paradigm of Predictive MOSFET and Interconnect Modeling for Early Circuit Design</title>
+<booktitle>in Custom Integrated Circuits Conference. 2000</booktitle>
+<location>Orlando, FL. http://www.eas.asu.edu/~ptm</location>
+<contexts>
+<context> is based on the model by Amrutur andsHorowitz [5]. This design is applicable to future generationsprocessors where smaller manufacturing technologies will besused. We use 45 nm PTM technology models =-=[7]-=-.sIn our model, we implement a 16 KB 4-way setsassociative cache, where each way is further divided into 4sbanks and each memory bank consists of 64x128 bits. Tosreduce the bitline delays, each bitlin</context>
+<context>d lines are replaced by distributed RCsladders representing the local interconnect wires inside thescache. The parasitic values of the interconnect wires aresbased on the interconnect models from PTM =-=[7]-=-. The gatessizes are then optimized to minimize the cache latency.sOnce we have the basic cache model, we modified allsblocks to measure the effects of process variations. In oursmodel, we considered </context>
+</contexts>
+<marker>[7]</marker>
+<rawString>Cao, Y., et al. &amp;quot;New Paradigm of Predictive MOSFET and  Interconnect Modeling for Early Circuit Design,&amp;quot; in Custom Integrated  Circuits Conference. 2000. Orlando, FL. http://www.eas.asu.edu/~ptm </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>H Chang</author>
+<author>S S Sapatnekar</author>
+</authors>
+<title>Statistical Timing Analysis Considering Spatial Correlations Using a Single PERT-like Traversal</title>
+<booktitle>in Proc. Intl. Conf. on Computer-Aided Design. 2003</booktitle>
+<location>San Jose, CA</location>
+<contexts>
+<context>onclude the paper in Section 7 with a summary.s2. Process Variations and Their Effects onsParametric Yield LosssProcess variations can be classified into inter-diesvariations and intra-die variations =-=[2, 8]-=-. Inter-die variationssdenote the variations that occur from one die to the next,sfrom wafer to wafer, and from wafer lot to another. Inter-diesvariations affect all devices on the same chip similarly</context>
+<context>aresmodeled as random variables with known distributions, aresconsidered more suitable for process variation modeling.sAnalytical approaches to statistical timing analysis havesbeen proposed recently =-=[8, 38]-=-, but suffer from inaccuraciessdue to a large number of assumptions. However, thesesapproaches are efficient and find use in optimization [36].sFor accurate analysis, Monte Carlo simulations are widel</context>
+</contexts>
+<marker>[8]</marker>
+<rawString>Chang, H. and S.S. Sapatnekar. &amp;quot;Statistical Timing Analysis  Considering Spatial Correlations Using a Single PERT-like Traversal,&amp;quot;  in Proc. Intl. Conf. on Computer-Aided Design. 2003. San Jose, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>S H Choi</author>
+<author>B C Paul</author>
+<author>K Roy</author>
+</authors>
+<title>Novel Sizing Algorithm for Yield Improvement Under Process Variation in Nanometer Technology</title>
+<booktitle>in Proc. of the Design Automation Conference. 2004</booktitle>
+<pages>454--459</pages>
+<location>San Diego, CA</location>
+<contexts>
+<context>ly 1970s.sRecently, yield losses have become a major concern due tosaggressive technology scaling. A number of circuit levelstechniques have been proposed to counter the effects ofsprocess variations =-=[6, 9, 10, 31, 33, 36]-=-. Most of thesestechniques focus on analyzing the design, either statisticallysor by using static timing analysis, and then modifying thesparts that are more susceptible to variation, e.g., sizing the</context>
+</contexts>
+<marker>[9]</marker>
+<rawString>Choi, S.H., B.C. Paul, and K. Roy, &amp;quot;Novel Sizing Algorithm for  Yield Improvement Under Process Variation in Nanometer  Technology,&amp;quot; in Proc. of the Design Automation Conference. 2004: San  Diego, CA. p. 454-459. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>A Datta</author>
+</authors>
+<title>Speed Binning Aware Design Methodology to Improve Profit Under Parameter Variations</title>
+<booktitle>in Proc. of the Conf. on Asia South Pacific Design Automation. 2006</booktitle>
+<location>Yokohama, Japan</location>
+<contexts>
+<context>chnology scaling. However, parametricslosses are the largest inhibitor to chip yields [18] andscontribute significantly to overall yield losses starting fromsthe 0.18 micrometer technology generation =-=[1, 10, 16, 24,s25]-=-. For sub-180nm technologies, it becomes harder toscontrol variations in device parameters such as channelslength, gate width, oxide thickness, and device thresholdsvoltage. Even in a mature technolog</context>
+<context> frequent practice of chipsmanufacturers is that of frequency- or speed-binning inswhich they test and qualitatively sort working integratedscircuits according to their maximum frequency of operations=-=[10]-=-. The chips that do not meet the very minimumsfrequency constraints are tossed out during this process.sSince circuit delay and leakage current are inverselysproportional, this testing also exacerbate</context>
+<context>ly 1970s.sRecently, yield losses have become a major concern due tosaggressive technology scaling. A number of circuit levelstechniques have been proposed to counter the effects ofsprocess variations =-=[6, 9, 10, 31, 33, 36]-=-. Most of thesestechniques focus on analyzing the design, either statisticallysor by using static timing analysis, and then modifying thesparts that are more susceptible to variation, e.g., sizing the</context>
+<context>maller technologies, the number ofscandidate elements for sizing increases, complicating thesapplication of such enhancements.sPerformance binning is another long-standing approachsto increase yields =-=[6, 10, 33]-=-. Circuits are placed in separatesbins depending on their performance and powersconsumption levels and marketed with different prices forseach bin. As a result, lower performing bins can be sold at as</context>
+</contexts>
+<marker>[10]</marker>
+<rawString>Datta, A., et al. &amp;quot;Speed Binning Aware Design Methodology to  Improve Profit Under Parameter Variations,&amp;quot; in Proc. of the Conf. on  Asia South Pacific Design Automation. 2006. Yokohama, Japan.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>A Datta</author>
+</authors>
+<title>Delay Modeling and Statistical Design of Pipelined Circuit Under Process Variation</title>
+<date>2006</date>
+<booktitle>IEEE Trans. on ComputerAided Design of Integrated Circuits and Systems</booktitle>
+<contexts>
+<context>hniques to control body bias voltage, supplysvoltage, and temperature to get higher frequency bins.sThere are a number of architectural and system levelsapproaches that can impact yield. Datta et al. =-=[11]-=- employssgate sizing to optimize individual stages in the processorspipeline optimizing yield for a given area constraint orsminimizing area for a given yield constraint using thesconcept of area borr</context>
+</contexts>
+<marker>[11]</marker>
+<rawString>Datta, A., et al., &amp;quot;Delay Modeling and Statistical Design of  Pipelined Circuit Under Process Variation,&amp;quot; IEEE Trans. on ComputerAided Design of Integrated Circuits and Systems, 2006. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>A Datta</author>
+</authors>
+<title>Yield Prediction of High Performance Pipelined Circuit with Respect to Delay Failures</title>
+<date>2005</date>
+<booktitle>in Sub-100nm Technology,&amp;quot; in IEEE Intl. On-Line Testing Symposium</booktitle>
+<location>France</location>
+<contexts>
+<context>s. Also, their fine-grained approachsneglects the spatial correlation among different circuitselements, making decoder and the cache controllersunnecessarily complicated. Another work by Datta et al. =-=[12]-=-stries to predict the yield of a pipelined circuit with analyticalsmodels. They observe that introducing imbalances amongspaths in a pipeline stage actually increases the yield of thesdesign. Finally,</context>
+</contexts>
+<marker>[12]</marker>
+<rawString>Datta, A., et al. &amp;quot;Yield Prediction of High Performance Pipelined  Circuit with Respect to Delay Failures in Sub-100nm Technology,&amp;quot; in  IEEE Intl. On-Line Testing Symposium. 2005. France.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>S G Duvall</author>
+</authors>
+<title>Statistical Circuit Modeling and Optimization</title>
+<date>2000</date>
+<booktitle>in Intl. Workshop on Statistical Metrology</booktitle>
+<contexts>
+<context>ions is now equally, ifsnot more, significant than the former.sIntra-die variations consist of random and systematicscomponents, thereby producing non-uniform electricalscharacteristics across a chip =-=[13]-=-. A random variation issdefined as the component of a parameter deviation thatsfluctuates and deviates randomly from device to device, i.e.,shas zero correlation between devices. A systematic variatio</context>
+</contexts>
+<marker>[13]</marker>
+<rawString>Duvall, S.G. &amp;quot;Statistical Circuit Modeling and Optimization,&amp;quot; in  Intl. Workshop on Statistical Metrology. 2000.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>D Ernst</author>
+</authors>
+<title>Razor: A Low-Power Pipeline Based on CircuitLevel Timing Speculation</title>
+<booktitle>in Proc. of the Intl. Symposium on Microarchitecture. 2003</booktitle>
+<location>San Diego, CA</location>
+<contexts>
+<context>with analyticalsmodels. They observe that introducing imbalances amongspaths in a pipeline stage actually increases the yield of thesdesign. Finally, several approaches, such as Razor by Ernstset al. =-=[14]-=-, can be applied to improve yield. However, to thesbest of our knowledge, the yield impact of such schemes hassnot been studied.s7. ConclusionssReducing chip yields due to process variations is ansimp</context>
+</contexts>
+<marker>[14]</marker>
+<rawString>Ernst, D., et al. &amp;quot;Razor: A Low-Power Pipeline Based on CircuitLevel Timing Speculation,&amp;quot; in Proc. of the Intl. Symposium on  Microarchitecture. 2003. San Diego, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>P Friedberg</author>
+</authors>
+<title>Modeling Within-Die Spatial Correlation Effects for Process-Design Co-Optimization</title>
+<booktitle>in Proc. of the Intl. Symposium on Quality of Electronic Design. 2005</booktitle>
+<location>San Jose, CA</location>
+<contexts>
+<context>oefficient implies more correlation between two randomsvariables. The correlation factors are calculated from thesvertical and horizontal spatial correlation dependencesspresented by Friedberg et al. =-=[15]-=-. For each bit in a cachesblock, we have used a correlation factor of 0.01 and thescorrelation factor between rows is set to 0.05. Assuming thatsthe ways are laid out on a 2 by 2 mesh, the way that is</context>
+</contexts>
+<marker>[15]</marker>
+<rawString>Friedberg, P., et al. &amp;quot;Modeling Within-Die Spatial Correlation  Effects for Process-Design Co-Optimization,&amp;quot; in Proc. of the Intl.  Symposium on Quality of Electronic Design. 2005. San Jose, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>R Goering</author>
+</authors>
+<title>90-, 65-nm Yields Prey to Leakage,&amp;quot; http://vlsicad.ucsd.edu/leakage.htm</title>
+<contexts>
+<context>chnology scaling. However, parametricslosses are the largest inhibitor to chip yields [18] andscontribute significantly to overall yield losses starting fromsthe 0.18 micrometer technology generation =-=[1, 10, 16, 24,s25]-=-. For sub-180nm technologies, it becomes harder toscontrol variations in device parameters such as channelslength, gate width, oxide thickness, and device thresholdsvoltage. Even in a mature technolog</context>
+</contexts>
+<marker>[16]</marker>
+<rawString>Goering, R. &amp;quot;90-, 65-nm Yields Prey to Leakage,&amp;quot;  http://vlsicad.ucsd.edu/leakage.htm </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>E Humenay</author>
+<author>D Tarjan</author>
+<author>K Skadron</author>
+</authors>
+<title>Impact of Parameter Variations on Multi-Core Chips</title>
+<date>2006</date>
+<booktitle>in the Workshop on Architectural Support for Gigascale Integration</booktitle>
+<location>Boston, MA</location>
+<contexts>
+<context>resholdsvoltages. Finally, SRAM structures have high number ofsindependent critical paths and relatively low logic depth insthose paths, which makes them the dominant source of unitto-unit variations =-=[17]-=-. As a result of these three properties,sthe delay and leakage consumption of level 1 caches changessignificantly under process variations. Hence, the probabilitysthat a chip will not meet the perform</context>
+</contexts>
+<marker>[17]</marker>
+<rawString>Humenay E., D. Tarjan, K. Skadron. &amp;quot;Impact of Parameter  Variations on Multi-Core Chips,&amp;quot; in the Workshop on Architectural  Support for Gigascale Integration. 2006. Boston, MA. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>H H Jones</author>
+</authors>
+<title>A Delayed 90-nm Surprise</title>
+<tech>http://www.designchain.com/column.asp?id=2&amp;issue=fall04</tech>
+<contexts>
+<context> thesmanufacturability of these chips increasingly difficult [24,s39]. With process technologies scaling from 350 nanometerssto 90 nanometers, chip yields have dropped from over 90%sto just above 50% =-=[18]-=-. A recent study on 45 nanometerstechnologies reports yields around 30% [3]. This trend issdepicted in Figure 1, which shows the expected yield forsdifferent manufacturing technologies and the factors</context>
+<context> design parameter. For example, asmicroprocessor, which does not meet a frequency constraintsor consumes too much power, may be tossed away.sFigure 1. Yield factors for different processstechnologies =-=[18]-=-sAs shown in Figure 1, the impact of all the above factorsshas worsened with technology scaling. However, parametricslosses are the largest inhibitor to chip yields [18] andscontribute significantly t</context>
+</contexts>
+<marker>[18]</marker>
+<rawString>Jones, H.H. &amp;quot;A Delayed 90-nm Surprise,&amp;quot;  http://www.designchain.com/column.asp?id=2&amp;issue=fall04 </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>C Kim</author>
+<author>D Burger</author>
+<author>S W Keckler</author>
+</authors>
+<title>An Adaptive, Non-uniform Cache Structure for Wire-delay Dominated On-chip Caches</title>
+<booktitle>in Proc. of the Intl. Conf. on Architectural Support for Programming Languages and Operating Systems. 2002</booktitle>
+<location>San Jose, CA</location>
+<contexts>
+<context>of the cachesis identical. Third, we develop the VAriable-latency CachesArchitecture (VACA). In a VACA, different cache waysscan be accessed with different latencies. The main idea isssimilar to NUCA =-=[19]-=-, however, since we apply thesvariability to the level 1 data caches, we have to modify thesarchitecture to perform the corresponding instructionsscheduling. In addition, we augment the functional uni</context>
+<context> after additional cycles. Thisseffectively results in a cache architecture with variablesaccess latency capability.sThe idea of variable access latency caches is not new.sKim et al. proposed the NUCA =-=[19]-=- architecture to manageslarge on-chip caches. By exploiting the variation in accessstime across subarrays, NUCA allows fast access to closessub-arrays while retaining slow access to far subarrays.sInt</context>
+</contexts>
+<marker>[19]</marker>
+<rawString>Kim, C., D. Burger, and S.W. Keckler. &amp;quot;An Adaptive, Non-uniform  Cache Structure for Wire-delay Dominated On-chip Caches,&amp;quot; in Proc. of  the Intl. Conf. on Architectural Support for Programming Languages  and Operating Systems. 2002. San Jose, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>C H Kim</author>
+</authors>
+<title>An On-Die CMOS Leakage Current Sensor For Measuring</title>
+<date>2004</date>
+<booktitle>Process Variation in Sub-90nm Generations,&amp;quot; in VLSI Circuits Symposium</booktitle>
+<location>Honolulu, HI</location>
+<contexts>
+<context>schanges to a conventional cache are required.sFiguring out the ways that need to be disabled can besdone during memory testing right after fabrication and/or onsthe field using leakage power sensors =-=[20]-=-. When wesdetermine that a particular way consistently fails to returnsdata in time, or has excessive leakage, it can be turned off.sFigure 4 gives a high-level depiction of the YAPD methodsimplemente</context>
+</contexts>
+<marker>[20]</marker>
+<rawString>Kim, C.H., et al. &amp;quot;An On-Die CMOS Leakage Current Sensor For  Measuring Process Variation in Sub-90nm Generations,&amp;quot; in VLSI  Circuits Symposium. 2004. Honolulu, HI.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>F J Kurdahi</author>
+</authors>
+<title>System-Level SRAM Yield Enhancement</title>
+<date>2006</date>
+<booktitle>in International Symposium on Quality Electronic Design</booktitle>
+<location>San Jose, CA</location>
+<contexts>
+<context>o optimize individual stages in the processorspipeline optimizing yield for a given area constraint orsminimizing area for a given yield constraint using thesconcept of area borrowing. Kurdahi et al. =-=[21]-=- demonstratessanalysis techniques to model and improve the yield ofsSRAMs at the system level by proper accounting for thescoupling between the algorithms targeted for an SoC and thesperformance, powe</context>
+</contexts>
+<marker>[21]</marker>
+<rawString>Kurdahi, F.J., et al. &amp;quot;System-Level SRAM Yield Enhancement,&amp;quot; in  International Symposium on Quality Electronic Design, Mar. 2006. San  Jose, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>M Mani</author>
+<author>A Devgan</author>
+<author>M Orshanksky</author>
+</authors>
+<title>An Efficient Algorithm for Statistical Minimization of Total Power Under Timing Yield Constraints</title>
+<booktitle>in Proc. of the Design Automation Conference, 2005</booktitle>
+<location>Anaheim, CA</location>
+<contexts>
+<context>source of variability. Next, the sub-thresholdsleakage is exponentially dependent on the threshold voltages(Vt), which in turn strongly depends on the dopantsconcentration, and channel length (Lgate) =-=[22]-=-. Furthermore,sthe exponential dependence causes a large spread in thesleakage power distribution. For large width transistors, thesimpact of doping variations on Vt is smaller in comparisonsto Lgate.</context>
+</contexts>
+<marker>[22]</marker>
+<rawString>Mani, M., A. Devgan, and M. Orshanksky. &amp;quot;An Efficient  Algorithm for Statistical Minimization of Total Power Under Timing  Yield Constraints,&amp;quot; in Proc. of the Design Automation Conference,  2005, Anaheim, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>V Mehrotra</author>
+</authors>
+<title>Modeling the Effects of Systematic Process Variation on Circuit Performance</title>
+<date>2001</date>
+<tech>PhD Thesis</tech>
+<institution>Dept. of EECS, MIT</institution>
+<contexts>
+<context>t and devices.sInterconnect variations are attributed to those from threescomponents (as shown in Figure 2): metal thickness (T),sinter-layer dielectric thickness (ILD or H), and line-widths(W or LW) =-=[23]-=-. Additional geometric effects such asssidewall slope or surface and edge roughness may also be ofsconcern, but are not considered in this work. Factors thatscontribute to interconnect variations incl</context>
+<context>te, tox, and Vt (threshold voltage). Since the ratio ofsWgate/Lgate determines the drain current of a CMOSstransistor, if Wgate is much larger than Lgate, variation in Wgatesis usually not considered =-=[23]-=-.sWe next try to qualitatively understand the impact ofsthese variations on latency and power. It is intuitive that thesvariations in interconnect and device feature sizes contributesto uncertainty in</context>
+</contexts>
+<marker>[23]</marker>
+<rawString>Mehrotra, V. &amp;quot;Modeling the Effects of Systematic Process  Variation on Circuit Performance,&amp;quot; PhD Thesis, Dept. of EECS, MIT,  2001. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>M Miller</author>
+</authors>
+<title>Manufacturing-aware Design Helps Boost IC Yield,&amp;quot; http://www.eetimes.com/news/design/features/showArticle.jhtml;?articl eID=47102054</title>
+<contexts>
+<context>s scaling trend facilitates moresgates, and therefore more performance and functionality tosbe packed onto every chip produced, it has made thesmanufacturability of these chips increasingly difficult =-=[24,s39]-=-. With process technologies scaling from 350 nanometerssto 90 nanometers, chip yields have dropped from over 90%sto just above 50% [18]. A recent study on 45 nanometerstechnologies reports yields arou</context>
+<context>chnology scaling. However, parametricslosses are the largest inhibitor to chip yields [18] andscontribute significantly to overall yield losses starting fromsthe 0.18 micrometer technology generation =-=[1, 10, 16, 24,s25]-=-. For sub-180nm technologies, it becomes harder toscontrol variations in device parameters such as channelslength, gate width, oxide thickness, and device thresholdsvoltage. Even in a mature technolog</context>
+</contexts>
+<marker>[24]</marker>
+<rawString>Miller, M. &amp;quot;Manufacturing-aware Design Helps Boost IC Yield,&amp;quot;  http://www.eetimes.com/news/design/features/showArticle.jhtml;?articl eID=47102054 </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>M Miller</author>
+</authors>
+<title>Nanometer Yield Enhancement Begins</title>
+<booktitle>In The Design Phase,&amp;quot; http://www.elecdesign.com/Articles/Index.cfm?AD=1&amp;AD=1&amp;ArticleI D=9494</booktitle>
+<marker>[25]</marker>
+<rawString>Miller, M. &amp;quot;Nanometer Yield Enhancement Begins In The Design  Phase,&amp;quot;  http://www.elecdesign.com/Articles/Index.cfm?AD=1&amp;AD=1&amp;ArticleI D=9494 </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>T Mudge</author>
+</authors>
+<title>Low Power System's on a Chip - Today's Challenge</title>
+<date>2004</date>
+<booktitle>in Intl. Seminar on Application-Specific Multi-Processor SoC</booktitle>
+<note>http://tima.imag.fr/mpsoc/2004/slides/Mudge.pdf</note>
+<contexts>
+<context>ps do not meet their design constraintssand may have to be tossed away, even if they do not containsany functional defects.sIncreased power consumption levels is an importantsfactor in reduced yields =-=[26]-=-. At 65nm, sub-thresholdsleakage power constitutes a higher fraction of total powerscompared to switching (dynamic) and short circuit powers[27]. For each successive technology, this sub-thresholdslea</context>
+</contexts>
+<marker>[26]</marker>
+<rawString>Mudge, T. &amp;quot;Low Power System's on a Chip - Today's Challenge,&amp;quot;  in Intl. Seminar on Application-Specific Multi-Processor SoC. Jul.  2004. http://tima.imag.fr/mpsoc/2004/slides/Mudge.pdf </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>M L Mui</author>
+<author>K Banerjee</author>
+<author>A Mehrotra</author>
+</authors>
+<title>Power Supply Optimization in Sub-130 nm Leakage Dominant Technologies</title>
+<booktitle>in Proc. of the Intl. Symposium on Quality Electronic Design. 2004</booktitle>
+<location>San Jose, CA</location>
+<contexts>
+<context>umption levels is an importantsfactor in reduced yields [26]. At 65nm, sub-thresholdsleakage power constitutes a higher fraction of total powerscompared to switching (dynamic) and short circuit powers=-=[27]-=-. For each successive technology, this sub-thresholdsleakage increases fivefold, while gate leakage can increasesup to twenty-fold. Only a 10% variation in a transistor’sseffective channel length caus</context>
+</contexts>
+<marker>[27]</marker>
+<rawString>Mui, M.L., K. Banerjee, and A. Mehrotra. &amp;quot;Power Supply  Optimization in Sub-130 nm Leakage Dominant Technologies,&amp;quot; in Proc.  of the Intl. Symposium on Quality Electronic Design. 2004. San Jose,  CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>S Naffziger</author>
+</authors>
+<title>The Implementation of a 2-core, MultiThreaded Itanium Family Processor</title>
+<journal>IEEE Journal of Solid-State Circuits</journal>
+<volume>2006</volume>
+<pages>197--209</pages>
+<contexts>
+<context>o manageslarge on-chip caches. By exploiting the variation in accessstime across subarrays, NUCA allows fast access to closessub-arrays while retaining slow access to far subarrays.sIntel’s Montecito =-=[28]-=- uses a similar approach where eachscore has a shorter access time to its local L2 cache slices andsa longer delays to remaining L2 cache slices. However,sprevious studies focused on implementing this</context>
+</contexts>
+<marker>[28]</marker>
+<rawString>Naffziger, S., et al., &amp;quot;The Implementation of a 2-core, MultiThreaded Itanium Family Processor,&amp;quot; IEEE Journal of Solid-State  Circuits, 2006. 41(1): p. 197-209. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>S R Nassif</author>
+</authors>
+<title>Modeling and Analysis of Manufacturing Variations</title>
+<date>2001</date>
+<booktitle>in IEEE Conference on Custom Integrated Circuits</booktitle>
+<location>San Diego, CA</location>
+<contexts>
+<context>e, wespicked different random values for T, H, W, Lgate and Vt forsthe decoder, pre-charge circuits, memory cell arrays, sensesamplifiers and output drivers using the variation limits givensby Nassif =-=[29]-=-. The mean and 3σ values for each source ofsvariation are listed in Table 1.sFigure 3. One cache way within the 16 KB, 4 wayscache modelsTo understand the impact of process variations on thescache, we</context>
+</contexts>
+<marker>[29]</marker>
+<rawString>Nassif, S.R. &amp;quot;Modeling and Analysis of Manufacturing Variations,&amp;quot;  in IEEE Conference on Custom Integrated Circuits. May 2001. San  Diego, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>M Powell</author>
+</authors>
+<title>Gated-Vdd: A Circuit Technique to Reduce Leakage in Deep-Submicron Cache Memories</title>
+<date>2000</date>
+<booktitle>in ACM/IEEE Intl. Symposium on Low Power Electronics and Design</booktitle>
+<location>Rapallo, Italy</location>
+<contexts>
+<context>are Power-Down (YAPD) technique.sAlthough the notion of YAPD can be applied to differentspower reduction techniques, in this paper we use a schemesthat combines Selective Cache Ways [4] and Gated-Vdds=-=[30]-=- as the example of a yield-unaware power reductionstechnique. Specifically, we modify this yield-unawaresscheme with YAPD to investigate how the yield is affectedsby our optimization. The main idea in</context>
+<context>oost the yield even further.s4.1. Yield-Aware Power-Down (YAPD)sThe Yield-Aware Power-Down (YAPD) technique issbased on the Selective Cache Ways (SCW) method [4]scombined with the Gated-Vdd technique =-=[30]-=-. AlthoughsSCW is implemented for reducing power, we use a similarsmethod for improving yield. Particularly, the YAPDstechnique disables cache ways based on their delay andspower consumptions. If a ca</context>
+</contexts>
+<marker>[30]</marker>
+<rawString>Powell, M., et al. &amp;quot;Gated-Vdd: A Circuit Technique to Reduce  Leakage in Deep-Submicron Cache Memories,&amp;quot; in ACM/IEEE Intl.  Symposium on Low Power Electronics and Design. 2000. Rapallo,  Italy.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>S Raj</author>
+<author>S B K Vrudhula</author>
+<author>J Wang</author>
+</authors>
+<title>A Methodology to Improve Timing Yield in the Presence of Process Variations</title>
+<booktitle>in Proc. of the Conf. on Design Automation. 2004</booktitle>
+<location>San Diego, CA</location>
+<contexts>
+<context>ly 1970s.sRecently, yield losses have become a major concern due tosaggressive technology scaling. A number of circuit levelstechniques have been proposed to counter the effects ofsprocess variations =-=[6, 9, 10, 31, 33, 36]-=-. Most of thesestechniques focus on analyzing the design, either statisticallysor by using static timing analysis, and then modifying thesparts that are more susceptible to variation, e.g., sizing the</context>
+</contexts>
+<marker>[31]</marker>
+<rawString>Raj, S., S.B.K. Vrudhula, and J. Wang. &amp;quot;A Methodology to  Improve Timing Yield in the Presence of Process Variations,&amp;quot; in Proc.  of the Conf. on Design Automation. 2004. San Diego, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>R R Rao</author>
+</authors>
+<title>Modeling and Analysis of Parametric Yield under Power and Performance Constraints</title>
+<journal>IEEE Des. Test</journal>
+<volume>2005</volume>
+<pages>376--385</pages>
+<contexts>
+<context> in a transistor’sseffective channel length causes as much as three-foldsdifference in sub-threshold leakage current. Gate leakagesdifference is 15-fold for a similar 10% variation in oxidesthickness =-=[32]-=-. Small variations in device threshold voltagesresult in leakage numbers that differ by a factor of five orsten. This, in turn, increases the total power consumption andscauses increased parametric yi</context>
+<context>ional, this testing also exacerbates parametric yieldsloss because many dies in the high-speed bin are lost whensthey exceed acceptable leakage levels, further narrowing thesacceptable process window =-=[32]-=-.sYield loss affects both the bottom-line of chipsmanufacturers as well as the consumers. Every discardedschip increases the cost of those chips that survive thesfabrication process. Therefore, it is </context>
+<context>re of the analysis lies our capability to estimatesyield loss of a particular design. Therefore, we first presentsthe methodology used to estimate yield loss. Similar to thesmethodology by Rao et al. =-=[32]-=-, we first model 2000sdifferent caches under process variations. To achieve this,swe perform HSPICE simulations for 2000 caches, whereseach simulation picks a different set of process variationsparame</context>
+<context>powersconsumption versus distribution of cache access latencies.sOnce the latency versus leakage distribution is found, thesyield can be calculated by setting power and performanceslimits. Rao et al. =-=[32]-=- analyze an ALU and use mean+sigmasvalue for performance limit and 1.75xaverage leakage powerslimit for a 65 nm technology. Similar to their approach, wesuse the same performance limit. However, we pi</context>
+</contexts>
+<marker>[32]</marker>
+<rawString>Rao, R.R., et al., &amp;quot;Modeling and Analysis of Parametric Yield  under Power and Performance Constraints,&amp;quot; IEEE Des. Test, 2005.  22(4): p. 376-385. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>A Raychowdhury</author>
+</authors>
+<title>et al. &amp;quot;A Novel On-chip Delay Measurement Hardware for Efficient Speed Binning</title>
+<date>2005</date>
+<booktitle>in Intl. Online Testing Symposium</booktitle>
+<location>France</location>
+<contexts>
+<context>ly 1970s.sRecently, yield losses have become a major concern due tosaggressive technology scaling. A number of circuit levelstechniques have been proposed to counter the effects ofsprocess variations =-=[6, 9, 10, 31, 33, 36]-=-. Most of thesestechniques focus on analyzing the design, either statisticallysor by using static timing analysis, and then modifying thesparts that are more susceptible to variation, e.g., sizing the</context>
+<context>maller technologies, the number ofscandidate elements for sizing increases, complicating thesapplication of such enhancements.sPerformance binning is another long-standing approachsto increase yields =-=[6, 10, 33]-=-. Circuits are placed in separatesbins depending on their performance and powersconsumption levels and marketed with different prices forseach bin. As a result, lower performing bins can be sold at as</context>
+</contexts>
+<marker>[33]</marker>
+<rawString>Raychowdhury, A., et al. &amp;quot;A Novel On-chip Delay Measurement  Hardware for Efficient Speed Binning,&amp;quot; in Intl. Online Testing  Symposium. Jul. 2005. France.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>T Sherwood</author>
+<author>E Perelman</author>
+<author>B Calder</author>
+</authors>
+<title>Basic Block Distribution Analysis to Find Periodic Behavior and Simulation Points in Applications</title>
+<date>2001</date>
+<booktitle>in Proc. of the Intl. Conf. on Parallel Architectures and Compilation Techniques</booktitle>
+<contexts>
+<context>d 11sinteger benchmarks from the SPEC2000 benchmarking suites[37]. We simulate 100 Million instructions after fastforwarding application-specific number of instructions assproposed by Sherwood et al. =-=[34]-=-.sThe base processor is a 4-way processor with an issuesqueue of 128 entries and a ROB of 256 entries. Thessimulated processor has separate level 1 instruction and datascaches: level 1 instruction cac</context>
+</contexts>
+<marker>[34]</marker>
+<rawString>Sherwood, T., E. Perelman, and B. Calder. &amp;quot;Basic Block  Distribution Analysis to Find Periodic Behavior and Simulation Points  in Applications,&amp;quot; in Proc. of the Intl. Conf. on Parallel Architectures and  Compilation Techniques. 2001.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>SimpleScalar LLC</author>
+</authors>
+<title>The SimpleScalar Tool Set</title>
+<date>2001</date>
+<contexts>
+<context>0 4 N/A 5.47 5.47s0 4 0 1 N/A 6.42 6.42s3 0 1 35 1.08 N/A 1.08s2 1 1 13 N/A N/A 3.65s1 2 1 8 N/A N/A 5.49s0 3 1 2 N/A N/A 7.39s4 0 0 105 1.08 N/A 1.08sWeightedsSums1.08 2.20 1.83sThe SimpleScalar 3.0 =-=[35]-=- simulator is used to measuresthe effects of the proposed techniques on performance. Thesnecessary modifications to the simulator have beensimplemented to perform selective replay, the scheduler, thes</context>
+</contexts>
+<marker>[35]</marker>
+<rawString>SimpleScalar LLC, &amp;quot;The SimpleScalar Tool Set.&amp;quot; 2001. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>D Sinha</author>
+<author>N V Shenoy</author>
+<author>H Zhou</author>
+</authors>
+<title>Statistical Gate Sizing for Timing Yield Optimization</title>
+<booktitle>in Proc. Intl. Conf. on Computer-Aided Design. 2005</booktitle>
+<location>San Jose, CA</location>
+<contexts>
+<context>tatistical timing analysis havesbeen proposed recently [8, 38], but suffer from inaccuraciessdue to a large number of assumptions. However, thesesapproaches are efficient and find use in optimization =-=[36]-=-.sFor accurate analysis, Monte Carlo simulations are widelysemployed. In this technique, random samples of the randomsvariables are taken in each simulation. The distribution ofsthe final result (coul</context>
+<context>ly 1970s.sRecently, yield losses have become a major concern due tosaggressive technology scaling. A number of circuit levelstechniques have been proposed to counter the effects ofsprocess variations =-=[6, 9, 10, 31, 33, 36]-=-. Most of thesestechniques focus on analyzing the design, either statisticallysor by using static timing analysis, and then modifying thesparts that are more susceptible to variation, e.g., sizing the</context>
+</contexts>
+<marker>[36]</marker>
+<rawString>Sinha, D., N.V. Shenoy, and H. Zhou. &amp;quot;Statistical Gate Sizing for  Timing Yield Optimization,&amp;quot; in Proc. Intl. Conf. on Computer-Aided  Design. 2005. San Jose, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>SPEC</author>
+</authors>
+<title>Spec CPU2000: Performance Evaluation in the New Millennium v1.1</title>
+<date>2000</date>
+<contexts>
+<context>calar to simulate asrealistically sized issue queue, and to model the events in thesissue queue in detail. We simulate 13 floating-point and 11sinteger benchmarks from the SPEC2000 benchmarking suites=-=[37]-=-. We simulate 100 Million instructions after fastforwarding application-specific number of instructions assproposed by Sherwood et al. [34].sThe base processor is a 4-way processor with an issuesqueue</context>
+</contexts>
+<marker>[37]</marker>
+<rawString>SPEC, &amp;quot;Spec CPU2000: Performance Evaluation in the New  Millennium v1.1.&amp;quot; Dec. 2000. </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>C Visweswariah</author>
+</authors>
+<title>First-Order Incremental Block-Based Satistical Tming Aalysis</title>
+<booktitle>in Proc. of the Design Automation Conference. 2004</booktitle>
+<location>San Diego, CA</location>
+<contexts>
+<context>aresmodeled as random variables with known distributions, aresconsidered more suitable for process variation modeling.sAnalytical approaches to statistical timing analysis havesbeen proposed recently =-=[8, 38]-=-, but suffer from inaccuraciessdue to a large number of assumptions. However, thesesapproaches are efficient and find use in optimization [36].sFor accurate analysis, Monte Carlo simulations are widel</context>
+</contexts>
+<marker>[38]</marker>
+<rawString>Visweswariah, C., et al. &amp;quot;First-Order Incremental Block-Based  Satistical Tming Aalysis,&amp;quot; in Proc. of the Design Automation  Conference. 2004. San Diego, CA.  </rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>D Wilson</author>
+</authors>
+<title>NVIDIA's Tiny 90nm G71 and G73: GeForce 7900 and 7600 Debut</title>
+<booktitle>http://www.anandtech.com/video/showdoc.aspx?i=2717 The 39th Annual IEEE/ACM International Symposium on Microarchitecture (MICRO'06) 0-7695-2732-9/06 $20.00 © 2006</booktitle>
+<contexts>
+<context>ost of those chips that survive thesfabrication process. Therefore, it is evident that an effortsmust be made in future designs to maximize not onlysperformance, but also manufacturability and yields =-=[39]-=-. Oursgoal in this work is to achieve this by developingsmicroarchitectural techniques to reduce the yield loss. Wesparticularly target the parametric yield loss. Parametric yieldsloss occurs because </context>
+</contexts>
+<marker>[39]</marker>
+<rawString>Wilson, D. &amp;quot;NVIDIA's Tiny 90nm G71 and G73: GeForce 7900  and 7600 Debut,&amp;quot;  http://www.anandtech.com/video/showdoc.aspx?i=2717  The 39th Annual IEEE/ACM International Symposium on Microarchitecture (MICRO'06) 0-7695-2732-9/06 $20.00  © 2006</rawString>
+</citation>
+</citationList>
+</CSXAPIMetadata>

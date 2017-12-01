@@ -1,0 +1,48 @@
+1. Introduction
+1.1. The trace cache
+The trace cache approach relies on dynamic sequences of code being reused. This may be the case for two reasons
+temporal locality -like the primary instruction cache, l the trace cache can count on instructions which have been recently used being used again in the near future.
+1.2. Related prior work
+1.3. Problems with other fetch mechanisms
+l Pointers to all of the noncontiguous instruction blocks
+1.4. Contributions
+1.5. Paper overview
+addr -
+A
+2. TJkace cache
+2.1. Core fetch unit
+l valid bit indicates this is a valid trace.
+l tug identifies the starting address of the trace.
+l brunchjlugs there is a single bit foreach branch within
+b branch mask state is needed to indicate 1 the num-ber of branches in the trace and 2 whether or not the
+l tracefall-throughaddress next fetch address ifthe last
+l trace target address next fetch address if the last
+2.3. Trace cache design space
+3. Other high bandwidth fetch mechanisms
+3.1. Branch address cache
+Though conceptually the design has two pipeline stages, possibly one or more additional pipeline stages are implied by having the complicated alignment network. The align-
+3.2. Collapsing buffer
+,, ii. . . . . . .j
+4. Simulation methodology
+4.1. Processor model
+4.2. Workload
+struction path lengths. To simulate the IBS traces, we devel-oped a trace-driven MIPS processor simulator similar to the SPARC one.
+4.3. Performance metric
+5. Results
+5.1. Single-cycle fetch latency
+5.3. ‘Race cache effectiveness
+-g 3.5
+6. Conclusions
+7. Acknowledgements
+Figure 1. Decoupled fetch execute
+Figure 2. High level view of the trace cache.
+Figure 3. The core fetch unit.
+Figure 4. The trace cache fetch mechanism.
+Figure 5. Branch address cache approach.
+Figure 6. BAC stores subgraphs of the CFG.
+Figure 7. The collapsing buffer approach.
+Figure 8. IPC results fetch latency
+Figure 9. Improvement of SEQ.3 over SEQ.1.
+Figure 10. Improvement over SEQ.3.
+Figure 11. Improvement over SEQ.3 152 and L.3 stand for 2 and 3 cycle latency.
+Figure 12. TC performance potential.

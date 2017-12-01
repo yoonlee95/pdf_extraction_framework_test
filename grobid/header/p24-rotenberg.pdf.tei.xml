@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 /home/lopez/grobid/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<encodingDesc>
+			<appInfo>
+				<application version="0.4.3-SNAPSHOT" ident="GROBID" when="2017-12-01T14:40+0000">
+					<ref target="https://github.com/kermitt2/grobid">GROBID - A machine learning software for extracting information from scholarly documents</ref>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Trace Cache: a Low Latency Approach to High Bandwidth Instruction Fetching</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Eric</forename><surname>Rotenberg</surname></persName>
+							<email>ericro@cs.wisc.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Computer Science Dept</orgName>
+								<orgName type="department" key="dep2">Dept. of Elec. and Comp. Engr</orgName>
+								<orgName type="institution" key="instit1">Univ. of Wisconsin -Madison</orgName>
+								<orgName type="institution" key="instit2">Intel Corporation</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Steve</forename><surname>Bennett</surname></persName>
+							<email>sbennett@ichips.intel.com</email>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Computer Science Dept</orgName>
+								<orgName type="department" key="dep2">Dept. of Elec. and Comp. Engr</orgName>
+								<orgName type="institution" key="instit1">Univ. of Wisconsin -Madison</orgName>
+								<orgName type="institution" key="instit2">Intel Corporation</orgName>
+							</affiliation>
+						</author>
+						<author>
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">James</forename><forename type="middle">E</forename><surname>Smith</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Computer Science Dept</orgName>
+								<orgName type="department" key="dep2">Dept. of Elec. and Comp. Engr</orgName>
+								<orgName type="institution" key="instit1">Univ. of Wisconsin -Madison</orgName>
+								<orgName type="institution" key="instit2">Intel Corporation</orgName>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Trace Cache: a Low Latency Approach to High Bandwidth Instruction Fetching</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<profileDesc>
+			<abstract>
+				<p>As the issue width of superscalarprocessors is increased, instructionfetch bandwidth requirements will also increase. It will become necessary to fetch multiple basic blocks per cycle. Conventional instruction caches hinder this effort because long instruction sequences are not always in contiguous cache locations. We propose supplementing the conventional instruction cache with a trace cache, This structure caches traces of the dynamic instruction stream, so instructions that are otherwise noncontiguous appear contiguous. For the Instruction Benchmark Suite (IBS) and SPEC92 integer benchmarks, a 4 kilobyte trace cache improves performance on average by 28% over conventional sequential fetching. Further; it is shown that the trace cache&apos;s efficient, low latency approach enables it to outperform more complex mechanisms that work solely out of the instruction cache.</p>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+	</text>
+</TEI>

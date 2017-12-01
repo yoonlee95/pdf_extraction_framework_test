@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSXAPIMetadata>
+<citationList>
+<citation valid="true">
+<title>Cadence Tensilica Xtensa</title>
+<booktitle>https://ip.cadence.com/uploads/902/TIP_What_ Why_How_Cust_Processors_WP_V3_FINAL-pdf. ([n. d</booktitle>
+<contexts>
+<context>Pack None Bit-pack None None None DAX-Ozip None OZIP None None None IBM PowerEN [61] XML None None XML None None RegX None None None DFA, D2FA None Compress DEFLATE None None None None Cadence Xtensa =-=[1]-=- Histogram TIE None None None None Fixed-size bin ETH Histogram (FPGA)[63] None None None None All listed Table 1: Coverage of Transformation/Encoding Algorithms: Accelerators and UDP. formats. These </context>
+</contexts>
+<marker>[1]</marker>
+<rawString>[n. d.]. Cadence Tensilica Xtensa. https://ip.cadence.com/uploads/902/TIP_What_ Why_How_Cust_Processors_WP_V3_FINAL-pdf. ([n. d.]).</rawString>
+</citation>
+<citation valid="true">
+<title>IBM Netezza Data Warehouse Appliances. http://www-01.ibm.com/ software/data/netezza/. ([n. d</title>
+<contexts>
+<context>gnicant speedups for analytic workloads (Q100 [82]); these systems don’t do the broad range of data transformation that is the focus of UDP. Ooad systems in storage systems (e.g. Ibex [81], Netezza =-=[2]-=-, Exadata [4]) gain performance by exploiting internal storage bandwidth. UDP’s low power and programmability make it a candidate for such storage embedding. FPGA-based eorts that accelerate histogra</context>
+</contexts>
+<marker>[2]</marker>
+<rawString>[n. d.]. IBM Netezza Data Warehouse Appliances. http://www-01.ibm.com/ software/data/netezza/. ([n. d.]).</rawString>
+</citation>
+<citation valid="false">
+<authors>
+<author>https www arm comproductsprocessorstechnologies neon php</author>
+</authors>
+<contexts>
+<context>cability to the broad range of data movement and transformation tasks described in Section 5. Stream Buer constructs streams from vector registers, extending the vector instruction set (e.g. AVX,NEON=-=[3, 20]-=-). Ecient implementation copies vector register to the UDP stream buer, who has hardware prefetching and ecient index management support, delivering good single stream performance. Shared or privat</context>
+</contexts>
+<marker>[3]</marker>
+<rawString>[n. d.]. NEON - ARM. https://www.arm.com/products/processors/technologies/ neon.php. ([n. d.]).</rawString>
+</citation>
+<citation valid="true">
+<title>Oracle Exadata Storage Server</title>
+<note>http://www.oracle.com/technetwork/ index.html. ([n. d</note>
+<contexts>
+<context>dups for analytic workloads (Q100 [82]); these systems don’t do the broad range of data transformation that is the focus of UDP. Ooad systems in storage systems (e.g. Ibex [81], Netezza [2], Exadata =-=[4]-=-) gain performance by exploiting internal storage bandwidth. UDP’s low power and programmability make it a candidate for such storage embedding. FPGA-based eorts that accelerate histogramming [63] hi</context>
+</contexts>
+<marker>[4]</marker>
+<rawString>[n. d.]. Oracle Exadata Storage Server. http://www.oracle.com/technetwork/ index.html. ([n. d.]).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Canterbury Corpus</author>
+</authors>
+<date>2001</date>
+<note>http://corpus.canterbury.ac.nz</note>
+<contexts>
+<context>rimes [16] Costly Hash 67% runtime Dictionary and Run Length Encoding (RLE) Crimes Costly Hash 54% runtime Histogram Crimes, NYC Taxi Trip 5x branch mispredicts Compression (Snappy) Canterbury Corpus =-=[5]-=-, Berkeley Big Data [24] 15x branch mispredicts Decompression (Snappy) Canterbury Corpus, Berkeley Big Data 15x branch mispredicts Signal Triggering Keysight Scope Trace [53] mem indirect, address, co</context>
+<context>nite-state machine used in libcsv. Human coding transforms a byte-stream into a dense bit-level coding, with the CPU code as an open-source library libhuman [22]. Measurements use Canterbury Corpus =-=[5]-=- and Berkeley Big Data Benchmark [24]. Canterbury les range from 3KB to 1MB with dierent entropy and for BDBench we use crawl, rank, user ; we evaluate a single HDFS block (64MB, 22MB and 64MB) resp</context>
+</contexts>
+<marker>[5]</marker>
+<rawString>2001. Canterbury Corpus. (2001). http://corpus.canterbury.ac.nz/</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>CACTI</author>
+</authors>
+<date>2008</date>
+<contexts>
+<context>tion is used. Thus, the UDP enjoys fast local memory access and low access energy. Figure 11c displays memory reference energy for 1MBmemory (64 read ports and 64 write ports) modeled using CACTI 6.5 =-=[6]-=-. For local and restricted addressing, 1MB memory has 64 independent banks with 1 read and 1 write port for each 16KB bank. Restricted and local addressing requires 4.3 pJ/ref while global addressing </context>
+<context>for 28-nm TSMC process with the Synopsys Design Compiler, producing timing, area, and power reports. For system modeling, we estimate local memory and vector register power and timing using CACTI 6.5 =-=[6]-=-. The overall UDP system includes the UDP, a 64x2048-bit vector register le, data-layout transformation engine (DLT) [76], and a 1MB, 64-bank local memory. Silicon power and area for the UDP design i</context>
+<context>.a Table 3: UDP Power and Area Breakdown. Speed: The synthesized UDP lane design achieves the timing closure with a clock period of 0.97 ns, which includes 0.2 ns to access the 16KB local memory bank =-=[6]-=-. Thus the UDP design runs with a 1GHz clock. Power: The 64-lane UDP system consumes 864 mW, one-tenth the power of a x86 Westmere EP core+L1 in a 28nm process [10]. Most of the power (82.8%) is consu</context>
+</contexts>
+<marker>[6]</marker>
+<rawString>2008. CACTI 6.5. http://www.cs.utah.edu/~rajeev/cacti6/. (2008).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>IEEE</author>
+</authors>
+<title>754 oating-point format</title>
+<date>2008</date>
+<pages>754</pages>
+<contexts>
+<context> encoding, using a dened dictionary. Histogram CPU code is the GSL Histogram library [28]. Measurements use Crimes.Latitude, Crimes.Longitude, and Taxi.Fare with 10, 10, and 4 bins of IEEE FP values =-=[7]-=-. On UDP, the dividers are compiled into an automata scans of 4 bits a time, with acceptance states updating the appropriate bin. Experiments are with 1) uniform-size bins and 2) percentile bins with </context>
+</contexts>
+<marker>[7]</marker>
+<rawString>2008. IEEE 754 ￿oating-point format. (2008). http://grouper.ieee.org/groups/754/</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>https sourceforge netprojectslibcsv</author>
+</authors>
+<date>2009</date>
+<contexts>
+<context>ress, condl, 9 cycles Table 2: Data Transformation Workloads CSV parsing involves nding delimiters, elds, and row and column structure, and copying eld into the system. The CPU code is from libcsv =-=[8]-=-; these measurements use Crimes (128MB) [16], Trip (128MB) [23] and Food Inspection (16MB) [17] datasets. In Food Inspection, multiple elds contain escape quotes, including long comments and location</context>
+</contexts>
+<marker>[8]</marker>
+<rawString>2009. libcsv C library. https://sourceforge.net/projects/libcsv/. (2009).</rawString>
+</citation>
+<citation valid="true">
+<title>The IBM Power Edge of Network Processor</title>
+<date>2010</date>
+<note>http://www.cercs. gatech.edu/iucrc10/material/franke.pdf</note>
+<contexts>
+<context>on and Deep Packet Inspection (NID/DPI) includes exploiting SIMD [44, 73] and aggressive 4We estimate compression power by 20W TDP[21] and exclude clock grid, IO/bus, and crypto. using relative ratio =-=[9]-=-. 5Altera Stratix V FPGA. 6Scale to 28nm TSMC and estimate based on chip die size [26, 32]. 7IBM 45nm SOI [9]. 66 UDP: A Programmable Accelerator for Extract-Transform-Load Workloads and More MICRO-50</context>
+</contexts>
+<marker>[9]</marker>
+<rawString>2010. The IBM Power Edge of Network Processor. (2010). http://www.cercs. gatech.edu/iucrc10/material/franke.pdf</rawString>
+</citation>
+<citation valid="true">
+<title>Intel Xeon Processor E5620 Specication</title>
+<date>2010</date>
+<note>https://ark.intel.com/ products/47925</note>
+<contexts>
+<context>(864 milliwatts for UDP system) derived from the UDP implementation that is described Section 6. In Section 5, for each kernel we compare achievable rate for one UDP lane to one Xeon E5620 CPU thread =-=[10]-=-. For throughput per watt, we compare a UDP (64 lanes + infrastructure) to E5620 CPU (TDP 80W, 4-cores, 8-threads). Because parallelized versions were not available for some benchmarks, we estimate pe</context>
+<context>to access the 16KB local memory bank [6]. Thus the UDP design runs with a 1GHz clock. Power: The 64-lane UDP system consumes 864 mW, one-tenth the power of a x86 Westmere EP core+L1 in a 28nm process =-=[10]-=-. Most of the power (82.8%) is consumed by local memory. The 64lane logic only costs 120.6 mW (14%). Area: The entire UDP is 8.69 mm2, including 64 UDP lanes (39.5%) and infrastructure that includes 1</context>
+</contexts>
+<marker>[10]</marker>
+<rawString>2010. Intel Xeon Processor E5620 Speci￿cation. (2010). https://ark.intel.com/ products/47925</rawString>
+</citation>
+<citation valid="true">
+<title>The ARMv8 Architecture, white paper</title>
+<date>2011</date>
+<note>https://www.arm.com/les/ downloads/ARMv8_white_paper_v5.pdf</note>
+<contexts>
+<context>ADS AND ACCELERATORS Big data computing workloads are diverse and typied by challenging behavior that gives poor performance in modern CPUs with high instruction-level parallelism and deep pipelines =-=[11, 79]-=-. We summarize a variety of these workloads below and document their challenges for CPUs in Table 2. 2.1 Workloads Database ETL (extract, transform, and load) requires tools to integrate disparate dat</context>
+</contexts>
+<marker>[11]</marker>
+<rawString>2011. The ARMv8 Architecture, white paper. (2011). https://www.arm.com/￿les/ downloads/ARMv8_white_paper_v5.pdf</rawString>
+</citation>
+<citation valid="true">
+<date>2011</date>
+<booktitle>Cavium NITROX DPI L7 Content Processor Family</booktitle>
+<note>http://www. cavium.com/processor_NITROX-DPI.html</note>
+<contexts>
+<context> its use of large dedicated FPGA. All of these specialized accelerators’ implementations lack the exible programmability of UDP. Tokenization alone can be accelerated by patternmatching accelerators =-=[12, 54, 57, 80]-=-, but lack the programmability to address the costly follow-on processing (e.g. deserialization and validation) which often dominates execution time (Figure 1a). The UDP handles these tasks and more. </context>
+<context>rogrammability supports varied tasks and application-specic formats or algorithms, while providing comparable performance (Table 4). Acceleration of stream processing [49, 65] and network processors =-=[12]-=- can achieve high data processing rates with support for pattern-matching and network interfaces (see also NIC and “bumpin-the-wire” approaches [45]). The UDP complements these systems, providing prog</context>
+<context>se stream rate, but at signicant overhead [72, 75, 86]. GPU implementations [85] report throughputs 0.03 GB/s (large pattern sets) increasing to 1.6GB/s [87] (small sets). Several network processors =-=[12, 61]-=- employ hardwired regular expression acceleration to reach 6.25GB/s throughput. Unied Automata Processor achieves up to 5x better performance [54] by exploiting programmability to employ the best ni</context>
+</contexts>
+<marker>[12]</marker>
+<rawString>2011. Cavium NITROX DPI L7 Content Processor Family. (2011). http://www. cavium.com/processor_NITROX-DPI.html</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>PARSEC</author>
+</authors>
+<date>2011</date>
+<note>http://parsec.cs.princeton.edu</note>
+<contexts>
+<context>ments the reason for their poor performance on CPUs. First, Snappy, Human, CSV, and Histogram are all branch and mispredicted branch intensive as shown by ratios to the geometric mean for the PARSEC =-=[13]-=- benchmarks. Second, dictionary and dictionary-RLE attempt to avoid branches (hash and then load indirect), but suer from high hashing cost. Third, pattern matching avoids branches by lookup tables b</context>
+</contexts>
+<marker>[13]</marker>
+<rawString>2011. PARSEC 3.0. (2011). http://parsec.cs.princeton.edu/</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Big</author>
+</authors>
+<title>Data Research and Development Initiative. https://www.whitehouse</title>
+<date>2012</date>
+<contexts>
+<context>e. In short, data manipulation - transformation - movement, rather than arithmetic speed, is the primary barrier to continued performance scaling. We focus on a growing class of big data computations =-=[14, 19, 27]-=- that analyze diverse data for business (e-commerce, recommendation systems, targeted marketing), social networking (interest ltering, trending topics), medicine (pharmacogenomics), government (publi</context>
+</contexts>
+<marker>[14]</marker>
+<rawString>2012. Big Data Research and Development Initiative. https://www.whitehouse. gov/sites/default/￿les/microsites/ostp/big_data_press_release_￿nal_2.pdf. (2012).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>http www boost org</author>
+</authors>
+<date>2012</date>
+<contexts>
+<context>MB, 22MB and 64MB) respectively. For UDP, we duplicate the Canterbury data to provide 64-lane parallelism. Pattern matching uses regular expression patterns [80], with the CPU code as Boost C++ Regex =-=[15]-=-. Measurements use network-intrusion detection patterns. Boost supports only single-pattern matching, so we merge the NIDS patterns into a single combined pattern. The UDP code uses ADFA [66] and NFA </context>
+</contexts>
+<marker>[15]</marker>
+<rawString>2012. Boost C++ library. http://www.boost.org/. (2012).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Chicago</author>
+</authors>
+<title>City Crime Report</title>
+<date>2012</date>
+<note>http://data.cityofchicago.org</note>
+<contexts>
+<context>spredicts Human Decoding Canterbury Corpus, Berkeley Big Data 5x branch mispredicts Pattern Matching (Intrusion Detection) IBM PowerEN dataset [80] Poor locality, 1.6x L1 miss rate Dictionary Crimes =-=[16]-=- Costly Hash 67% runtime Dictionary and Run Length Encoding (RLE) Crimes Costly Hash 54% runtime Histogram Crimes, NYC Taxi Trip 5x branch mispredicts Compression (Snappy) Canterbury Corpus [5], Berke</context>
+<context>rmation Workloads CSV parsing involves nding delimiters, elds, and row and column structure, and copying eld into the system. The CPU code is from libcsv [8]; these measurements use Crimes (128MB) =-=[16]-=-, Trip (128MB) [23] and Food Inspection (16MB) [17] datasets. In Food Inspection, multiple elds contain escape quotes, including long comments and location coordinates. UDP implements the parsing ni</context>
+<context>he UDP library being block compatible.Dictionary encoding CPU code is Parquet’s C++ dictionary encoder [18]. Dictionary measurements use Arrest, District, and Location Description attributes of Crime =-=[16]-=-. Dictionary-RLE adds a runlength encoding phase. UDP program performs encoding, using a dened dictionary. Histogram CPU code is the GSL Histogram library [28]. Measurements use Crimes.Latitude, Crim</context>
+</contexts>
+<marker>[16]</marker>
+<rawString>2012. Chicago City Crime Report. (2012). http://data.cityofchicago.org</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Chicago</author>
+</authors>
+<title>City Restaurant Inspection</title>
+<date>2012</date>
+<note>http://data.cityofchicago.org</note>
+<contexts>
+<context>HODOLOGY 4.1 Workloads We selected a diverse set of kernels drawn from broader ETL and data transformations. Application Workload CPU Challenge CSV Parsing Crimes, NYC Taxi Trip [23], Food Inspection =-=[17]-=- 3x branch mispredicts Human Encoding Canterbury Corpus, Berkeley Big Data 5x branch mispredicts Human Decoding Canterbury Corpus, Berkeley Big Data 5x branch mispredicts Pattern Matching (Intrusion</context>
+<context>iters, elds, and row and column structure, and copying eld into the system. The CPU code is from libcsv [8]; these measurements use Crimes (128MB) [16], Trip (128MB) [23] and Food Inspection (16MB) =-=[17]-=- datasets. In Food Inspection, multiple elds contain escape quotes, including long comments and location coordinates. UDP implements the parsing nite-state machine used in libcsv. Human coding tran</context>
+</contexts>
+<marker>[17]</marker>
+<rawString>2012. Chicago City Restaurant Inspection. (2012). http://data.cityofchicago.org</rawString>
+</citation>
+<citation valid="true">
+<title>Apache Parquet C++ library</title>
+<date>2013</date>
+<contexts>
+<context>n CPU code is the Snappy [29] library, and uses the Canterbury Corpus and BDBench dataset, with the UDP library being block compatible.Dictionary encoding CPU code is Parquet’s C++ dictionary encoder =-=[18]-=-. Dictionary measurements use Arrest, District, and Location Description attributes of Crime [16]. Dictionary-RLE adds a runlength encoding phase. UDP program performs encoding, using a dened diction</context>
+</contexts>
+<marker>[18]</marker>
+<rawString>2013. Apache Parquet C++ library. https://github.com/apache/parquet-cpp. (2013).</rawString>
+</citation>
+<citation valid="false">
+<booktitle>Frontiers in Massive Data Analysis. National Research Council Press. ISBN: 978-0-309-28778-4, DOI</booktitle>
+<pages>10--17226</pages>
+<contexts>
+<context>e. In short, data manipulation - transformation - movement, rather than arithmetic speed, is the primary barrier to continued performance scaling. We focus on a growing class of big data computations =-=[14, 19, 27]-=- that analyze diverse data for business (e-commerce, recommendation systems, targeted marketing), social networking (interest ltering, trending topics), medicine (pharmacogenomics), government (publi</context>
+</contexts>
+<marker>[19]</marker>
+<rawString>2013. Frontiers in Massive Data Analysis. National Research Council Press. ISBN: 978-0-309-28778-4, DOI: 10.17226/18374.</rawString>
+</citation>
+<citation valid="true">
+<title>Intel Advanced Vector Extensions</title>
+<date>2013</date>
+<note>https://software.intel.com/en-us/ isa-extensions/intel-avx</note>
+<contexts>
+<context>cability to the broad range of data movement and transformation tasks described in Section 5. Stream Buer constructs streams from vector registers, extending the vector instruction set (e.g. AVX,NEON=-=[3, 20]-=-). Ecient implementation copies vector register to the UDP stream buer, who has hardware prefetching and ecient index management support, delivering good single stream performance. Shared or privat</context>
+</contexts>
+<marker>[20]</marker>
+<rawString>2013. Intel Advanced Vector Extensions. (2013). https://software.intel.com/en-us/ isa-extensions/intel-avx</rawString>
+</citation>
+<citation valid="true">
+<title>Intel communications chipset 8955</title>
+<date>2013</date>
+<note>http://ark.intel.com/products/ 80372/Intel-DH8955-PCH</note>
+<contexts>
+<context>romising research direction. Acceleration of Network Intrusion Detection and Deep Packet Inspection (NID/DPI) includes exploiting SIMD [44, 73] and aggressive 4We estimate compression power by 20W TDP=-=[21]-=- and exclude clock grid, IO/bus, and crypto. using relative ratio [9]. 5Altera Stratix V FPGA. 6Scale to 28nm TSMC and estimate based on chip die size [26, 32]. 7IBM 45nm SOI [9]. 66 UDP: A Programmab</context>
+</contexts>
+<marker>[21]</marker>
+<rawString>2013. Intel communications chipset 8955. (2013). http://ark.intel.com/products/ 80372/Intel-DH8955-PCH</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>https github comdrichardsonhuman</author>
+</authors>
+<date>2013</date>
+<contexts>
+<context>coordinates. UDP implements the parsing nite-state machine used in libcsv. Human coding transforms a byte-stream into a dense bit-level coding, with the CPU code as an open-source library libhuman =-=[22]-=-. Measurements use Canterbury Corpus [5] and Berkeley Big Data Benchmark [24]. Canterbury les range from 3KB to 1MB with dierent entropy and for BDBench we use crawl, rank, user ; we evaluate a sing</context>
+</contexts>
+<marker>[22]</marker>
+<rawString>2013. libhu￿man C library. https://github.com/drichardson/hu￿man. (2013).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>New</author>
+</authors>
+<title>York City Taxi Report. http://www.andresmh.com/nyctaxitrips</title>
+<date>2013</date>
+<contexts>
+<context>bal, Restricted. 4 METHODOLOGY 4.1 Workloads We selected a diverse set of kernels drawn from broader ETL and data transformations. Application Workload CPU Challenge CSV Parsing Crimes, NYC Taxi Trip =-=[23]-=-, Food Inspection [17] 3x branch mispredicts Human Encoding Canterbury Corpus, Berkeley Big Data 5x branch mispredicts Human Decoding Canterbury Corpus, Berkeley Big Data 5x branch mispredicts Patte</context>
+<context>SV parsing involves nding delimiters, elds, and row and column structure, and copying eld into the system. The CPU code is from libcsv [8]; these measurements use Crimes (128MB) [16], Trip (128MB) =-=[23]-=- and Food Inspection (16MB) [17] datasets. In Food Inspection, multiple elds contain escape quotes, including long comments and location coordinates. UDP implements the parsing nite-state machine us</context>
+</contexts>
+<marker>[23]</marker>
+<rawString>2013. New York City Taxi Report. http://www.andresmh.com/nyctaxitrips/. (2013).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Berkeley</author>
+</authors>
+<title>Big Data Benchmark</title>
+<date>2014</date>
+<note>https://amplab.cs.berkeley.edu/ benchmark</note>
+<contexts>
+<context>67% runtime Dictionary and Run Length Encoding (RLE) Crimes Costly Hash 54% runtime Histogram Crimes, NYC Taxi Trip 5x branch mispredicts Compression (Snappy) Canterbury Corpus [5], Berkeley Big Data =-=[24]-=- 15x branch mispredicts Decompression (Snappy) Canterbury Corpus, Berkeley Big Data 15x branch mispredicts Signal Triggering Keysight Scope Trace [53] mem indirect, address, condl, 9 cycles Table 2: D</context>
+<context>uman coding transforms a byte-stream into a dense bit-level coding, with the CPU code as an open-source library libhuman [22]. Measurements use Canterbury Corpus [5] and Berkeley Big Data Benchmark =-=[24]-=-. Canterbury les range from 3KB to 1MB with dierent entropy and for BDBench we use crawl, rank, user ; we evaluate a single HDFS block (64MB, 22MB and 64MB) respectively. For UDP, we duplicate the C</context>
+</contexts>
+<marker>[24]</marker>
+<rawString>2014. Berkeley Big Data Benchmark. (2014). https://amplab.cs.berkeley.edu/ benchmark/</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Intel Hyperscan</author>
+</authors>
+<date>2015</date>
+<note>https://github.com/01org/hyperscan</note>
+<contexts>
+<context>mate based on chip die size [26, 32]. 7IBM 45nm SOI [9]. 66 UDP: A Programmable Accelerator for Extract-Transform-Load Workloads and More MICRO-50, October 14–18, 2017, Cambridge, MA, USA preltering =-=[25]-=- to achieve 0.75-1.6 GB/s using a powerful Xeon out-of-order core. Software speculative approaches can increase stream rate, but at signicant overhead [72, 75, 86]. GPU implementations [85] report th</context>
+</contexts>
+<marker>[25]</marker>
+<rawString>2015. Intel Hyperscan. (2015). https://github.com/01org/hyperscan</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Sparc</author>
+</authors>
+<title>M7 Die Size (wikipedia). https://en.wikipedia.org/wiki/SPARC</title>
+<date>2017</date>
+<tech>2015). MICRO-50</tech>
+<location>Cambridge, MA, USA</location>
+<contexts>
+<context>ive 4We estimate compression power by 20W TDP[21] and exclude clock grid, IO/bus, and crypto. using relative ratio [9]. 5Altera Stratix V FPGA. 6Scale to 28nm TSMC and estimate based on chip die size =-=[26, 32]-=-. 7IBM 45nm SOI [9]. 66 UDP: A Programmable Accelerator for Extract-Transform-Load Workloads and More MICRO-50, October 14–18, 2017, Cambridge, MA, USA preltering [25] to achieve 0.75-1.6 GB/s using </context>
+</contexts>
+<marker>[26]</marker>
+<rawString>2015. Sparc M7 Die Size (wikipedia). https://en.wikipedia.org/wiki/SPARC. (2015). MICRO-50, October 14–18, 2017, Cambridge, MA, USA Y. Fang et al.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>http www whitehouse gov</author>
+</authors>
+<title>Federal Big Data Research and Development Strategic</title>
+<date>2016</date>
+<contexts>
+<context>e. In short, data manipulation - transformation - movement, rather than arithmetic speed, is the primary barrier to continued performance scaling. We focus on a growing class of big data computations =-=[14, 19, 27]-=- that analyze diverse data for business (e-commerce, recommendation systems, targeted marketing), social networking (interest ltering, trending topics), medicine (pharmacogenomics), government (publi</context>
+</contexts>
+<marker>[27]</marker>
+<rawString>2016. Federal Big Data Research and Development Strategic Plan. http://www. whitehouse.gov/. (May 2016).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>https www gnu orgsoftwaregsl</author>
+</authors>
+<date>2016</date>
+<contexts>
+<context>ocation Description attributes of Crime [16]. Dictionary-RLE adds a runlength encoding phase. UDP program performs encoding, using a dened dictionary. Histogram CPU code is the GSL Histogram library =-=[28]-=-. Measurements use Crimes.Latitude, Crimes.Longitude, and Taxi.Fare with 10, 10, and 4 bins of IEEE FP values [7]. On UDP, the dividers are compiled into an automata scans of 4 bits a time, with accep</context>
+</contexts>
+<marker>[28]</marker>
+<rawString>2016. GNU Scienti￿c Library. https://www.gnu.org/software/gsl/. (2016).</rawString>
+</citation>
+<citation valid="true">
+<title>Google Snappy compression library. https://github.com/google/snappy</title>
+<date>2016</date>
+<contexts>
+<context>atterns. Boost supports only single-pattern matching, so we merge the NIDS patterns into a single combined pattern. The UDP code uses ADFA [66] and NFA [62] models. Compression CPU code is the Snappy =-=[29]-=- library, and uses the Canterbury Corpus and BDBench dataset, with the UDP library being block compatible.Dictionary encoding CPU code is Parquet’s C++ dictionary encoder [18]. Dictionary measurements</context>
+</contexts>
+<marker>[29]</marker>
+<rawString>2016. Google Snappy compression library. https://github.com/google/snappy. (2016).</rawString>
+</citation>
+<citation valid="true">
+<title>Intel Chipset 89xx Series. http://www.intel.com/content/dam/www/public/ us/en/documents/solution-briefs/scaling-acceleration-capacity-brief.pdf</title>
+<date>2016</date>
+<contexts>
+<context>g (DFA, D2FA, NFA, c-NFA, ...) Histogram (Fixed-size bin, Variable-size bin, ...) UDP All listed All listed All listed All listed All listed UAP [54] None None None All listed None Intel Chipset 89xx =-=[30]-=- DEFLATE None None None None Microsoft Xpress (FPGA)[56] Xpress None None None None Oracle Sparc M7 [68] DAX-RLE None RLE None None None DAX-Hu None Human None None None DAX-Pack None Bit-pack None </context>
+<context> (GB/s) UDP Relative Perf Accel. Power (W) UDP Rel. Power E. UAP [54] String Mat.(ADFA) String Mat. (ADFA) 38 0.58 0.56W 0.37 Regex Mat. (NFA) Regex Mat. (NFA) 15 0.48 0.56W 0.32 Intel Chipset 89xx 4=-=[30]-=- DEFLATE Snappy comp. 1.4 2.1 0.20W 0.50 Microsoft Xpress5[56] Xpress Snappy comp. 5.6 0.54 108K ALM - (FPGA) Oracle Sparc M76[68] DAX-RLE, -Hu, -Pack, -Ozip RLE, Human, Bit-pack,Ozip Human, RLE, D</context>
+<context>ation in parsing in PowerEN [61] achieves 1.5 GB/s XML parsing. Compression hardware acceleration achieves 1 GB/s in PowerEN, 5.6 GB/s in Xpress [56], and 1.4GB/s DEFLATE on Intel 89xx series Chipset =-=[30]-=- (Table 4). With only 21 lanes (memory capacity limited), UDP outperforms the ASIC accelerators by 2.1-13x. The Xpress [56] comparison is complicated because of its use of large dedicated FPGA. All of</context>
+</contexts>
+<marker>[30]</marker>
+<rawString>2016. Intel Chipset 89xx Series. http://www.intel.com/content/dam/www/public/ us/en/documents/solution-briefs/scaling-acceleration-capacity-brief.pdf. (2016).</rawString>
+</citation>
+<citation valid="true">
+<title>Keysight CX3300 Appliance</title>
+<date>2016</date>
+<note>http://www.keysight.com/en/ pc-2633352/device-current-waveform-analyzers?cc=US&amp;lc=eng</note>
+<contexts>
+<context>ing One UDP lane delivers constant 1,055 MB/s rate for all transition localization FSMs p2-p13 [53], 4 times greater than both the CPU (275MB/s) and the FPGA implementation used in Keysight’s product =-=[31]-=- (256MB/s). UDP can meet the needs of high-speed signal triggering for all but the highest-speed oscilloscopes. UDP code exploits multi-way dispatch for ecient FSM traversal; exible memory addressin</context>
+</contexts>
+<marker>[31]</marker>
+<rawString>2016. Keysight CX3300 Appliance. (2016). http://www.keysight.com/en/ pc-2633352/device-current-waveform-analyzers?cc=US&amp;lc=eng</rawString>
+</citation>
+<citation valid="true">
+<title>M7: Next Generation SPARC</title>
+<date>2016</date>
+<note>http://www.oracle. com/us/products/servers-storage/servers/sparc-enterprise/migration/ m7-next-gen-sparc-presentation-2326292.html</note>
+<contexts>
+<context>ive 4We estimate compression power by 20W TDP[21] and exclude clock grid, IO/bus, and crypto. using relative ratio [9]. 5Altera Stratix V FPGA. 6Scale to 28nm TSMC and estimate based on chip die size =-=[26, 32]-=-. 7IBM 45nm SOI [9]. 66 UDP: A Programmable Accelerator for Extract-Transform-Load Workloads and More MICRO-50, October 14–18, 2017, Cambridge, MA, USA preltering [25] to achieve 0.75-1.6 GB/s using </context>
+</contexts>
+<marker>[32]</marker>
+<rawString>2016. M7: Next Generation SPARC. (2016). http://www.oracle. com/us/products/servers-storage/servers/sparc-enterprise/migration/ m7-next-gen-sparc-presentation-2326292.html</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>PostgreSQL Database</author>
+</authors>
+<date>2016</date>
+<note>https://www.postgresql.org</note>
+<contexts>
+<context>o analyze in-situ [37]. For example, Figure 1a shows single-threaded costs to load all TPC-H [35] Gzip-compressed CSV les (scale factor from 1 to 30) from SSD into the PostgreSQL relational database =-=[33]-=- (Intel Core-i7 CPU with 250GB SATA 3.0 SSD). This common set of extract-transform-load (ETL) tasks includes decompression, parsing record delimiters, tokenizing attribute values, and deserialization </context>
+</contexts>
+<marker>[33]</marker>
+<rawString>2016. PostgreSQL Database. (2016). https://www.postgresql.org/</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Intel64</author>
+<author>IA-32 Architectures</author>
+</authors>
+<date>2017</date>
+<note>https://software.intel.com/en-us/ articles/intel-sdm</note>
+<contexts>
+<context>grammable solution. UDP’s exible addressing and exible dispatch sources enable exibility in data access and keep access latency and energy cost far lower than general memory systems and addressing =-=[34]-=-. Table 4 provides an overall performance comparison to a varied specialized data transformation accelerators, showing UDP’s relative performance is at worst nearly 2x slower, and up to 13x faster and</context>
+</contexts>
+<marker>[34]</marker>
+<rawString>2017. Intel64 and IA-32 Architectures. (2017). https://software.intel.com/en-us/ articles/intel-sdm</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>http www tpc orgtpch</author>
+</authors>
+<date>2017</date>
+<contexts>
+<context>mats require costly transformations to get data into a native format [70] or just-in-time transformations to analyze in-situ [37]. For example, Figure 1a shows single-threaded costs to load all TPC-H =-=[35]-=- Gzip-compressed CSV les (scale factor from 1 to 30) from SSD into the PostgreSQL relational database [33] (Intel Core-i7 CPU with 250GB SATA 3.0 SSD). This common set of extract-transform-load (ETL)</context>
+</contexts>
+<marker>[35]</marker>
+<rawString>2017. TPC-H Benchmark. http://www.tpc.org/tpch/. (2017).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Rachit Agarwal</author>
+<author>Anurag Khandelwal</author>
+<author>Ion Stoica</author>
+</authors>
+<title>Succinct: Enabling queries on compressed data</title>
+<date>2015</date>
+<booktitle>In Proc. of NSDI’15</booktitle>
+<contexts>
+<context>-time and complex batch analysis has produced diverse innovation in algorithms, data structures, representations, and frameworks both for applications and scalable data storages and analytics systems =-=[36, 46, 50, 60, 69, 74]-=-. These innovations often use novel, even application-specic encodings and compressions that often perform poorly on transformations on traditional CPUs. To address these challenges, we propose a ex</context>
+</contexts>
+<marker>[36]</marker>
+<rawString>Rachit Agarwal, Anurag Khandelwal, and Ion Stoica. 2015. Succinct: Enabling queries on compressed data. In Proc. of NSDI’15.</rawString>
+</citation>
+<citation valid="true">
+<title>Ioannis Alagiannis et al. 2012. NoDB: ecient query execution on raw data les</title>
+<booktitle>In Proc. of SIGMOD’12. ACM</booktitle>
+<pages>241--252</pages>
+<contexts>
+<context>l encoding, and rich indexing to meet rising performance demands. These formats require costly transformations to get data into a native format [70] or just-in-time transformations to analyze in-situ =-=[37]-=-. For example, Figure 1a shows single-threaded costs to load all TPC-H [35] Gzip-compressed CSV les (scale factor from 1 to 30) from SSD into the PostgreSQL relational database [33] (Intel Core-i7 CP</context>
+<context> deserialization (decoding specic formats and validation of domains such as dates), and consumes nearly 800 seconds for scale factor 30 (about 30GB uncompressed), dominating time to initial analysis =-=[37]-=-. Figure 1b shows that &gt;99.5% wall-clock loading time is spent on CPU tasks, rather than disk IO. Further, advances in real-time and complex batch analysis has produced diverse innovation in algorithm</context>
+</contexts>
+<marker>[37]</marker>
+<rawString>Ioannis Alagiannis et al. 2012. NoDB: e￿cient query execution on raw data ￿les. In Proc. of SIGMOD’12. ACM, 241–252.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Jorge Albericio</author>
+</authors>
+<title>Wormhole: Wisely predicting multidimensional branches</title>
+<booktitle>In Proceedings of the 47th Annual IEEE/ACM International Symposium on Microarchitecture. IEEE Computer Society</booktitle>
+<pages>509--520</pages>
+<contexts>
+<context> features are a potent and novel combination for ecient data transformation. Ecient conditional control ow is a core challenge, and branch prediction has long been a focus of computer architecture =-=[38, 64, 67, 83, 84]-=-. As we have shown, the symbol and pattern oriented branch-intensive ETL workloads are particularly dicult, and our results show that UDP multi-way dispatch (that improves on that in the UAP [54]) is</context>
+</contexts>
+<marker>[38]</marker>
+<rawString>Jorge Albericio et al. 2014. Wormhole: Wisely predicting multidimensional branches. In Proceedings of the 47th Annual IEEE/ACM International Symposium on Microarchitecture. IEEE Computer Society, 509–520.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>James Allen</author>
+</authors>
+<title>Human decoder architecture for high speed operation and reduced memory</title>
+<date>1994</date>
+<tech>US Patent 5,325,092</tech>
+<contexts>
+<context> solution. Many ecient encodings use variable-size symbols, and we know of some software techniques [71], but little CPU architecture research on supporting such computations. Hardwired accelerators =-=[39]-=- often employ a wide lookup table and a bit shifter, but unlike the UDP’s symbol-size register and rell transition, they are not a general, software-programmable solution. UDP’s exible addressing an</context>
+</contexts>
+<marker>[39]</marker>
+<rawString>James Allen et al. 1994. Hu￿man decoder architecture for high speed operation and reduced memory. (1994). US Patent 5,325,092.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Kevin Angstadt</author>
+<author>Westley Weimer</author>
+<author>Kevin Skadron</author>
+</authors>
+<date>2016</date>
+<booktitle>RAPID Programming of Pattern-Recognition Processors. In Proc. of ASPLOS’16</booktitle>
+<contexts>
+<context>n of additional new application spaces that may benet from UDP data transformation (e.g. bioinformatics), new domain-specic languages and compilers that provide high-level programming support (e.g. =-=[40, 58]-=-), and specic design studies that incorporate UDP’s (one or several) at various locations in data center systems or database appliances. Finally, data centers have recently begun to deploy FPGA’s [41</context>
+</contexts>
+<marker>[40]</marker>
+<rawString>Kevin Angstadt, Westley Weimer, and Kevin Skadron. 2016. RAPID Programming of Pattern-Recognition Processors. In Proc. of ASPLOS’16.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Je Barr</author>
+</authors>
+<title>Developer Preview âĂŞ EC2 Instances (F1) with Programmable Hardware. https://aws.amazon.com/blogs/aws/ developer-preview-ec2-instances-f1-with-programmable-hardware</title>
+<date>2016</date>
+<contexts>
+<context>58]), and specic design studies that incorporate UDP’s (one or several) at various locations in data center systems or database appliances. Finally, data centers have recently begun to deploy FPGA’s =-=[41, 45]-=-, we plan to use these to enable studies with large-scale applications, exploring achievable system-level performance with the UDP. For example, one opportunity is to compare a programmable-UDP enhanc</context>
+</contexts>
+<marker>[41]</marker>
+<rawString>Je￿ Barr. 2016. Developer Preview âĂŞ EC2 Instances (F1) with Programmable Hardware. https://aws.amazon.com/blogs/aws/ developer-preview-ec2-instances-f1-with-programmable-hardware/. (nov 2016).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>C Gordon Bell</author>
+</authors>
+<title>What Have We Learned from the PDP-11</title>
+<date>1977</date>
+<publisher>Springer</publisher>
+<location>Netherlands</location>
+<contexts>
+<context>combined benet for both performance (rate) and compression ratio, where the net benet can dier as much as 50%. GlobalAddressingmaximizes software exibility, “ensure there are enough address bits” =-=[42]-=- by allowing each UDP lane to address the entire UDP memory (18-bit word address for 1MB), increasing the target eld, program size, and data path. This incurs both area and power overhead, but also a</context>
+</contexts>
+<marker>[42]</marker>
+<rawString>C. Gordon Bell. 1977. What Have We Learned from the PDP-11? Springer Netherlands.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Shekhar Borkar</author>
+<author>Andrew A Chien</author>
+</authors>
+<title>The Future of Microprocessors</title>
+<date>2011</date>
+<journal>Commun. ACM</journal>
+<volume>54</volume>
+<pages>67--77</pages>
+<marker>[43]</marker>
+<rawString>Shekhar Borkar and Andrew A. Chien. 2011. The Future of Microprocessors. Commun. ACM 54, 5 (May 2011), 67–77.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Robert D Cameron</author>
+</authors>
+<title>et al. 2014. Bitwise Data Parallelism in Regular Expression Matching</title>
+<booktitle>In Proc. of PACT ’14</booktitle>
+<contexts>
+<context>ntexts eciently. UDP’s performance suggests incorporation is a promising research direction. Acceleration of Network Intrusion Detection and Deep Packet Inspection (NID/DPI) includes exploiting SIMD =-=[44, 73]-=- and aggressive 4We estimate compression power by 20W TDP[21] and exclude clock grid, IO/bus, and crypto. using relative ratio [9]. 5Altera Stratix V FPGA. 6Scale to 28nm TSMC and estimate based on ch</context>
+</contexts>
+<marker>[44]</marker>
+<rawString>Robert D. Cameron et al. 2014. Bitwise Data Parallelism in Regular Expression Matching. In Proc. of PACT ’14.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Adrian Cauleld</author>
+</authors>
+<title>A Cloud-Scale Acceleration Architecture</title>
+<date>2016</date>
+<booktitle>In Proc. of MICRO’16. ACM/IEEE</booktitle>
+<contexts>
+<context>f stream processing [49, 65] and network processors [12] can achieve high data processing rates with support for pattern-matching and network interfaces (see also NIC and “bumpin-the-wire” approaches =-=[45]-=-). The UDP complements these systems, providing programmable rich data transformation in both stream and networking contexts eciently. UDP’s performance suggests incorporation is a promising research</context>
+<context>58]), and specic design studies that incorporate UDP’s (one or several) at various locations in data center systems or database appliances. Finally, data centers have recently begun to deploy FPGA’s =-=[41, 45]-=-, we plan to use these to enable studies with large-scale applications, exploring achievable system-level performance with the UDP. For example, one opportunity is to compare a programmable-UDP enhanc</context>
+</contexts>
+<marker>[45]</marker>
+<rawString>Adrian Caul￿eld et al. 2016. A Cloud-Scale Acceleration Architecture. In Proc. of MICRO’16. ACM/IEEE.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Fay Chang</author>
+</authors>
+<title>Bigtable: A distributed storage system for structured data</title>
+<date>2008</date>
+<journal>ACM Transactions on Computer Systems (TOCS</journal>
+<volume>26</volume>
+<contexts>
+<context>-time and complex batch analysis has produced diverse innovation in algorithms, data structures, representations, and frameworks both for applications and scalable data storages and analytics systems =-=[36, 46, 50, 60, 69, 74]-=-. These innovations often use novel, even application-specic encodings and compressions that often perform poorly on transformations on traditional CPUs. To address these challenges, we propose a ex</context>
+</contexts>
+<marker>[46]</marker>
+<rawString>Fay Chang et al. 2008. Bigtable: A distributed storage system for structured data. ACM Transactions on Computer Systems (TOCS) 26, 2 (2008).</rawString>
+</citation>
+<citation valid="true">
+<title>10x10: A Generalpurpose Architectural Approach to Heterogeneity and Energy Eciency</title>
+<booktitle>In The Third Workshop on Emerging Parallel Architctures at the International Conference on Computational Science</booktitle>
+<marker>[47]</marker>
+<rawString>Andrew A. Chien, Allan Snavely, and Mark Gahagan. 2011. 10x10: A Generalpurpose Architectural Approach to Heterogeneity and Energy E￿ciency. In The Third Workshop on Emerging Parallel Architctures at the International Conference on Computational Science.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Andrew A Chien</author>
+</authors>
+<title>Tung Thanh-Hoang, Dilip Vasudevan, Yuanwei Fang, and Amirali Shambayati. 2015. 10x10: A Case Study in Highly-Programmable and Energy-Ecient Heterogeneous Federated Architecture</title>
+<journal>ACM SIGARCH Computer Architecture News</journal>
+<volume>43</volume>
+<pages>2--9</pages>
+<contexts>
+<context>neous architecture that federates customized micro-engines to achieve energy eciency and generalpurpose performance.We found that half of the 10x10micro-engines focused on data-oriented acceleration =-=[48, 51, 76]-=- and converged their capabilities in the Unied Automata Processor (UAP [54]) that achieved ecient automata processing (including regular expression matching). These workloads are challenging on trad</context>
+</contexts>
+<marker>[48]</marker>
+<rawString>Andrew A. Chien, Tung Thanh-Hoang, Dilip Vasudevan, Yuanwei Fang, and Amirali Shambayati. 2015. 10x10: A Case Study in Highly-Programmable and Energy-E￿cient Heterogeneous Federated Architecture. ACM SIGARCH Computer Architecture News 43, 3 (2015), 2–9.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>William J Dally</author>
+</authors>
+<date>2004</date>
+<booktitle>Stream Processors: Programmability and Eciency. Queue</booktitle>
+<volume>2</volume>
+<contexts>
+<context>algorithms. In contrast, UDP’s programmability supports varied tasks and application-specic formats or algorithms, while providing comparable performance (Table 4). Acceleration of stream processing =-=[49, 65]-=- and network processors [12] can achieve high data processing rates with support for pattern-matching and network interfaces (see also NIC and “bumpin-the-wire” approaches [45]). The UDP complements t</context>
+</contexts>
+<marker>[49]</marker>
+<rawString>William J Dally et al. 2004. Stream Processors: Programmability and E￿ciency. Queue 2, 1 (March 2004).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Ahmed</author>
+</authors>
+<title>Elgohary et al. 2016. Compressed linear algebra for large-scale machine learning</title>
+<booktitle>Proceedings of the VLDB Endowment 9</booktitle>
+<volume>12</volume>
+<pages>960--971</pages>
+<contexts>
+<context>-time and complex batch analysis has produced diverse innovation in algorithms, data structures, representations, and frameworks both for applications and scalable data storages and analytics systems =-=[36, 46, 50, 60, 69, 74]-=-. These innovations often use novel, even application-specic encodings and compressions that often perform poorly on transformations on traditional CPUs. To address these challenges, we propose a ex</context>
+</contexts>
+<marker>[50]</marker>
+<rawString>Ahmed Elgohary et al. 2016. Compressed linear algebra for large-scale machine learning. Proceedings of the VLDB Endowment 9, 12 (2016), 960–971.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Yuanwei Fang</author>
+</authors>
+<title>Generalized Pattern Matching Micro-Engine</title>
+<date>2014</date>
+<booktitle>in 4th Workshop on Architectures and Systems for Big Data (ASBD) held with ISCA’14</booktitle>
+<contexts>
+<context>neous architecture that federates customized micro-engines to achieve energy eciency and generalpurpose performance.We found that half of the 10x10micro-engines focused on data-oriented acceleration =-=[48, 51, 76]-=- and converged their capabilities in the Unied Automata Processor (UAP [54]) that achieved ecient automata processing (including regular expression matching). These workloads are challenging on trad</context>
+</contexts>
+<marker>[51]</marker>
+<rawString>Yuanwei Fang et al. 2014. Generalized Pattern Matching Micro-Engine. in 4th Workshop on Architectures and Systems for Big Data (ASBD) held with ISCA’14 (2014).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Yuanwei Fang</author>
+<author>Andrew A Chien</author>
+</authors>
+<date>2017</date>
+<booktitle>UDP System Interface and Lane ISA Denition. Technical Report. https://newtraell.cs.uchicago.edu/research</booktitle>
+<contexts>
+<context> At the UDP and system level architecture level: • exible memory addressing (vary memory/lane), and • multi-bank local memory for high bandwidth, predictable latency, and low power. The UDP lane ISA =-=[52]-=- contains 7 transition types implementing the multi-way dispatch and 50 actions including arithmetic, logical, loop-comparing, conguration and memory operations to form general code blocks supporting</context>
+</contexts>
+<marker>[52]</marker>
+<rawString>Yuanwei Fang and Andrew A. Chien. 2017. UDP System Interface and Lane ISA De￿nition. Technical Report. https://newtraell.cs.uchicago.edu/research/ publications/techreports/TR-2017-05</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Yuanwei Fang</author>
+<author>Andrew A Chien</author>
+<author>Andrew Lehane</author>
+<author>Lee Barford</author>
+</authors>
+<title>Performance of parallel prex circuit transition localization of pulsed waveforms</title>
+<date>2016</date>
+<booktitle>In 2016 IEEE International Instrumentation and Measurement Technology Conference Proceedings</booktitle>
+<contexts>
+<context>(Snappy) Canterbury Corpus [5], Berkeley Big Data [24] 15x branch mispredicts Decompression (Snappy) Canterbury Corpus, Berkeley Big Data 15x branch mispredicts Signal Triggering Keysight Scope Trace =-=[53]-=- mem indirect, address, condl, 9 cycles Table 2: Data Transformation Workloads CSV parsing involves nding delimiters, elds, and row and column structure, and copying eld into the system. The CPU co</context>
+<context>) uniform-size bins and 2) percentile bins with non-uniform size based on sampling. Signal triggering CPU code uses a lookup table that unrolls waveform transition localization automaton described in =-=[53]-=-, at 4 symbols per lookup. Trace is proprietary from Keysight oscilloscope. UDP implements exactly the same automaton. Table 2 summarizes the workloads, and documents the reason for their poor perform</context>
+<context>ddressing to match block sizes, and ecient hash, loop-compare, and loop-copy actions. 5.7 Signal Triggering One UDP lane delivers constant 1,055 MB/s rate for all transition localization FSMs p2-p13 =-=[53]-=-, 4 times greater than both the CPU (275MB/s) and the FPGA implementation used in Keysight’s product [31] (256MB/s). UDP can meet the needs of high-speed signal triggering for all but the highest-spee</context>
+</contexts>
+<marker>[53]</marker>
+<rawString>Yuanwei Fang, Andrew A Chien, Andrew Lehane, and Lee Barford. 2016. Performance of parallel pre￿x circuit transition localization of pulsed waveforms. In 2016 IEEE International Instrumentation and Measurement Technology Conference Proceedings.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Yuanwei Fang</author>
+<author>Tung T Hoang</author>
+<author>Michela Becchi</author>
+<author>Andrew A Chien</author>
+</authors>
+<title>Fast Support for Unstructured Data Processing: The Unied Automata Processor</title>
+<date>2015</date>
+<booktitle>In Proceedings of the 48th International Symposium on Microarchitecture (MICRO-48</booktitle>
+<contexts>
+<context>y and generalpurpose performance.We found that half of the 10x10micro-engines focused on data-oriented acceleration [48, 51, 76] and converged their capabilities in the Unied Automata Processor (UAP =-=[54]-=-) that achieved ecient automata processing (including regular expression matching). These workloads are challenging on traditional CPUs because they are indirection-intensive, branch-intensive, and o</context>
+<context>ack, ...) Parsing (CSV, JSON, XML, ...) Pattern Matching (DFA, D2FA, NFA, c-NFA, ...) Histogram (Fixed-size bin, Variable-size bin, ...) UDP All listed All listed All listed All listed All listed UAP =-=[54]-=- None None None All listed None Intel Chipset 89xx [30] DEFLATE None None None None Microsoft Xpress (FPGA)[56] Xpress None None None None Oracle Sparc M7 [68] DAX-RLE None RLE None None None DAX-Hu </context>
+<context>s on a single class of formats. 4) For pattern matching, UDP supports a full diversity of extended nite-automata (FA) models, adopting key features to achieve this from the Unied Automata Processor =-=[54]-=-, while other accelerators support one or two. The UDP’s exibility enables applications to choose the best FAs for application, achieving both small FA size and high stream rate. 5) For histogram, ot</context>
+<context> well as private code blocks and in some ETL kernels reduce program size by more than half (see Figure 5c). Overall, UDP employs seven transitions implementing variants of multi-way dispatch: labeled =-=[54]-=-, majority [54], default [54], epsilon [54], common, agged, and rell. They collectively achieve 59 MICRO-50, October 14–18, 2017, Cambridge, MA, USA Y. Fang et al. generality and memory eciency. Th</context>
+<context>ed data transformation (e.g. compression), hash-based algorithms, and de/compression, Human encoding, CSV parsing, and Run-length encoding, than the streaming models supported by prior architectures =-=[54]-=-. For simplicity, the current UDP design restricts the source to Register 0. Figure 9: Performance Benet for adding stream buer and scalar register as UDP dispatch source. To demonstrate the increme</context>
+</contexts>
+<marker>[54]</marker>
+<rawString>Yuanwei Fang, Tung T. Hoang, Michela Becchi, and Andrew A. Chien. 2015. Fast Support for Unstructured Data Processing: The Uni￿ed Automata Processor. In Proceedings of the 48th International Symposium on Microarchitecture (MICRO-48).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Yuanwei Fang</author>
+<author>Andrew Lehane</author>
+<author>Andrew A Chien</author>
+</authors>
+<title>ECLiP: Ecient Coupled-Linear Packing for Finite Automata</title>
+<date>2015</date>
+<tech>Technical Report, TR-2015-05</tech>
+<institution>University of Chicago</institution>
+<marker>[55]</marker>
+<rawString>Yuanwei Fang, Andrew Lehane, and Andrew A. Chien. 2015. E￿CLiP: E￿cient Coupled-Linear Packing for Finite Automata. University of Chicago Technical Report, TR-2015-05 (May 2015).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Jeremy</author>
+</authors>
+<title>Fowers et al. 2015. A Scalable High-Bandwidth Architecture for Lossless Compression on FPGAs</title>
+<booktitle>In Proc. of FCCM ’15</booktitle>
+<contexts>
+<context>, Variable-size bin, ...) UDP All listed All listed All listed All listed All listed UAP [54] None None None All listed None Intel Chipset 89xx [30] DEFLATE None None None None Microsoft Xpress (FPGA)=-=[56]-=- Xpress None None None None Oracle Sparc M7 [68] DAX-RLE None RLE None None None DAX-Hu None Human None None None DAX-Pack None Bit-pack None None None DAX-Ozip None OZIP None None None IBM PowerEN </context>
+<context>UAP [54] String Mat.(ADFA) String Mat. (ADFA) 38 0.58 0.56W 0.37 Regex Mat. (NFA) Regex Mat. (NFA) 15 0.48 0.56W 0.32 Intel Chipset 89xx 4[30] DEFLATE Snappy comp. 1.4 2.1 0.20W 0.50 Microsoft Xpress5=-=[56]-=- Xpress Snappy comp. 5.6 0.54 108K ALM - (FPGA) Oracle Sparc M76[68] DAX-RLE, -Hu, -Pack, -Ozip RLE, Human, Bit-pack,Ozip Human, RLE, Dictionary 11 1.4 1.6mm2 (Area) 0.56 (Area E) IBM PowerEN7 [61</context>
+<context> lane, but requires much higher power. Hardware acceleration in parsing in PowerEN [61] achieves 1.5 GB/s XML parsing. Compression hardware acceleration achieves 1 GB/s in PowerEN, 5.6 GB/s in Xpress =-=[56]-=-, and 1.4GB/s DEFLATE on Intel 89xx series Chipset [30] (Table 4). With only 21 lanes (memory capacity limited), UDP outperforms the ASIC accelerators by 2.1-13x. The Xpress [56] comparison is complic</context>
+</contexts>
+<marker>[56]</marker>
+<rawString>Jeremy Fowers et al. 2015. A Scalable High-Bandwidth Architecture for Lossless Compression on FPGAs. In Proc. of FCCM ’15.</rawString>
+</citation>
+<citation valid="true">
+<title>Vaibhav Gogte et al. 2016. HARE: Hardware Accelerator for Regular Expressions</title>
+<booktitle>In 2016 49th Annual IEEE/ACM International Symposium on Microarchitecture. IEEE</booktitle>
+<contexts>
+<context> its use of large dedicated FPGA. All of these specialized accelerators’ implementations lack the exible programmability of UDP. Tokenization alone can be accelerated by patternmatching accelerators =-=[12, 54, 57, 80]-=-, but lack the programmability to address the costly follow-on processing (e.g. deserialization and validation) which often dominates execution time (Figure 1a). The UDP handles these tasks and more. </context>
+<context>oiting programmability to employ the best nite-automata models. The UDP improves on the UAP achieving much greater generality, but at a cost in performance and energy eciency (Table 4). Recent work =-=[57]-=- achieves remarkable stream rate (32 GB/s) at high power consumption (120W). UAP Feature UDP Feature Transitions stream only control and stream-driven Symbol 8-bit xed symbol size register (1-8,32 bi</context>
+</contexts>
+<marker>[57]</marker>
+<rawString>Vaibhav Gogte et al. 2016. HARE: Hardware Accelerator for Regular Expressions. In 2016 49th Annual IEEE/ACM International Symposium on Microarchitecture. IEEE.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Bjørn Bugge Grathwohl</author>
+<author>Fritz Henglein</author>
+</authors>
+<title>Ulrik Terp Rasmussen, Kristoer Aalund Søholm, and Sebastian Paaske Tørholm. 2016. Kleenex: Compiling Nondeterministic Transducers to Deterministic Streaming Transducers</title>
+<booktitle>In Proceedings of the 43rd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages (POPL ’16</booktitle>
+<contexts>
+<context>n of additional new application spaces that may benet from UDP data transformation (e.g. bioinformatics), new domain-specic languages and compilers that provide high-level programming support (e.g. =-=[40, 58]-=-), and specic design studies that incorporate UDP’s (one or several) at various locations in data center systems or database appliances. Finally, data centers have recently begun to deploy FPGA’s [41</context>
+</contexts>
+<marker>[58]</marker>
+<rawString>Bjørn Bugge Grathwohl, Fritz Henglein, Ulrik Terp Rasmussen, Kristo￿er Aalund Søholm, and Sebastian Paaske Tørholm. 2016. Kleenex: Compiling Nondeterministic Transducers to Deterministic Streaming Transducers. In Proceedings of the 43rd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages (POPL ’16).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Shay Gueron</author>
+</authors>
+<title>Intel Advanced Encryption Standard (AES) New Instructions Set. https://software.intel.com/en-us/articles/ intel-advanced-encryption-standard-aes-instructions-set</title>
+<date>2012</date>
+<contexts>
+<context>o achieve both high performance and energy eciency. UDP’s programmable approach diers from narrow accelerators that “freeze in silicon” for particular algorithms, representations or data structures =-=[59, 68, 82]-=- (as shown in Table 1). Our results using varied data transformation benchmarks reveal that in many cases, the UDP can outperform a CPU at less than 1/100th the power, providing an eective ooad, tha</context>
+</contexts>
+<marker>[59]</marker>
+<rawString>Shay Gueron. 2012. Intel Advanced Encryption Standard (AES) New Instructions Set. https://software.intel.com/en-us/articles/ intel-advanced-encryption-standard-aes-instructions-set. (September 2012).</rawString>
+</citation>
+<citation valid="true">
+<title>CBS Genome Atlas Database: a dynamic storage for bioinformatic results and sequence data</title>
+<journal>In Bioinformatics</journal>
+<volume>20</volume>
+<publisher>Oxford Univ Press</publisher>
+<contexts>
+<context>-time and complex batch analysis has produced diverse innovation in algorithms, data structures, representations, and frameworks both for applications and scalable data storages and analytics systems =-=[36, 46, 50, 60, 69, 74]-=-. These innovations often use novel, even application-specic encodings and compressions that often perform poorly on transformations on traditional CPUs. To address these challenges, we propose a ex</context>
+</contexts>
+<marker>[60]</marker>
+<rawString>Peter F Hallin and DavidWUssery. 2004. CBS Genome Atlas Database: a dynamic storage for bioinformatic results and sequence data. In Bioinformatics, Vol. 20. Oxford Univ Press.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Timothy Heil</author>
+</authors>
+<title>Architecture and Performance of the Hardware Accelerators</title>
+<date>2014</date>
+<journal>ACM Trans. Parallel Comput</journal>
+<booktitle>in IBM PowerEN Processor</booktitle>
+<volume>1</volume>
+<contexts>
+<context> Xpress None None None None Oracle Sparc M7 [68] DAX-RLE None RLE None None None DAX-Hu None Human None None None DAX-Pack None Bit-pack None None None DAX-Ozip None OZIP None None None IBM PowerEN =-=[61]-=- XML None None XML None None RegX None None None DFA, D2FA None Compress DEFLATE None None None None Cadence Xtensa [1] Histogram TIE None None None None Fixed-size bin ETH Histogram (FPGA)[63] None N</context>
+<context>56] Xpress Snappy comp. 5.6 0.54 108K ALM - (FPGA) Oracle Sparc M76[68] DAX-RLE, -Hu, -Pack, -Ozip RLE, Human, Bit-pack,Ozip Human, RLE, Dictionary 11 1.4 1.6mm2 (Area) 0.56 (Area E) IBM PowerEN7 =-=[61]-=- XML XML Parse CSV Parse 1.5 2.9 1.95W - Compress DEFLATE Snappy comp. 1.0 3.0 0.30W 1.1 Decomp. INFLATE Snappy decom. 1.0 13 0.30W 4.7 RegX String Match String Match(ADFA) 5.0 4.4 1.95W 9.8 Regex Mat</context>
+<context>vectorize delimiter detection, achieving 0.3 GB/s single thread performance. This is competitive performance to a UDP lane, but requires much higher power. Hardware acceleration in parsing in PowerEN =-=[61]-=- achieves 1.5 GB/s XML parsing. Compression hardware acceleration achieves 1 GB/s in PowerEN, 5.6 GB/s in Xpress [56], and 1.4GB/s DEFLATE on Intel 89xx series Chipset [30] (Table 4). With only 21 lan</context>
+<context>se stream rate, but at signicant overhead [72, 75, 86]. GPU implementations [85] report throughputs 0.03 GB/s (large pattern sets) increasing to 1.6GB/s [87] (small sets). Several network processors =-=[12, 61]-=- employ hardwired regular expression acceleration to reach 6.25GB/s throughput. Unied Automata Processor achieves up to 5x better performance [54] by exploiting programmability to employ the best ni</context>
+</contexts>
+<marker>[61]</marker>
+<rawString>Timothy Heil et al. 2014. Architecture and Performance of the Hardware Accelerators in IBM PowerEN Processor. ACM Trans. Parallel Comput. 1, 1 (May 2014).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>John E Hopcroft</author>
+<author>Jerey D Ullman</author>
+</authors>
+<title>Formal Languages and Their Relation to Automata</title>
+<date>1969</date>
+<contexts>
+<context>. Measurements use network-intrusion detection patterns. Boost supports only single-pattern matching, so we merge the NIDS patterns into a single combined pattern. The UDP code uses ADFA [66] and NFA =-=[62]-=- models. Compression CPU code is the Snappy [29] library, and uses the Canterbury Corpus and BDBench dataset, with the UDP library being block compatible.Dictionary encoding CPU code is Parquet’s C++ </context>
+</contexts>
+<marker>[62]</marker>
+<rawString>John E. Hopcroft and Je￿rey D. Ullman. 1969. Formal Languages and Their Relation to Automata.</rawString>
+</citation>
+<citation valid="true">
+<title>Zsolt Istvan et al. 2014. Histograms As a Side Eect of Data Movement for Big Data</title>
+<booktitle>In Proc. of SIGMOD ’14</booktitle>
+<contexts>
+<context>owerEN [61] XML None None XML None None RegX None None None DFA, D2FA None Compress DEFLATE None None None None Cadence Xtensa [1] Histogram TIE None None None None Fixed-size bin ETH Histogram (FPGA)=-=[63]-=- None None None None All listed Table 1: Coverage of Transformation/Encoding Algorithms: Accelerators and UDP. formats. These tasks are critical for ensuring data consistency and to enable ecient dat</context>
+<context>ata [4]) gain performance by exploiting internal storage bandwidth. UDP’s low power and programmability make it a candidate for such storage embedding. FPGA-based eorts that accelerate histogramming =-=[63]-=- highlight opportunities to use UDP for rich statistics at low cost to enable better query optimization. Both PowerEN and Sparc M7 integrate accelerators for compression, transpose, scan, and crypto. </context>
+</contexts>
+<marker>[63]</marker>
+<rawString>Zsolt Istvan et al. 2014. Histograms As a Side E￿ect of Data Movement for Big Data. In Proc. of SIGMOD ’14.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Daniel A Jiménez</author>
+</authors>
+<title>Piecewise linear branch prediction</title>
+<date>2005</date>
+<booktitle>In Proc. Of ISCA’05. IEEE Computer Society</booktitle>
+<contexts>
+<context> features are a potent and novel combination for ecient data transformation. Ecient conditional control ow is a core challenge, and branch prediction has long been a focus of computer architecture =-=[38, 64, 67, 83, 84]-=-. As we have shown, the symbol and pattern oriented branch-intensive ETL workloads are particularly dicult, and our results show that UDP multi-way dispatch (that improves on that in the UAP [54]) is</context>
+</contexts>
+<marker>[64]</marker>
+<rawString>Daniel A Jiménez. 2005. Piecewise linear branch prediction. In Proc. Of ISCA’05. IEEE Computer Society.</rawString>
+</citation>
+<citation valid="true">
+<title>Brucek Khailany et al. 2001. Imagine: Media Processing with Streams</title>
+<date>2001</date>
+<journal>IEEE Micro</journal>
+<volume>21</volume>
+<contexts>
+<context>algorithms. In contrast, UDP’s programmability supports varied tasks and application-specic formats or algorithms, while providing comparable performance (Table 4). Acceleration of stream processing =-=[49, 65]-=- and network processors [12] can achieve high data processing rates with support for pattern-matching and network interfaces (see also NIC and “bumpin-the-wire” approaches [45]). The UDP complements t</context>
+</contexts>
+<marker>[65]</marker>
+<rawString>Brucek Khailany et al. 2001. Imagine: Media Processing with Streams. IEEE Micro 21, 2 (March 2001).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Sailesh Kumar</author>
+</authors>
+<title>et al. 2006. Algorithms to Accelerate Multiple Regular Expressions Matching for Deep Packet Inspection</title>
+<date>2006</date>
+<booktitle>Proc. of SIGCOMM’06</booktitle>
+<contexts>
+<context>++ Regex [15]. Measurements use network-intrusion detection patterns. Boost supports only single-pattern matching, so we merge the NIDS patterns into a single combined pattern. The UDP code uses ADFA =-=[66]-=- and NFA [62] models. Compression CPU code is the Snappy [29] library, and uses the Canterbury Corpus and BDBench dataset, with the UDP library being block compatible.Dictionary encoding CPU code is P</context>
+</contexts>
+<marker>[66]</marker>
+<rawString>Sailesh Kumar et al. 2006. Algorithms to Accelerate Multiple Regular Expressions Matching for Deep Packet Inspection. Proc. of SIGCOMM’06 (Aug. 2006).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Chih-Chieh Lee</author>
+<author>I-Cheng K Chen</author>
+<author>Trevor NMudge</author>
+</authors>
+<title>The bi-mode branch predictor</title>
+<date>1997</date>
+<booktitle>In Proceedings of the 30th annual ACM/IEEE international symposium on Microarchitecture. IEEE Computer Society</booktitle>
+<pages>4--13</pages>
+<contexts>
+<context> features are a potent and novel combination for ecient data transformation. Ecient conditional control ow is a core challenge, and branch prediction has long been a focus of computer architecture =-=[38, 64, 67, 83, 84]-=-. As we have shown, the symbol and pattern oriented branch-intensive ETL workloads are particularly dicult, and our results show that UDP multi-way dispatch (that improves on that in the UAP [54]) is</context>
+</contexts>
+<marker>[67]</marker>
+<rawString>Chih-Chieh Lee, I-Cheng K Chen, and Trevor NMudge. 1997. The bi-mode branch predictor. In Proceedings of the 30th annual ACM/IEEE international symposium on Microarchitecture. IEEE Computer Society, 4–13.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Penny Li</author>
+</authors>
+<title>4.2 A 20nm 32-Core 64MB L3 cache SPARC M7 processor</title>
+<booktitle>In Solid-State Circuits Conference-(ISSCC), 2015 IEEE International. IEEE</booktitle>
+<pages>1--3</pages>
+<contexts>
+<context>o achieve both high performance and energy eciency. UDP’s programmable approach diers from narrow accelerators that “freeze in silicon” for particular algorithms, representations or data structures =-=[59, 68, 82]-=- (as shown in Table 1). Our results using varied data transformation benchmarks reveal that in many cases, the UDP can outperform a CPU at less than 1/100th the power, providing an eective ooad, tha</context>
+<context>ted All listed All listed All listed UAP [54] None None None All listed None Intel Chipset 89xx [30] DEFLATE None None None None Microsoft Xpress (FPGA)[56] Xpress None None None None Oracle Sparc M7 =-=[68]-=- DAX-RLE None RLE None None None DAX-Hu None Human None None None DAX-Pack None Bit-pack None None None DAX-Ozip None OZIP None None None IBM PowerEN [61] XML None None XML None None RegX None None </context>
+<context>ex Mat. (NFA) Regex Mat. (NFA) 15 0.48 0.56W 0.32 Intel Chipset 89xx 4[30] DEFLATE Snappy comp. 1.4 2.1 0.20W 0.50 Microsoft Xpress5[56] Xpress Snappy comp. 5.6 0.54 108K ALM - (FPGA) Oracle Sparc M76=-=[68]-=- DAX-RLE, -Hu, -Pack, -Ozip RLE, Human, Bit-pack,Ozip Human, RLE, Dictionary 11 1.4 1.6mm2 (Area) 0.56 (Area E) IBM PowerEN7 [61] XML XML Parse CSV Parse 1.5 2.9 1.95W - Compress DEFLATE Snappy co</context>
+<context>nable better query optimization. Both PowerEN and Sparc M7 integrate accelerators for compression, transpose, scan, and crypto. On Sparc M7, a 4-core DAX unit achieves 15 GB/s scan on compressed data =-=[68]-=-, but lacks the ability to support new formats or algorithms. In contrast, UDP’s programmability supports varied tasks and application-specic formats or algorithms, while providing comparable perform</context>
+</contexts>
+<marker>[68]</marker>
+<rawString>Penny Li et al. 2015. 4.2 A 20nm 32-Core 64MB L3 cache SPARC M7 processor. In Solid-State Circuits Conference-(ISSCC), 2015 IEEE International. IEEE, 1–3.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Sergey Melnik</author>
+</authors>
+<title>et al. 2010. Dremel: Interactive Analysis of Web-scale Datasets</title>
+<booktitle>In PVLDB’10</booktitle>
+<contexts>
+<context>-time and complex batch analysis has produced diverse innovation in algorithms, data structures, representations, and frameworks both for applications and scalable data storages and analytics systems =-=[36, 46, 50, 60, 69, 74]-=-. These innovations often use novel, even application-specic encodings and compressions that often perform poorly on transformations on traditional CPUs. To address these challenges, we propose a ex</context>
+</contexts>
+<marker>[69]</marker>
+<rawString>Sergey Melnik et al. 2010. Dremel: Interactive Analysis of Web-scale Datasets. In PVLDB’10.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Tobias Mühlbauer</author>
+</authors>
+<title>et al. 2013. Instant Loading for Main Memory Databases</title>
+<date>2013</date>
+<booktitle>Proceedings of the VLDB Endowment 6</booktitle>
+<volume>14</volume>
+<contexts>
+<context>ernal formats such as columnar block compression, special encoding, and rich indexing to meet rising performance demands. These formats require costly transformations to get data into a native format =-=[70]-=- or just-in-time transformations to analyze in-situ [37]. For example, Figure 1a shows single-threaded costs to load all TPC-H [35] Gzip-compressed CSV les (scale factor from 1 to 30) from SSD into t</context>
+<context>nd relative eciency ranges from 0.32 to 9.8-fold. Key acceleration areas for extract-transform-load (ETL) include parsing, (de)compression, tokenizing, serialization, and validation. Software eorts =-=[70]-=- using SIMD on CPU to accelerate CSV loading and vectorize delimiter detection, achieving 0.3 GB/s single thread performance. This is competitive performance to a UDP lane, but requires much higher po</context>
+</contexts>
+<marker>[70]</marker>
+<rawString>Tobias Mühlbauer et al. 2013. Instant Loading for Main Memory Databases. Proceedings of the VLDB Endowment 6, 14 (Sept. 2013).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Todd Mytkowicz</author>
+<author>Madanlal Musuvathi</author>
+<author>Wolfram Schulte</author>
+</authors>
+<title>Data-parallel Finite-state Machines</title>
+<date>2014</date>
+<booktitle>In Proc. of ASPLOS ’14</booktitle>
+<contexts>
+<context> our results show that UDP multi-way dispatch (that improves on that in the UAP [54]) is an ecient solution. Many ecient encodings use variable-size symbols, and we know of some software techniques =-=[71]-=-, but little CPU architecture research on supporting such computations. Hardwired accelerators [39] often employ a wide lookup table and a bit shifter, but unlike the UDP’s symbol-size register and re</context>
+</contexts>
+<marker>[71]</marker>
+<rawString>Todd Mytkowicz, Madanlal Musuvathi, and Wolfram Schulte. 2014. Data-parallel Finite-state Machines. In Proc. of ASPLOS ’14.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Todd Mytkowicz</author>
+<author>Madanlal Musuvathi</author>
+<author>Wolfram Schulte</author>
+</authors>
+<title>Data-parallel Finite-state Machines</title>
+<date>2014</date>
+<booktitle>In Proc. of ASPLOS’14</booktitle>
+<contexts>
+<context>14–18, 2017, Cambridge, MA, USA preltering [25] to achieve 0.75-1.6 GB/s using a powerful Xeon out-of-order core. Software speculative approaches can increase stream rate, but at signicant overhead =-=[72, 75, 86]-=-. GPU implementations [85] report throughputs 0.03 GB/s (large pattern sets) increasing to 1.6GB/s [87] (small sets). Several network processors [12, 61] employ hardwired regular expression accelerati</context>
+</contexts>
+<marker>[72]</marker>
+<rawString>Todd Mytkowicz, Madanlal Musuvathi, and Wolfram Schulte. 2014. Data-parallel Finite-state Machines. In Proc. of ASPLOS’14.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Valentina</author>
+</authors>
+<title>Salapura et al. 2012. Accelerating Business Analytics Applications</title>
+<booktitle>In Proc. of HPCA ’12</booktitle>
+<contexts>
+<context>ntexts eciently. UDP’s performance suggests incorporation is a promising research direction. Acceleration of Network Intrusion Detection and Deep Packet Inspection (NID/DPI) includes exploiting SIMD =-=[44, 73]-=- and aggressive 4We estimate compression power by 20W TDP[21] and exclude clock grid, IO/bus, and crypto. using relative ratio [9]. 5Altera Stratix V FPGA. 6Scale to 28nm TSMC and estimate based on ch</context>
+</contexts>
+<marker>[73]</marker>
+<rawString>Valentina Salapura et al. 2012. Accelerating Business Analytics Applications. In Proc. of HPCA ’12.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Mike Stonebraker</author>
+</authors>
+<title>et al. 2005. C-store: a column-oriented DBMS</title>
+<booktitle>In Proc. of VLDB’05. VLDB Endowment</booktitle>
+<contexts>
+<context>-time and complex batch analysis has produced diverse innovation in algorithms, data structures, representations, and frameworks both for applications and scalable data storages and analytics systems =-=[36, 46, 50, 60, 69, 74]-=-. These innovations often use novel, even application-specic encodings and compressions that often perform poorly on transformations on traditional CPUs. To address these challenges, we propose a ex</context>
+</contexts>
+<marker>[74]</marker>
+<rawString>Mike Stonebraker et al. 2005. C-store: a column-oriented DBMS. In Proc. of VLDB’05. VLDB Endowment.</rawString>
+</citation>
+<citation valid="true">
+<title>Arun Subramaniyan and Reetuparna Das. 2017. Parallel Automata Processor</title>
+<booktitle>In Proceedings of the 44th Annual International Symposium on Computer Architecture. ACM</booktitle>
+<pages>600--612</pages>
+<contexts>
+<context>14–18, 2017, Cambridge, MA, USA preltering [25] to achieve 0.75-1.6 GB/s using a powerful Xeon out-of-order core. Software speculative approaches can increase stream rate, but at signicant overhead =-=[72, 75, 86]-=-. GPU implementations [85] report throughputs 0.03 GB/s (large pattern sets) increasing to 1.6GB/s [87] (small sets). Several network processors [12, 61] employ hardwired regular expression accelerati</context>
+</contexts>
+<marker>[75]</marker>
+<rawString>Arun Subramaniyan and Reetuparna Das. 2017. Parallel Automata Processor. In Proceedings of the 44th Annual International Symposium on Computer Architecture. ACM, 600–612.</rawString>
+</citation>
+<citation valid="true">
+<title>Tung Thanh-Hoang et al. 2016. A Data Layout Transformation (DLT) accelerator: Architectural support for data movement optimization in accelerated-centric heterogeneous systems</title>
+<booktitle>In Proc. of DATE’16. IEEE</booktitle>
+<contexts>
+<context>neous architecture that federates customized micro-engines to achieve energy eciency and generalpurpose performance.We found that half of the 10x10micro-engines focused on data-oriented acceleration =-=[48, 51, 76]-=- and converged their capabilities in the Unied Automata Processor (UAP [54]) that achieved ecient automata processing (including regular expression matching). These workloads are challenging on trad</context>
+<context> we estimate local memory and vector register power and timing using CACTI 6.5 [6]. The overall UDP system includes the UDP, a 64x2048-bit vector register le, data-layout transformation engine (DLT) =-=[76]-=-, and a 1MB, 64-bank local memory. Silicon power and area for the UDP design is shown in Table 3. Figure 23: UDP Lane Micro-architecture. Power Area Component (mW ) Fraction (mm2) Fraction Dispatch Un</context>
+</contexts>
+<marker>[76]</marker>
+<rawString>Tung Thanh-Hoang et al. 2016. A Data Layout Transformation (DLT) accelerator: Architectural support for data movement optimization in accelerated-centric heterogeneous systems. In Proc. of DATE’16. IEEE.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>T Thanh-Hoang</author>
+<author>A Shambayati</author>
+<author>C Deutschbein</author>
+<author>H Homann</author>
+<author>A A Chien</author>
+</authors>
+<title>Performance and energy limits of a processor-integrated FFT accelerator</title>
+<date>2014</date>
+<booktitle>In 2014 IEEE High Performance Extreme Computing Conference (HPEC). 1–6</booktitle>
+<marker>[77]</marker>
+<rawString>T. Thanh-Hoang, A. Shambayati, C. Deutschbein, H. Ho￿mann, and A. A. Chien. 2014. Performance and energy limits of a processor-integrated FFT accelerator. In 2014 IEEE High Performance Extreme Computing Conference (HPEC). 1–6.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>T Thanh-Hoang</author>
+<author>A Shambayati</author>
+<author>H Homann</author>
+<author>A A Chien</author>
+</authors>
+<title>Does arithmetic logic dominate data movement? a systematic comparison of energyeciency for FFT accelerators</title>
+<date>2015</date>
+<booktitle>In 2015 IEEE 26th International Conference on Application-specic Systems, Architectures and Processors (ASAP</booktitle>
+<pages>66--67</pages>
+<marker>[78]</marker>
+<rawString>T. Thanh-Hoang, A. Shambayati, H. Ho￿mann, and A. A. Chien. 2015. Does arithmetic logic dominate data movement? a systematic comparison of energye￿ciency for FFT accelerators. In 2015 IEEE 26th International Conference on Application-speci￿c Systems, Architectures and Processors (ASAP). 66–67.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Jim Turley</author>
+</authors>
+<title>Introduction to Intel Architecture, white paper</title>
+<date>2014</date>
+<note>https://www.intel.com/content/dam/www/public/us/en/documents/ white-papers/ia-introduction-basics-paper.pdf</note>
+<contexts>
+<context>ADS AND ACCELERATORS Big data computing workloads are diverse and typied by challenging behavior that gives poor performance in modern CPUs with high instruction-level parallelism and deep pipelines =-=[11, 79]-=-. We summarize a variety of these workloads below and document their challenges for CPUs in Table 2. 2.1 Workloads Database ETL (extract, transform, and load) requires tools to integrate disparate dat</context>
+</contexts>
+<marker>[79]</marker>
+<rawString>Jim Turley. 2014. Introduction to Intel Architecture, white paper. (2014). https://www.intel.com/content/dam/www/public/us/en/documents/ white-papers/ia-introduction-basics-paper.pdf</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Jan Van</author>
+</authors>
+<title>Lunteren et al. 2012. Designing a Programmable Wire-Speed RegularExpression Matching Accelerator</title>
+<booktitle>In MICRO’12</booktitle>
+<contexts>
+<context>coding Canterbury Corpus, Berkeley Big Data 5x branch mispredicts Human Decoding Canterbury Corpus, Berkeley Big Data 5x branch mispredicts Pattern Matching (Intrusion Detection) IBM PowerEN dataset =-=[80]-=- Poor locality, 1.6x L1 miss rate Dictionary Crimes [16] Costly Hash 67% runtime Dictionary and Run Length Encoding (RLE) Crimes Costly Hash 54% runtime Histogram Crimes, NYC Taxi Trip 5x branch mispr</context>
+<context> user ; we evaluate a single HDFS block (64MB, 22MB and 64MB) respectively. For UDP, we duplicate the Canterbury data to provide 64-lane parallelism. Pattern matching uses regular expression patterns =-=[80]-=-, with the CPU code as Boost C++ Regex [15]. Measurements use network-intrusion detection patterns. Boost supports only single-pattern matching, so we merge the NIDS patterns into a single combined pa</context>
+<context> its use of large dedicated FPGA. All of these specialized accelerators’ implementations lack the exible programmability of UDP. Tokenization alone can be accelerated by patternmatching accelerators =-=[12, 54, 57, 80]-=-, but lack the programmability to address the costly follow-on processing (e.g. deserialization and validation) which often dominates execution time (Figure 1a). The UDP handles these tasks and more. </context>
+</contexts>
+<marker>[80]</marker>
+<rawString>Jan Van Lunteren et al. 2012. Designing a Programmable Wire-Speed RegularExpression Matching Accelerator. In MICRO’12.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Louis Woods</author>
+<author>Zsolt István</author>
+<author>Gustavo Alonso</author>
+</authors>
+<title>Ibex: An Intelligent Storage Engine with Support for</title>
+<date>2014</date>
+<booktitle>Advanced SQL Ooading. Proc. VLDB Endow</booktitle>
+<volume>7</volume>
+<contexts>
+<context>emonstrated signicant speedups for analytic workloads (Q100 [82]); these systems don’t do the broad range of data transformation that is the focus of UDP. Ooad systems in storage systems (e.g. Ibex =-=[81]-=-, Netezza [2], Exadata [4]) gain performance by exploiting internal storage bandwidth. UDP’s low power and programmability make it a candidate for such storage embedding. FPGA-based eorts that accele</context>
+</contexts>
+<marker>[81]</marker>
+<rawString>Louis Woods, Zsolt István, and Gustavo Alonso. 2014. Ibex: An Intelligent Storage Engine with Support for Advanced SQL O￿oading. Proc. VLDB Endow. 7, 11 (July 2014).</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Lisa Wu</author>
+</authors>
+<title>et al. 2014. Q100: The Architecture and Design of a Database Processing Unit</title>
+<booktitle>In Proc. of ASPLOS ’14</booktitle>
+<contexts>
+<context>o achieve both high performance and energy eciency. UDP’s programmable approach diers from narrow accelerators that “freeze in silicon” for particular algorithms, representations or data structures =-=[59, 68, 82]-=- (as shown in Table 1). Our results using varied data transformation benchmarks reveal that in many cases, the UDP can outperform a CPU at less than 1/100th the power, providing an eective ooad, tha</context>
+<context>ion tasks and future application-specic encodings or algorithms. Hardware support for query execution, notably relational operators, has demonstrated signicant speedups for analytic workloads (Q100 =-=[82]-=-); these systems don’t do the broad range of data transformation that is the focus of UDP. Ooad systems in storage systems (e.g. Ibex [81], Netezza [2], Exadata [4]) gain performance by exploiting in</context>
+</contexts>
+<marker>[82]</marker>
+<rawString>Lisa Wu et al. 2014. Q100: The Architecture and Design of a Database Processing Unit. In Proc. of ASPLOS ’14.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Tse-Yu Yeh</author>
+<author>Yale N Patt</author>
+</authors>
+<title>Two-level adaptive training branch prediction</title>
+<date>1991</date>
+<booktitle>In Proceedings of the 24th annual international symposium on Microarchitecture. ACM</booktitle>
+<pages>51--61</pages>
+<contexts>
+<context> features are a potent and novel combination for ecient data transformation. Ecient conditional control ow is a core challenge, and branch prediction has long been a focus of computer architecture =-=[38, 64, 67, 83, 84]-=-. As we have shown, the symbol and pattern oriented branch-intensive ETL workloads are particularly dicult, and our results show that UDP multi-way dispatch (that improves on that in the UAP [54]) is</context>
+</contexts>
+<marker>[83]</marker>
+<rawString>Tse-Yu Yeh and Yale N Patt. 1991. Two-level adaptive training branch prediction. In Proceedings of the 24th annual international symposium on Microarchitecture. ACM, 51–61.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Tse-Yu Yeh</author>
+<author>Yale N Patt</author>
+</authors>
+<title>Alternative implementations of two-level adaptive branch prediction</title>
+<date>1992</date>
+<booktitle>In Proc. of ISCA’92. ACM</booktitle>
+<pages>124--134</pages>
+<contexts>
+<context> features are a potent and novel combination for ecient data transformation. Ecient conditional control ow is a core challenge, and branch prediction has long been a focus of computer architecture =-=[38, 64, 67, 83, 84]-=-. As we have shown, the symbol and pattern oriented branch-intensive ETL workloads are particularly dicult, and our results show that UDP multi-way dispatch (that improves on that in the UAP [54]) is</context>
+</contexts>
+<marker>[84]</marker>
+<rawString>Tse-Yu Yeh and Yale N Patt. 1992. Alternative implementations of two-level adaptive branch prediction. In Proc. of ISCA’92. ACM, 124–134.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Xiaodong Yu</author>
+<author>Michela Becchi</author>
+</authors>
+<title>GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space</title>
+<date>2013</date>
+<booktitle>In Proc. of CF ’13</booktitle>
+<contexts>
+<context>eltering [25] to achieve 0.75-1.6 GB/s using a powerful Xeon out-of-order core. Software speculative approaches can increase stream rate, but at signicant overhead [72, 75, 86]. GPU implementations =-=[85]-=- report throughputs 0.03 GB/s (large pattern sets) increasing to 1.6GB/s [87] (small sets). Several network processors [12, 61] employ hardwired regular expression acceleration to reach 6.25GB/s throu</context>
+</contexts>
+<marker>[85]</marker>
+<rawString>Xiaodong Yu and Michela Becchi. 2013. GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space. In Proc. of CF ’13.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Zhijia Zhao</author>
+<author>Xipeng Shen</author>
+</authors>
+<title>On-the-y principled speculation for FSM parallelization</title>
+<date>2015</date>
+<booktitle>In Proc. of ASPLOS’15. ACM</booktitle>
+<pages>619--630</pages>
+<contexts>
+<context>14–18, 2017, Cambridge, MA, USA preltering [25] to achieve 0.75-1.6 GB/s using a powerful Xeon out-of-order core. Software speculative approaches can increase stream rate, but at signicant overhead =-=[72, 75, 86]-=-. GPU implementations [85] report throughputs 0.03 GB/s (large pattern sets) increasing to 1.6GB/s [87] (small sets). Several network processors [12, 61] employ hardwired regular expression accelerati</context>
+</contexts>
+<marker>[86]</marker>
+<rawString>Zhijia Zhao and Xipeng Shen. 2015. On-the-￿y principled speculation for FSM parallelization. In Proc. of ASPLOS’15. ACM, 619–630.</rawString>
+</citation>
+<citation valid="true">
+<authors>
+<author>Yuan Zu</author>
+</authors>
+<title>GPU-based NFA Implementation for Memory Ecient High Speed Regular Expression Matching</title>
+<booktitle>In Proceedings of the 17th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming (PPoPP ’12</booktitle>
+<contexts>
+<context>re. Software speculative approaches can increase stream rate, but at signicant overhead [72, 75, 86]. GPU implementations [85] report throughputs 0.03 GB/s (large pattern sets) increasing to 1.6GB/s =-=[87]-=- (small sets). Several network processors [12, 61] employ hardwired regular expression acceleration to reach 6.25GB/s throughput. Unied Automata Processor achieves up to 5x better performance [54] by</context>
+</contexts>
+<marker>[87]</marker>
+<rawString>Yuan Zu et al. 2012. GPU-based NFA Implementation for Memory E￿cient High Speed Regular Expression Matching. In Proceedings of the 17th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming (PPoPP ’12).</rawString>
+</citation>
+</citationList>
+</CSXAPIMetadata>
